@@ -2,7 +2,7 @@ import { randomBytes } from 'node:crypto';
 import assert from 'node:assert/strict';
 import sharp from 'sharp';
 import { syntheticPast, syntheticCurrent } from '../src/modules/be3-intelligence/analysis-mock.js';
-const base='http://127.0.0.1:4320';let token='';let checks=0;
+const base=process.env.API_BASE_URL ?? 'http://127.0.0.1:4320';let token='';let checks=0;
 async function call(path:string,body?:unknown,status=200,authenticated=true){const r=await fetch(base+path,{method:body===undefined?'GET':'POST',headers:{'Content-Type':'application/json',...(authenticated&&token?{Authorization:`Bearer ${token}`}:{})},body:body===undefined?undefined:JSON.stringify(body)});assert.equal(r.status,status,`${path}: ${r.status} ${await (r.status!==status?r.clone().text():Promise.resolve(''))}`);checks++;return status===204?null:await r.json() as any;}
 const password=randomBytes(24).toString('base64url');const identifier='synthetic-'+randomBytes(6).toString('hex');
 await call('/api/auth/register',{identifier,password},201,false);
