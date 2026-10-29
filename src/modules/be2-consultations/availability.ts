@@ -51,22 +51,22 @@ export function parseUtcInstantInterval(input: unknown): UtcInstantInterval {
   return interval;
 }
 
-function compareClockTimes(start: string, end: string): number {
-  const left = clockParts(start);
-  const right = clockParts(end);
+export function compareClockTimes(left: string, right: string): -1 | 0 | 1 {
+  const leftParts = clockParts(ClockTime.parse(left));
+  const rightParts = clockParts(ClockTime.parse(right));
   for (let index = 0; index < 3; index += 1) {
-    if (left[index] !== right[index]) return left[index] < right[index] ? -1 : 1;
+    if (leftParts[index] !== rightParts[index]) return leftParts[index] < rightParts[index] ? -1 : 1;
   }
-  return compareFraction(left[3], right[3]);
+  return compareFraction(leftParts[3], rightParts[3]);
 }
 
-function compareUtcInstants(start: string, end: string): number {
-  const left = instantParts(start);
-  const right = instantParts(end);
+export function compareUtcInstants(left: string, right: string): -1 | 0 | 1 {
+  const leftParts = instantParts(UtcInstant.parse(left));
+  const rightParts = instantParts(UtcInstant.parse(right));
   for (let index = 0; index < 6; index += 1) {
-    if (left[index] !== right[index]) return left[index] < right[index] ? -1 : 1;
+    if (leftParts[index] !== rightParts[index]) return leftParts[index] < rightParts[index] ? -1 : 1;
   }
-  return compareFraction(left[6], right[6]);
+  return compareFraction(leftParts[6], rightParts[6]);
 }
 
 function clockParts(value: string): readonly [number, number, number, string] {
@@ -83,7 +83,7 @@ function instantParts(value: string): readonly [number, number, number, number, 
   return [year, month, day, hour, minute, second, fraction];
 }
 
-function compareFraction(left: string, right: string): number {
+function compareFraction(left: string, right: string): -1 | 0 | 1 {
   const width = Math.max(left.length, right.length);
   const a = left.padEnd(width, '0');
   const b = right.padEnd(width, '0');
