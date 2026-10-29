@@ -7,7 +7,7 @@ services:
       POSTGRES_PASSWORD: local-only
       POSTGRES_DB: caregap_local
     ports:
-      - "127.0.0.1:54322:5432"
+      - "127.0.0.1:${POSTGRES_HOST_PORT:?Set POSTGRES_HOST_PORT to an available local DB port}:5432"
     volumes:
       - caregap_local_data:/var/lib/postgresql/data
     healthcheck:
