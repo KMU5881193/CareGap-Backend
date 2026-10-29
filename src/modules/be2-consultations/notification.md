@@ -8,7 +8,7 @@
 
 `feature/be2-notification-domain`의 HEAD는 `0ae0a68`이고, 이 커밋은 `feature/be2-follow-up-domain`과 같다. `5f37ea5`는 이 브랜치의 조상이 아니다. 작업 트리에 `analysis-event.ts`가 없다. 병합하지 않았고, 이 모듈은 그 파일을 import 하지 않는다.
 
-`src/shared/contracts.ts`의 역할 이름은 아직 `person | family | staff | admin`이다. 합의된 `patient`로의 변경은 이 단계에서 하지 않는다. 이 모듈은 역할 목록을 새로 만들지 않는다. `person_id`는 상담 대상자 식별자다. `recipient_user_id`는 알림을 받는 사용자 계정 id다. 둘을 같은 값으로 채우지 않는다.
+공통 Actor 역할은 `patient | family | staff | admin`이다. 이 모듈은 역할 목록을 새로 만들지 않는다. `person_id`는 상담 대상자 식별자다. `recipient_user_id`는 알림을 받는 사용자 계정 id다. 둘을 같은 값으로 채우지 않는다.
 
 ## 알림
 

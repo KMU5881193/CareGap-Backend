@@ -8,7 +8,7 @@
 
 `feature/be2-follow-up-domain`의 HEAD는 `8f9ec30`이다. `feature/be2-analysis-event-domain`의 `5f37ea5`는 이 브랜치에 포함되어 있지 않다. 병합하지 않았다. 분석 이벤트 모듈은 그 커밋을 읽어 연결 방식만 기록한다. 이 브랜치의 후속 업무 코드는 그 모듈을 import 하지 않는다.
 
-`src/shared/contracts.ts`와 `main`의 역할 이름은 아직 `person | family | staff | admin`이다. 합의된 `patient`로의 변경은 이 단계에서 하지 않는다. 이 모듈은 역할 목록을 새로 만들지 않는다. `person_id`는 상담 대상자 식별자다.
+공통 Actor 역할은 `patient | family | staff | admin`이다. 이 모듈은 역할 목록을 새로 만들지 않는다. `person_id`는 상담 대상자 식별자다.
 
 ## 업무
 
