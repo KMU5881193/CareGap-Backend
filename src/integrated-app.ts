@@ -1,6 +1,7 @@
 import { HostAiProvider } from './host-ai-provider.js';
 import { mountFinalBe2 } from './final-be2.js';
 import express from 'express';
+import { readFileSync } from 'node:fs';
 import { randomBytes, randomUUID, scryptSync, timingSafeEqual, createHash } from 'node:crypto';
 import { z, ZodError } from 'zod';
 import type { Actor, RecordVersion } from './shared/contracts.js';
@@ -35,6 +36,17 @@ export function createIntegratedApp(env:NodeJS.ProcessEnv) {
  const users = new Map<string,{actor:Actor;salt:Buffer;hash:Buffer}>();
  const sessions = new Map<string,{actor:Actor;expires:number}>();
  const persons = new Map<string,string>();
+ const profiles = new Map<string,{name:string;patient_user_id:string;staff_user_id:string}>();
+ // Trusted local bootstrap only. Public registration never accepts a role or assignment.
+ if(env.CAREGAP_DEMO_ACCOUNTS_FILE){
+  const rows=z.array(z.object({identifier:z.string().min(3).max(80),password:z.string().min(12).max(128),user_id:z.uuid(),role:z.enum(['staff','patient']),name:z.string().min(1),person_id:z.uuid().optional(),staff_user_id:z.uuid().optional()}).strict()).length(4).parse(JSON.parse(readFileSync(env.CAREGAP_DEMO_ACCOUNTS_FILE,'utf8')));
+  if(new Set(rows.map(r=>r.identifier)).size!==4 || new Set(rows.map(r=>r.user_id)).size!==4 || rows.filter(r=>r.role==='staff').length!==2)throw Error('INVALID_DEMO_ASSIGNMENTS');
+  for(const row of rows){const salt=randomBytes(16);users.set(row.identifier,{actor:{user_id:row.user_id,role:row.role},salt,hash:scryptSync(row.password,salt,32)});}
+  for(const row of rows.filter(r=>r.role==='patient')){
+   if(!row.person_id||!row.staff_user_id||!rows.some(s=>s.role==='staff'&&s.user_id===row.staff_user_id)||profiles.has(row.person_id))throw Error('INVALID_DEMO_ASSIGNMENTS');
+   persons.set(row.person_id,row.staff_user_id);profiles.set(row.person_id,{name:row.name,patient_user_id:row.user_id,staff_user_id:row.staff_user_id});
+  }
+ }
  const records = new Map<string,RecordVersion>();
  const appointments = new Map<string,z.infer<typeof AppointmentCreateInput> & {appointment_id:string;staff_user_id:string;status:string}>();
  const app=express(); app.disable('x-powered-by');
@@ -69,13 +81,20 @@ export function createIntegratedApp(env:NodeJS.ProcessEnv) {
  app.post('/api/auth/logout',(req,res)=>{sessions.delete(digest(req.get('authorization')!.slice(7)));res.sendStatus(204);});
  app.get('/api/auth/me',(_req,res)=>res.json({data:res.locals.actor}));
  app.use('/api/auth/staff',(_req,res)=>res.status(404).json({error:{code:'NOT_FOUND'}}));
+ // Patients can see their own records and book their own appointment, but cannot
+ // write clinical records, run models, approve findings or create staff tasks.
+ app.use('/api',(req,res,next)=>{
+  if(res.locals.actor.role==='patient' && req.method!=='GET' && !['/appointments','/auth/logout'].includes(req.path) && !/^\/notifications\/[^/]+\/read$/.test(req.path))return res.status(403).json({error:{code:'FORBIDDEN'}});
+  next();
+ });
  const authorization={async canAccess(actor:Actor,person:string){return persons.get(person)===actor.user_id;}};
  const actor=(res:express.Response)=>res.locals.actor as Actor;
- const access=(res:express.Response,id:string)=>{if(persons.get(id)!==actor(res).user_id)fail(403,'FORBIDDEN');};
+ const canRead=(a:Actor,id:string)=>a.role==='staff'?persons.get(id)===a.user_id:a.role==='patient'&&profiles.get(id)?.patient_user_id===a.user_id;
+ const access=(res:express.Response,id:string)=>{if(!canRead(actor(res),id))fail(403,'FORBIDDEN');};
  app.post('/api/persons',(_req,res)=>{if(persons.size>=1000)fail(429,'DEMO_CAPACITY');const person_id=randomUUID();persons.set(person_id,actor(res).user_id);res.status(201).json({data:{person_id,synthetic_only:true}});});
- app.get('/api/persons',(_req,res)=>res.json({data:[...persons.entries()].filter(([,owner])=>owner===actor(res).user_id).map(([person_id])=>({person_id,synthetic_only:true}))}));
- app.post('/api/appointments',(req,res)=>{const b=AppointmentCreateInput.parse(req.body);access(res,b.person_id);const candidate={...b,staff_user_id:actor(res).user_id};const conflicts=findAppointmentConflicts(candidate,[...appointments.values()],{occupyingStatuses:['scheduled'],blockingRelations:['overlaps','overlapped-by','starts','started-by','during','contains','finishes','finished-by','equal']});if(!conflicts.configured || conflicts.conflicts.length)fail(409,'APPOINTMENT_CONFLICT');const data={...candidate,appointment_id:randomUUID(),status:'scheduled'};appointments.set(data.appointment_id,data);res.status(201).json({data});});
- app.get('/api/appointments',(_req,res)=>res.json({data:[...appointments.values()].filter(a=>a.staff_user_id===actor(res).user_id)}));
+ app.get('/api/persons',(_req,res)=>res.json({data:[...persons.keys()].filter(id=>canRead(actor(res),id)).map(person_id=>({person_id,...profiles.get(person_id),synthetic_only:true}))}));
+ app.post('/api/appointments',(req,res)=>{const b=AppointmentCreateInput.parse(req.body);access(res,b.person_id);const candidate={...b,staff_user_id:persons.get(b.person_id)!};const conflicts=findAppointmentConflicts(candidate,[...appointments.values()],{occupyingStatuses:['scheduled'],blockingRelations:['overlaps','overlapped-by','starts','started-by','during','contains','finishes','finished-by','equal']});if(!conflicts.configured || conflicts.conflicts.length)fail(409,'APPOINTMENT_CONFLICT');const data={...candidate,appointment_id:randomUUID(),status:'scheduled'};appointments.set(data.appointment_id,data);res.status(201).json({data});});
+ app.get('/api/appointments',(_req,res)=>res.json({data:[...appointments.values()].filter(a=>canRead(actor(res),a.person_id))}));
  const save=(person_id:string,text:string)=>{const data=ConsultationRecordVersion.parse({person_id,text,consultation_id:randomUUID(),record_version_id:randomUUID()});records.set(data.record_version_id,data);return data;};
  app.post('/api/records',(req,res)=>{const b=z.object({person_id:z.uuid(),text:z.string().min(1).max(100000)}).strict().parse(req.body);access(res,b.person_id);res.status(201).json({data:save(b.person_id,b.text)});});
  app.get('/api/records',(req,res)=>{const id=z.uuid().parse(req.query.person_id);access(res,id);res.json({data:[...records.values()].filter(r=>r.person_id===id)});});

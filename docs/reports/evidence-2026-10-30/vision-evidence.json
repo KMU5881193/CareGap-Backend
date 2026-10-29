@@ -1,0 +1,199 @@
+[
+  {
+    "kind": "http",
+    "mimeType": "image/png",
+    "status": 201,
+    "response": {
+      "data": {
+        "id": "0b7b13f3-1551-4639-aebc-4a0fb4792ea4",
+        "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+        "status": "succeeded",
+        "synthetic_only": true,
+        "stored_image": false,
+        "provider_kind": "llm",
+        "provider_metadata": {
+          "provider": "ollama",
+          "model": "qwen2.5vl:7b",
+          "prompt_version": "caregap-direct-vision-v1"
+        },
+        "provenance": {
+          "input_kind": "direct_multimodal_image",
+          "ocr_used": false,
+          "human_review_required": true
+        },
+        "result": {
+          "care_note": "이미지에는 두 개의 원형이 있으며, 각각의 원형 내부에는 다른 색상의 원형이 있습니다. 왼쪽의 원형은 파란색이고, 오른쪽의 원형은 녹색과 주황색의 원형이 있습니다. 배경은 갈색이며, 왼쪽에는 파란색 사각형이 있습니다.",
+          "observations": [
+            {
+              "text": "이미지에는 두 개의 원형이 있습니다.",
+              "evidence": "이미지의 중앙에 두 개의 원형이 있습니다. 왼쪽의 원형은 파란색이고, 오른쪽의 원형은 녹색과 주황색의 원형이 있습니다.",
+              "confidence": "high"
+            },
+            {
+              "text": "각 원형 내부에는 다른 색상의 원형이 있습니다.",
+              "evidence": "왼쪽의 원형 내부에는 파란색 원형이 있고, 오른쪽의 원형 내부에는 녹색과 주황색의 원형이 있습니다.",
+              "confidence": "high"
+            },
+            {
+              "text": "배경은 갈색입니다.",
+              "evidence": "이미지의 배경은 갈색입니다.",
+              "confidence": "high"
+            },
+            {
+              "text": "왼쪽에는 파란색 사각형이 있습니다.",
+              "evidence": "이미지의 왼쪽에는 파란색 사각형이 있습니다.",
+              "confidence": "high"
+            }
+          ],
+          "uncertainties": [
+            "이미지의 의미나 상황에 대한 추가적인 정보는 제공되지 않았습니다.",
+            "이미지의 원형과 사각형의 의미나 상호 관계는 명확하지 않습니다."
+          ],
+          "safety_notice": "이미지는 합성 데이터로, 사람의 신원, 관계, 나이, 성별, 질병, 장애, 감정, 위험도, 복지 자격 등을 추측하거나 진단하지 마십시오. 이 이미지는 정보 제공용이며, 자동 승인·의료 판단은 아닙니다."
+        }
+      }
+    }
+  },
+  {
+    "kind": "actual_provider_transport",
+    "mimeType": "image/png",
+    "url": "http://127.0.0.1:11434/api/chat",
+    "images_count": 1,
+    "original_bytes_equal": true,
+    "ocr_used": false
+  },
+  {
+    "kind": "actual_provider_output",
+    "mimeType": "image/png",
+    "output": {
+      "result": {
+        "care_note": "이미지에는 두 개의 원형이 있으며, 각각의 원형 내부에는 다른 색상의 원형이 있습니다. 왼쪽의 원형은 파란색이고, 오른쪽의 원형은 녹색과 주황색의 원형이 있습니다. 배경은 갈색이며, 왼쪽에는 파란색 사각형이 있습니다.",
+        "observations": [
+          {
+            "text": "이미지에는 두 개의 원형이 있습니다.",
+            "evidence": "이미지의 중앙에 두 개의 원형이 있습니다. 왼쪽의 원형은 파란색이고, 오른쪽의 원형은 녹색과 주황색의 원형이 있습니다.",
+            "confidence": "high"
+          },
+          {
+            "text": "각 원형 내부에는 다른 색상의 원형이 있습니다.",
+            "evidence": "왼쪽의 원형 내부에는 파란색 원형이 있고, 오른쪽의 원형 내부에는 녹색과 주황색의 원형이 있습니다.",
+            "confidence": "high"
+          },
+          {
+            "text": "배경은 갈색입니다.",
+            "evidence": "이미지의 배경은 갈색입니다.",
+            "confidence": "high"
+          },
+          {
+            "text": "왼쪽에는 파란색 사각형이 있습니다.",
+            "evidence": "이미지의 왼쪽에는 파란색 사각형이 있습니다.",
+            "confidence": "high"
+          }
+        ],
+        "uncertainties": [
+          "이미지의 의미나 상황에 대한 추가적인 정보는 제공되지 않았습니다.",
+          "이미지의 원형과 사각형의 의미나 상호 관계는 명확하지 않습니다."
+        ],
+        "safety_notice": "이미지는 합성 데이터로, 사람의 신원, 관계, 나이, 성별, 질병, 장애, 감정, 위험도, 복지 자격 등을 추측하거나 진단하지 마십시오. 이 이미지는 정보 제공용이며, 자동 승인·의료 판단은 아닙니다."
+      },
+      "model": "qwen2.5vl:7b"
+    }
+  },
+  {
+    "kind": "http",
+    "mimeType": "image/jpeg",
+    "status": 201,
+    "response": {
+      "data": {
+        "id": "eed51a1d-ecaf-4d42-850f-11dd919ce00a",
+        "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+        "status": "succeeded",
+        "synthetic_only": true,
+        "stored_image": false,
+        "provider_kind": "llm",
+        "provider_metadata": {
+          "provider": "ollama",
+          "model": "qwen2.5vl:7b",
+          "prompt_version": "caregap-direct-vision-v1"
+        },
+        "provenance": {
+          "input_kind": "direct_multimodal_image",
+          "ocr_used": false,
+          "human_review_required": true
+        },
+        "result": {
+          "care_note": "이미지는 합성된 데모 자료로, 실제 사람을 나타내지 않습니다.",
+          "observations": [
+            {
+              "text": "이미지의 상단에는 'SYNTHETIC DEMO - NO REAL PERSON'이라는 텍스트가 있습니다.",
+              "evidence": "텍스트가 이미지의 상단에 위치하고 있으며, 그 내용은 이미지가 합성된 데모 자료임을 나타냅니다.",
+              "confidence": "high"
+            },
+            {
+              "text": "이미지의 중앙에는 두 개의 원형이 있습니다.",
+              "evidence": "중앙에 두 개의 원형이 그려져 있으며, 각각 다른 색상으로 구분되어 있습니다.",
+              "confidence": "high"
+            },
+            {
+              "text": "왼쪽에는 파란색 사각형이 있습니다.",
+              "evidence": "왼쪽에 파란색 사각형이 그려져 있습니다.",
+              "confidence": "high"
+            },
+            {
+              "text": "배경은 갈색입니다.",
+              "evidence": "배경은 갈색으로 그려져 있습니다.",
+              "confidence": "high"
+            }
+          ],
+          "uncertainties": [
+            "이미지의 의미나 상황에 대한 추가적인 정보는 제공되지 않았습니다.",
+            "이미지의 구체적인 사용 목적이나 맥락은 명시되지 않았습니다."
+          ],
+          "safety_notice": "이미지는 합성된 데모 자료로, 실제 사람을 나타내지 않습니다. 따라서 사람의 신원, 관계, 나이, 성별, 질병, 장애, 감정, 위험도, 복지 자격 등을 추측하거나 진단하지 마십시오. 이 이미지는 정보 제공용으로만 사용해야 합니다."
+        }
+      }
+    }
+  },
+  {
+    "kind": "actual_provider_transport",
+    "mimeType": "image/jpeg",
+    "url": "http://127.0.0.1:11434/api/chat",
+    "images_count": 1,
+    "original_bytes_equal": true,
+    "ocr_used": false
+  },
+  {
+    "kind": "actual_provider_output",
+    "mimeType": "image/jpeg",
+    "output": {
+      "result": {
+        "care_note": "이미지에는 두 개의 원형이 있으며, 각각의 원형 내부에는 다른 색상의 원형이 있습니다. 왼쪽에는 파란색 원형이 있고, 오른쪽에는 녹색과 주황색 원형이 있습니다. 배경은 갈색이며, 왼쪽 상단에는 'SYNTHETIC DEMO - NO REAL PERSON'이라는 텍스트가 있습니다.",
+        "observations": [
+          {
+            "text": "이미지에는 두 개의 원형이 있습니다.",
+            "evidence": "이미지의 중앙에 두 개의 원형이 있습니다. 왼쪽에는 파란색 원형이 있고, 오른쪽에는 녹색과 주황색 원형이 있습니다.",
+            "confidence": "high"
+          },
+          {
+            "text": "각 원형 내부에는 다른 색상의 원형이 있습니다.",
+            "evidence": "왼쪽 원형 내부에는 파란색 원형이 있고, 오른쪽 원형 내부에는 녹색과 주황색 원형이 있습니다.",
+            "confidence": "high"
+          },
+          {
+            "text": "배경은 갈색입니다.",
+            "evidence": "이미지의 배경은 갈색입니다.",
+            "confidence": "high"
+          },
+          {
+            "text": "왼쪽 상단에는 'SYNTHETIC DEMO - NO REAL PERSON'이라는 텍스트가 있습니다.",
+            "evidence": "왼쪽 상단에 'SYNTHETIC DEMO - NO REAL PERSON'이라는 텍스트가 있습니다.",
+            "confidence": "high"
+          }
+        ],
+        "uncertainties": [],
+        "safety_notice": "이 이미지는 합성 데이터로, 사람의 신원, 관계, 나이, 성별, 질병, 장애, 감정, 위험도, 복지 자격 등을 추측하거나 진단하지 마십시오. 이 이미지는 자동 승인·의료 판단을 위한 것이 아닙니다."
+      },
+      "model": "qwen2.5vl:7b"
+    }
+  }
+]

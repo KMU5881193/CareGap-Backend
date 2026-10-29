@@ -1,0 +1,118 @@
+{
+  "base": "http://127.0.0.1:4334",
+  "synthetic_only": true,
+  "trace": [
+    {
+      "path": "/api/persons",
+      "expected": 401,
+      "status": 401,
+      "response": {
+        "error": {
+          "code": "UNAUTHENTICATED"
+        }
+      }
+    },
+    {
+      "path": "/api/auth/login",
+      "expected": 401,
+      "status": 401
+    },
+    {
+      "path": "/api/auth/login",
+      "expected": 200,
+      "status": 200
+    },
+    {
+      "path": "/api/auth/login",
+      "expected": 200,
+      "status": 200
+    },
+    {
+      "path": "/api/auth/login",
+      "expected": 200,
+      "status": 200
+    },
+    {
+      "path": "/api/auth/register",
+      "expected": 400,
+      "status": 400,
+      "response": {
+        "error": {
+          "code": "INVALID_REQUEST"
+        }
+      }
+    },
+    {
+      "path": "/api/records?person_id=b98d8c10-5360-419c-b967-29d2aaac4d0c",
+      "expected": 403,
+      "status": 403,
+      "response": {
+        "error": {
+          "code": "FORBIDDEN"
+        }
+      }
+    },
+    {
+      "path": "/api/persons",
+      "expected": 403,
+      "status": 403,
+      "response": {
+        "error": {
+          "code": "FORBIDDEN"
+        }
+      }
+    },
+    {
+      "path": "/api/appointments",
+      "expected": 409,
+      "status": 409,
+      "response": {
+        "error": {
+          "code": "APPOINTMENT_CONFLICT"
+        }
+      }
+    },
+    {
+      "path": "/api/notifications",
+      "expected": 200,
+      "status": 200,
+      "response": {
+        "data": [
+          {
+            "notification_id": "6e3af1f3-0bac-4f9d-b24d-d92bc6b9463d",
+            "recipient_user_id": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+            "kind": "manual",
+            "title": "[합성 데모] 상담 기록 검토 안내",
+            "body": "합성 상담 기록과 근거를 확인해 주세요. 실제 발송 알림이 아닙니다."
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/notifications/6e3af1f3-0bac-4f9d-b24d-d92bc6b9463d/read",
+      "expected": 404,
+      "status": 404,
+      "response": {
+        "error": {
+          "code": "NOT_FOUND"
+        }
+      }
+    },
+    {
+      "path": "/api/auth/logout",
+      "expected": 204,
+      "status": 204,
+      "response": null
+    },
+    {
+      "path": "/api/auth/me",
+      "expected": 401,
+      "status": 401,
+      "response": {
+        "error": {
+          "code": "UNAUTHENTICATED"
+        }
+      }
+    }
+  ]
+}

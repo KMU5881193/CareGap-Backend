@@ -1,0 +1,1578 @@
+{
+  "base": "http://127.0.0.1:4334",
+  "checked_at": "2026-10-29T23:00:21.027Z",
+  "trace": [
+    {
+      "path": "/api/appointments",
+      "status": 200,
+      "elapsed_ms": 3,
+      "response": {
+        "data": [
+          {
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "starts_at": "2026-10-28T01:00:00Z",
+            "ends_at": "2026-10-28T02:00:00Z",
+            "staff_user_id": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+            "appointment_id": "035ac4ec-cb78-49af-9d2c-23d19ba39128",
+            "status": "completed"
+          },
+          {
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "starts_at": "2026-11-02T01:00:00Z",
+            "ends_at": "2026-11-02T02:00:00Z",
+            "staff_user_id": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+            "appointment_id": "4b918145-6eed-45d3-9b9f-7f773ddf8194",
+            "status": "scheduled"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/appointments",
+      "status": 200,
+      "elapsed_ms": 3,
+      "response": {
+        "data": [
+          {
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "starts_at": "2026-10-28T01:00:00Z",
+            "ends_at": "2026-10-28T02:00:00Z",
+            "staff_user_id": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+            "appointment_id": "035ac4ec-cb78-49af-9d2c-23d19ba39128",
+            "status": "completed"
+          },
+          {
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "starts_at": "2026-11-02T01:00:00Z",
+            "ends_at": "2026-11-02T02:00:00Z",
+            "staff_user_id": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+            "appointment_id": "4b918145-6eed-45d3-9b9f-7f773ddf8194",
+            "status": "scheduled"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/records?person_id=ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+      "status": 200,
+      "elapsed_ms": 3,
+      "response": {
+        "data": [
+          {
+            "consultation_id": "8a580e00-8cbc-4c14-8780-669115b4330d",
+            "record_version_id": "091a54ca-ef43-4fe6-b8e3-aa51bab2b9f1",
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "text": "[합성 데모] 과거에는 식사를 하루 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 일주일에 한 번 했습니다."
+          },
+          {
+            "consultation_id": "b0abff3a-f9c7-4fc3-b14b-46af27545661",
+            "record_version_id": "38958776-a568-4682-be49-8041892dd5ea",
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "text": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+          },
+          {
+            "consultation_id": "b6ecffd0-9640-4273-a935-d04ec97d33fd",
+            "record_version_id": "dd2a03af-fa17-42d3-bc8f-dc6ff8b63e68",
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "text": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+          },
+          {
+            "consultation_id": "c2aee0a8-a069-43b5-8087-5a818a243eaf",
+            "record_version_id": "95326041-ba13-48fa-90b8-07e6465cfe9c",
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "text": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+          },
+          {
+            "consultation_id": "f79c2791-777f-44bc-a099-7ceffb01e35a",
+            "record_version_id": "dc63345a-919c-4216-8f98-c07bec02b6ba",
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "text": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/ocr/jobs/19d139ee-a315-4428-8ad8-b4c1d293b7ce",
+      "status": 200,
+      "elapsed_ms": 2,
+      "response": {
+        "data": {
+          "id": "19d139ee-a315-4428-8ad8-b4c1d293b7ce",
+          "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+          "created_by": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+          "created_at": "2026-10-29T22:47:16.095Z",
+          "provider_kind": "injected",
+          "status": "succeeded",
+          "version": 1,
+          "corrections": [
+            {
+              "version": 1,
+              "text": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다.",
+              "edited_by": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+              "edited_at": "2026-10-29T22:47:17.657Z"
+            }
+          ],
+          "original": "오늘식사는세번했고약을빠뜨리지않았습니다.",
+          "confirmed": {
+            "version": 1,
+            "confirmed_by": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+            "confirmed_at": "2026-10-29T22:47:17.660Z"
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/records/import",
+      "status": 201,
+      "elapsed_ms": 4,
+      "request": {
+        "source": "ocr",
+        "job_id": "19d139ee-a315-4428-8ad8-b4c1d293b7ce"
+      },
+      "response": {
+        "data": {
+          "consultation_id": "b0abff3a-f9c7-4fc3-b14b-46af27545661",
+          "record_version_id": "38958776-a568-4682-be49-8041892dd5ea",
+          "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+          "text": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+        }
+      }
+    },
+    {
+      "path": "/api/stt/jobs/5e224d61-564d-4a3f-a4ab-2ed37650b52e",
+      "status": 200,
+      "elapsed_ms": 3,
+      "response": {
+        "data": {
+          "id": "5e224d61-564d-4a3f-a4ab-2ed37650b52e",
+          "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+          "created_by": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+          "created_at": "2026-10-29T22:47:17.683Z",
+          "provider_kind": "injected",
+          "audio": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "bits_per_sample": 16,
+            "duration_ms": 10950,
+            "frames": 175200
+          },
+          "status": "succeeded",
+          "version": 1,
+          "revisions": [
+            {
+              "version": 1,
+              "text": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다.",
+              "segments": [
+                {
+                  "start_ms": 0,
+                  "end_ms": 10950,
+                  "speaker_id": "unknown",
+                  "text": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+                }
+              ],
+              "edited_by": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+              "edited_at": "2026-10-29T22:47:21.287Z"
+            }
+          ],
+          "original": {
+            "text": " 합성 상담입니다. 오늘 식사는 세 번 했습니다. 약을 빡들이지 않았습니다. 산책은 일주일에 두 번 했습니다.",
+            "segments": [
+              {
+                "start_ms": 0,
+                "end_ms": 2200,
+                "speaker_id": "unknown",
+                "text": " 합성 상담입니다."
+              },
+              {
+                "start_ms": 2200,
+                "end_ms": 5200,
+                "speaker_id": "unknown",
+                "text": " 오늘 식사는 세 번 했습니다."
+              },
+              {
+                "start_ms": 5200,
+                "end_ms": 7760,
+                "speaker_id": "unknown",
+                "text": " 약을 빡들이지 않았습니다."
+              },
+              {
+                "start_ms": 7760,
+                "end_ms": 10950,
+                "speaker_id": "unknown",
+                "text": " 산책은 일주일에 두 번 했습니다."
+              }
+            ],
+            "timing": "asr_timestamps",
+            "diarization": "none"
+          },
+          "confirmed": {
+            "version": 1,
+            "confirmed_by": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+            "confirmed_at": "2026-10-29T22:47:21.291Z"
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/records/import",
+      "status": 201,
+      "elapsed_ms": 5,
+      "request": {
+        "source": "stt",
+        "job_id": "5e224d61-564d-4a3f-a4ab-2ed37650b52e"
+      },
+      "response": {
+        "data": {
+          "consultation_id": "b6ecffd0-9640-4273-a935-d04ec97d33fd",
+          "record_version_id": "dd2a03af-fa17-42d3-bc8f-dc6ff8b63e68",
+          "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+          "text": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+        }
+      }
+    },
+    {
+      "path": "/api/analyses/0dea1e06-2803-498d-8b81-871989763f58",
+      "status": 200,
+      "elapsed_ms": 3,
+      "response": {
+        "data": {
+          "id": "0dea1e06-2803-498d-8b81-871989763f58",
+          "owner": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+          "input": {
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "past": [
+              {
+                "consultation_id": "8a580e00-8cbc-4c14-8780-669115b4330d",
+                "record_version_id": "091a54ca-ef43-4fe6-b8e3-aa51bab2b9f1"
+              }
+            ],
+            "current": {
+              "consultation_id": "b6ecffd0-9640-4273-a935-d04ec97d33fd",
+              "record_version_id": "dd2a03af-fa17-42d3-bc8f-dc6ff8b63e68"
+            }
+          },
+          "sources": [
+            {
+              "consultation_id": "8a580e00-8cbc-4c14-8780-669115b4330d",
+              "record_version_id": "091a54ca-ef43-4fe6-b8e3-aa51bab2b9f1",
+              "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+              "text": "[합성 데모] 과거에는 식사를 하루 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 일주일에 한 번 했습니다."
+            },
+            {
+              "consultation_id": "b6ecffd0-9640-4273-a935-d04ec97d33fd",
+              "record_version_id": "dd2a03af-fa17-42d3-bc8f-dc6ff8b63e68",
+              "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+              "text": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+            }
+          ],
+          "provider_kind": "llm",
+          "status": "succeeded",
+          "review_state": "approved",
+          "version": 3,
+          "history": [
+            {
+              "actor_id": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+              "at": "2026-10-29T22:47:26.010Z",
+              "action": "submit",
+              "version": 2,
+              "draft": {
+                "status": "draft",
+                "findings": [
+                  {
+                    "text": "식사 횟수는 개선되었습니다.",
+                    "change": "improved",
+                    "evidence": [
+                      {
+                        "consultation_id": "8a580e00-8cbc-4c14-8780-669115b4330d",
+                        "record_version_id": "091a54ca-ef43-4fe6-b8e3-aa51bab2b9f1",
+                        "quote": "[합성 데모] 과거에는 식사를 하루 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 일주일에 한 번 했습니다."
+                      },
+                      {
+                        "consultation_id": "b6ecffd0-9640-4273-a935-d04ec97d33fd",
+                        "record_version_id": "dd2a03af-fa17-42d3-bc8f-dc6ff8b63e68",
+                        "quote": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "약을 빠뜨리는 행동은 개선되었습니다.",
+                    "change": "improved",
+                    "evidence": [
+                      {
+                        "consultation_id": "8a580e00-8cbc-4c14-8780-669115b4330d",
+                        "record_version_id": "091a54ca-ef43-4fe6-b8e3-aa51bab2b9f1",
+                        "quote": "[합성 데모] 과거에는 식사를 하루 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 일주일에 한 번 했습니다."
+                      },
+                      {
+                        "consultation_id": "b6ecffd0-9640-4273-a935-d04ec97d33fd",
+                        "record_version_id": "dd2a03af-fa17-42d3-bc8f-dc6ff8b63e68",
+                        "quote": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "산책 횟수는 개선되었습니다.",
+                    "change": "improved",
+                    "evidence": [
+                      {
+                        "consultation_id": "8a580e00-8cbc-4c14-8780-669115b4330d",
+                        "record_version_id": "091a54ca-ef43-4fe6-b8e3-aa51bab2b9f1",
+                        "quote": "[합성 데모] 과거에는 식사를 하루 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 일주일에 한 번 했습니다."
+                      },
+                      {
+                        "consultation_id": "b6ecffd0-9640-4273-a935-d04ec97d33fd",
+                        "record_version_id": "dd2a03af-fa17-42d3-bc8f-dc6ff8b63e68",
+                        "quote": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+                      }
+                    ]
+                  }
+                ],
+                "questions": [
+                  "과거와 현재의 식사 횟수를 비교해보면 어떤 변화가 있나요?",
+                  "약을 빠뜨리는 행동이 개선되었는지 확인해보세요."
+                ]
+              }
+            },
+            {
+              "actor_id": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+              "at": "2026-10-29T22:47:26.015Z",
+              "action": "approve",
+              "version": 3,
+              "draft": {
+                "status": "draft",
+                "findings": [
+                  {
+                    "text": "식사 횟수는 개선되었습니다.",
+                    "change": "improved",
+                    "evidence": [
+                      {
+                        "consultation_id": "8a580e00-8cbc-4c14-8780-669115b4330d",
+                        "record_version_id": "091a54ca-ef43-4fe6-b8e3-aa51bab2b9f1",
+                        "quote": "[합성 데모] 과거에는 식사를 하루 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 일주일에 한 번 했습니다."
+                      },
+                      {
+                        "consultation_id": "b6ecffd0-9640-4273-a935-d04ec97d33fd",
+                        "record_version_id": "dd2a03af-fa17-42d3-bc8f-dc6ff8b63e68",
+                        "quote": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "약을 빠뜨리는 행동은 개선되었습니다.",
+                    "change": "improved",
+                    "evidence": [
+                      {
+                        "consultation_id": "8a580e00-8cbc-4c14-8780-669115b4330d",
+                        "record_version_id": "091a54ca-ef43-4fe6-b8e3-aa51bab2b9f1",
+                        "quote": "[합성 데모] 과거에는 식사를 하루 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 일주일에 한 번 했습니다."
+                      },
+                      {
+                        "consultation_id": "b6ecffd0-9640-4273-a935-d04ec97d33fd",
+                        "record_version_id": "dd2a03af-fa17-42d3-bc8f-dc6ff8b63e68",
+                        "quote": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "산책 횟수는 개선되었습니다.",
+                    "change": "improved",
+                    "evidence": [
+                      {
+                        "consultation_id": "8a580e00-8cbc-4c14-8780-669115b4330d",
+                        "record_version_id": "091a54ca-ef43-4fe6-b8e3-aa51bab2b9f1",
+                        "quote": "[합성 데모] 과거에는 식사를 하루 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 일주일에 한 번 했습니다."
+                      },
+                      {
+                        "consultation_id": "b6ecffd0-9640-4273-a935-d04ec97d33fd",
+                        "record_version_id": "dd2a03af-fa17-42d3-bc8f-dc6ff8b63e68",
+                        "quote": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+                      }
+                    ]
+                  }
+                ],
+                "questions": [
+                  "과거와 현재의 식사 횟수를 비교해보면 어떤 변화가 있나요?",
+                  "약을 빠뜨리는 행동이 개선되었는지 확인해보세요."
+                ]
+              }
+            }
+          ],
+          "provider_metadata": {
+            "provider": "ollama",
+            "model": "qwen2.5vl:7b",
+            "prompt_version": "caregap-temporal-v2"
+          },
+          "inference": {
+            "provider": "ollama",
+            "model": "qwen2.5vl:7b",
+            "created_at": "2026-10-29T22:47:25.9950894Z",
+            "elapsed_ms": 4698,
+            "prompt_eval_duration": 324020000,
+            "eval_duration": 4297161000,
+            "load_duration": 30167400,
+            "eval_count": 181,
+            "evidence_validation": "passed"
+          },
+          "original": {
+            "status": "draft",
+            "findings": [
+              {
+                "text": "식사 횟수는 개선되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "8a580e00-8cbc-4c14-8780-669115b4330d",
+                    "record_version_id": "091a54ca-ef43-4fe6-b8e3-aa51bab2b9f1",
+                    "quote": "[합성 데모] 과거에는 식사를 하루 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 일주일에 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "b6ecffd0-9640-4273-a935-d04ec97d33fd",
+                    "record_version_id": "dd2a03af-fa17-42d3-bc8f-dc6ff8b63e68",
+                    "quote": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+                  }
+                ]
+              },
+              {
+                "text": "약을 빠뜨리는 행동은 개선되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "8a580e00-8cbc-4c14-8780-669115b4330d",
+                    "record_version_id": "091a54ca-ef43-4fe6-b8e3-aa51bab2b9f1",
+                    "quote": "[합성 데모] 과거에는 식사를 하루 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 일주일에 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "b6ecffd0-9640-4273-a935-d04ec97d33fd",
+                    "record_version_id": "dd2a03af-fa17-42d3-bc8f-dc6ff8b63e68",
+                    "quote": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+                  }
+                ]
+              },
+              {
+                "text": "산책 횟수는 개선되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "8a580e00-8cbc-4c14-8780-669115b4330d",
+                    "record_version_id": "091a54ca-ef43-4fe6-b8e3-aa51bab2b9f1",
+                    "quote": "[합성 데모] 과거에는 식사를 하루 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 일주일에 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "b6ecffd0-9640-4273-a935-d04ec97d33fd",
+                    "record_version_id": "dd2a03af-fa17-42d3-bc8f-dc6ff8b63e68",
+                    "quote": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+                  }
+                ]
+              }
+            ],
+            "questions": [
+              "과거와 현재의 식사 횟수를 비교해보면 어떤 변화가 있나요?",
+              "약을 빠뜨리는 행동이 개선되었는지 확인해보세요."
+            ]
+          },
+          "edited": {
+            "status": "draft",
+            "findings": [
+              {
+                "text": "식사 횟수는 개선되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "8a580e00-8cbc-4c14-8780-669115b4330d",
+                    "record_version_id": "091a54ca-ef43-4fe6-b8e3-aa51bab2b9f1",
+                    "quote": "[합성 데모] 과거에는 식사를 하루 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 일주일에 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "b6ecffd0-9640-4273-a935-d04ec97d33fd",
+                    "record_version_id": "dd2a03af-fa17-42d3-bc8f-dc6ff8b63e68",
+                    "quote": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+                  }
+                ]
+              },
+              {
+                "text": "약을 빠뜨리는 행동은 개선되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "8a580e00-8cbc-4c14-8780-669115b4330d",
+                    "record_version_id": "091a54ca-ef43-4fe6-b8e3-aa51bab2b9f1",
+                    "quote": "[합성 데모] 과거에는 식사를 하루 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 일주일에 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "b6ecffd0-9640-4273-a935-d04ec97d33fd",
+                    "record_version_id": "dd2a03af-fa17-42d3-bc8f-dc6ff8b63e68",
+                    "quote": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+                  }
+                ]
+              },
+              {
+                "text": "산책 횟수는 개선되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "8a580e00-8cbc-4c14-8780-669115b4330d",
+                    "record_version_id": "091a54ca-ef43-4fe6-b8e3-aa51bab2b9f1",
+                    "quote": "[합성 데모] 과거에는 식사를 하루 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 일주일에 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "b6ecffd0-9640-4273-a935-d04ec97d33fd",
+                    "record_version_id": "dd2a03af-fa17-42d3-bc8f-dc6ff8b63e68",
+                    "quote": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+                  }
+                ]
+              }
+            ],
+            "questions": [
+              "과거와 현재의 식사 횟수를 비교해보면 어떤 변화가 있나요?",
+              "약을 빠뜨리는 행동이 개선되었는지 확인해보세요."
+            ]
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/welfare-recommendations",
+      "status": 200,
+      "elapsed_ms": 4,
+      "request": {
+        "analysis_id": "0dea1e06-2803-498d-8b81-871989763f58",
+        "expected_analysis_version": 3,
+        "confirmations": [
+          {
+            "need": "meal_support",
+            "finding_index": 0,
+            "evidence_index": 0,
+            "confirmed": true
+          }
+        ]
+      },
+      "response": {
+        "data": {
+          "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+          "algorithm": "rules-v1",
+          "candidates": [
+            {
+              "program_id": "demo-meal",
+              "program_name": "[합성] 식사 지원 연결 테스트",
+              "reason": "식사 지원 필요와 관련하여 확인해 볼 후보입니다. 자격·지원 제공은 미확인입니다.",
+              "eligibility_status": "unverified",
+              "matched_needs": [
+                "meal_support"
+              ],
+              "basis": [
+                {
+                  "need": "meal_support",
+                  "program_condition": "합성 식사 지원 필요와 연관",
+                  "source_excerpt": null
+                }
+              ],
+              "region_match": "unknown",
+              "missing_information": [
+                "합성 식사 필요 확인",
+                "실제 사업 탐색 및 관할 기관 확인",
+                "거주지역 확인 필요",
+                "연령대 확인 필요",
+                "사업의 연령 조건 확인 필요",
+                "소득·수급 관련 조건 확인 필요",
+                "공식 출처 확인 필요",
+                "실재하지 않는 합성 데이터: 실제 사업 별도 탐색 필요"
+              ],
+              "source_url": null,
+              "checked_at": null,
+              "data_status": "synthetic_demo",
+              "application_method": "신청 불가: 합성 시연 전용",
+              "warning": "합성 시연 전용이며 실제 제도·혜택이 아닙니다."
+            }
+          ],
+          "unmatched_needs": [],
+          "disclaimer": "확인해 볼 후보 정보이며 실제 수급 자격·지원 제공·금액을 판정하거나 보장하지 않습니다. 관할 기관 확인이 필요합니다."
+        },
+        "connection": {
+          "analysis_id": "0dea1e06-2803-498d-8b81-871989763f58",
+          "analysis_version": 3,
+          "review_state": "approved",
+          "provider_kind": "llm",
+          "confirmed_by": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+          "confirmed_at": "2026-10-29T23:00:20.587Z",
+          "needs_origin": "explicit_staff_confirmation",
+          "confirmations": [
+            {
+              "need": "meal_support",
+              "finding_index": 0,
+              "evidence_index": 0,
+              "confirmed": true,
+              "evidence": {
+                "consultation_id": "8a580e00-8cbc-4c14-8780-669115b4330d",
+                "record_version_id": "091a54ca-ef43-4fe6-b8e3-aa51bab2b9f1",
+                "quote": "[합성 데모] 과거에는 식사를 하루 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 일주일에 한 번 했습니다."
+              }
+            }
+          ],
+          "recommendation_input": {
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "needs": [
+              "meal_support"
+            ],
+            "region": null,
+            "age_group": null,
+            "income_status": "unknown"
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/follow-ups?person_id=ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+      "status": 200,
+      "elapsed_ms": 2,
+      "response": {
+        "data": [
+          {
+            "follow_up_id": "a875ec05-85d6-40e9-9cee-420b3816041c",
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "title": "[합성 데모] 다음 주 식사 및 외출 상태 재확인",
+            "status": "open",
+            "consultation_id": "b6ecffd0-9640-4273-a935-d04ec97d33fd",
+            "record_version_id": "dd2a03af-fa17-42d3-bc8f-dc6ff8b63e68",
+            "assignee_user_id": "9adbcd38-0ba7-4b94-83e1-df081a59562a"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "elapsed_ms": 2,
+      "response": {
+        "data": [
+          {
+            "notification_id": "6e3af1f3-0bac-4f9d-b24d-d92bc6b9463d",
+            "recipient_user_id": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+            "kind": "manual",
+            "title": "[합성 데모] 상담 기록 검토 안내",
+            "body": "합성 상담 기록과 근거를 확인해 주세요. 실제 발송 알림이 아닙니다."
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/persons",
+      "status": 200,
+      "elapsed_ms": 1,
+      "response": {
+        "data": [
+          {
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "name": "박영희 (가명·합성)",
+            "patient_user_id": "3bc0a3f5-c612-40ee-8406-a2ade8678053",
+            "staff_user_id": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+            "synthetic_only": true
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/records?person_id=ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+      "status": 200,
+      "elapsed_ms": 1,
+      "response": {
+        "data": [
+          {
+            "consultation_id": "8a580e00-8cbc-4c14-8780-669115b4330d",
+            "record_version_id": "091a54ca-ef43-4fe6-b8e3-aa51bab2b9f1",
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "text": "[합성 데모] 과거에는 식사를 하루 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 일주일에 한 번 했습니다."
+          },
+          {
+            "consultation_id": "b0abff3a-f9c7-4fc3-b14b-46af27545661",
+            "record_version_id": "38958776-a568-4682-be49-8041892dd5ea",
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "text": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+          },
+          {
+            "consultation_id": "b6ecffd0-9640-4273-a935-d04ec97d33fd",
+            "record_version_id": "dd2a03af-fa17-42d3-bc8f-dc6ff8b63e68",
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "text": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+          },
+          {
+            "consultation_id": "c2aee0a8-a069-43b5-8087-5a818a243eaf",
+            "record_version_id": "95326041-ba13-48fa-90b8-07e6465cfe9c",
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "text": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+          },
+          {
+            "consultation_id": "f79c2791-777f-44bc-a099-7ceffb01e35a",
+            "record_version_id": "dc63345a-919c-4216-8f98-c07bec02b6ba",
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "text": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/records?person_id=b98d8c10-5360-419c-b967-29d2aaac4d0c",
+      "status": 403,
+      "elapsed_ms": 2,
+      "response": {
+        "error": {
+          "code": "FORBIDDEN"
+        }
+      }
+    },
+    {
+      "path": "/api/records",
+      "status": 403,
+      "elapsed_ms": 2,
+      "request": {
+        "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+        "text": "forbidden"
+      },
+      "response": {
+        "error": {
+          "code": "FORBIDDEN"
+        }
+      }
+    },
+    {
+      "path": "/api/records?person_id=b98d8c10-5360-419c-b967-29d2aaac4d0c",
+      "status": 403,
+      "elapsed_ms": 2,
+      "response": {
+        "error": {
+          "code": "FORBIDDEN"
+        }
+      }
+    },
+    {
+      "path": "/api/appointments",
+      "status": 200,
+      "elapsed_ms": 1,
+      "response": {
+        "data": [
+          {
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "starts_at": "2026-10-28T01:00:00Z",
+            "ends_at": "2026-10-28T02:00:00Z",
+            "staff_user_id": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+            "appointment_id": "035ac4ec-cb78-49af-9d2c-23d19ba39128",
+            "status": "completed"
+          },
+          {
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "starts_at": "2026-11-02T01:00:00Z",
+            "ends_at": "2026-11-02T02:00:00Z",
+            "staff_user_id": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+            "appointment_id": "4b918145-6eed-45d3-9b9f-7f773ddf8194",
+            "status": "scheduled"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/records?person_id=ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+      "status": 200,
+      "elapsed_ms": 2,
+      "response": {
+        "data": [
+          {
+            "consultation_id": "8a580e00-8cbc-4c14-8780-669115b4330d",
+            "record_version_id": "091a54ca-ef43-4fe6-b8e3-aa51bab2b9f1",
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "text": "[합성 데모] 과거에는 식사를 하루 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 일주일에 한 번 했습니다."
+          },
+          {
+            "consultation_id": "b0abff3a-f9c7-4fc3-b14b-46af27545661",
+            "record_version_id": "38958776-a568-4682-be49-8041892dd5ea",
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "text": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+          },
+          {
+            "consultation_id": "b6ecffd0-9640-4273-a935-d04ec97d33fd",
+            "record_version_id": "dd2a03af-fa17-42d3-bc8f-dc6ff8b63e68",
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "text": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+          },
+          {
+            "consultation_id": "c2aee0a8-a069-43b5-8087-5a818a243eaf",
+            "record_version_id": "95326041-ba13-48fa-90b8-07e6465cfe9c",
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "text": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+          },
+          {
+            "consultation_id": "f79c2791-777f-44bc-a099-7ceffb01e35a",
+            "record_version_id": "dc63345a-919c-4216-8f98-c07bec02b6ba",
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "text": "[합성 데모] 현재 식사는 하루 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 일주일에 두 번 했습니다."
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/follow-ups?person_id=ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+      "status": 200,
+      "elapsed_ms": 2,
+      "response": {
+        "data": [
+          {
+            "follow_up_id": "a875ec05-85d6-40e9-9cee-420b3816041c",
+            "person_id": "ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+            "title": "[합성 데모] 다음 주 식사 및 외출 상태 재확인",
+            "status": "open",
+            "consultation_id": "b6ecffd0-9640-4273-a935-d04ec97d33fd",
+            "record_version_id": "dd2a03af-fa17-42d3-bc8f-dc6ff8b63e68",
+            "assignee_user_id": "9adbcd38-0ba7-4b94-83e1-df081a59562a"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "elapsed_ms": 1,
+      "response": {
+        "data": [
+          {
+            "notification_id": "6e3af1f3-0bac-4f9d-b24d-d92bc6b9463d",
+            "recipient_user_id": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+            "kind": "manual",
+            "title": "[합성 데모] 상담 기록 검토 안내",
+            "body": "합성 상담 기록과 근거를 확인해 주세요. 실제 발송 알림이 아닙니다."
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/appointments",
+      "status": 200,
+      "elapsed_ms": 1,
+      "response": {
+        "data": [
+          {
+            "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+            "starts_at": "2026-10-28T01:00:00Z",
+            "ends_at": "2026-10-28T02:00:00Z",
+            "staff_user_id": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4",
+            "appointment_id": "c535c930-8677-4405-9149-b15d3a4129f5",
+            "status": "completed"
+          },
+          {
+            "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+            "starts_at": "2026-11-02T01:00:00Z",
+            "ends_at": "2026-11-02T02:00:00Z",
+            "staff_user_id": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4",
+            "appointment_id": "9a627aa5-6c31-467f-888f-583446adfd23",
+            "status": "scheduled"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/appointments",
+      "status": 200,
+      "elapsed_ms": 1,
+      "response": {
+        "data": [
+          {
+            "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+            "starts_at": "2026-10-28T01:00:00Z",
+            "ends_at": "2026-10-28T02:00:00Z",
+            "staff_user_id": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4",
+            "appointment_id": "c535c930-8677-4405-9149-b15d3a4129f5",
+            "status": "completed"
+          },
+          {
+            "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+            "starts_at": "2026-11-02T01:00:00Z",
+            "ends_at": "2026-11-02T02:00:00Z",
+            "staff_user_id": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4",
+            "appointment_id": "9a627aa5-6c31-467f-888f-583446adfd23",
+            "status": "scheduled"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/records?person_id=b98d8c10-5360-419c-b967-29d2aaac4d0c",
+      "status": 200,
+      "elapsed_ms": 2,
+      "response": {
+        "data": [
+          {
+            "consultation_id": "6086dfbc-55c5-4e5c-bbb7-fb125b2dff08",
+            "record_version_id": "adedcf03-adc1-48e2-be5c-33bac9d3806c",
+            "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+            "text": "[합성 데모] 과거에는 식사를 하루 세 번 했습니다. 외출은 일주일에 세 번 했습니다."
+          },
+          {
+            "consultation_id": "b150dbfd-019d-494e-8d09-f7d3b05c396b",
+            "record_version_id": "012f3297-5ece-4e66-8bb4-9509898a49ac",
+            "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+            "text": "[합성 데모] 현재 식사는 하루 두 번 했습니다. 외출은 일주일에 한 번 했습니다."
+          },
+          {
+            "consultation_id": "d0fcb089-5c51-4291-b7e0-c2cae454082d",
+            "record_version_id": "7c72de6e-6d96-4094-b2e8-fd79b4505d7c",
+            "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+            "text": "[합성 데모] 현재 식사는 하루 두 번 했습니다. 외출은 일주일에 한 번 했습니다."
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/ocr/jobs/830d43c8-3f74-43e9-9c5a-f32e2fef7840",
+      "status": 200,
+      "elapsed_ms": 2,
+      "response": {
+        "data": {
+          "id": "830d43c8-3f74-43e9-9c5a-f32e2fef7840",
+          "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+          "created_by": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4",
+          "created_at": "2026-10-29T22:47:26.325Z",
+          "provider_kind": "injected",
+          "status": "succeeded",
+          "version": 1,
+          "corrections": [
+            {
+              "version": 1,
+              "text": "[합성 데모] 현재 식사는 하루 두 번 했습니다. 외출은 일주일에 한 번 했습니다.",
+              "edited_by": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4",
+              "edited_at": "2026-10-29T22:47:27.886Z"
+            }
+          ],
+          "original": "오늘식사는두번했고외출은주한번했습니다.",
+          "confirmed": {
+            "version": 1,
+            "confirmed_by": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4",
+            "confirmed_at": "2026-10-29T22:47:27.889Z"
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/records/import",
+      "status": 201,
+      "elapsed_ms": 3,
+      "request": {
+        "source": "ocr",
+        "job_id": "830d43c8-3f74-43e9-9c5a-f32e2fef7840"
+      },
+      "response": {
+        "data": {
+          "consultation_id": "b150dbfd-019d-494e-8d09-f7d3b05c396b",
+          "record_version_id": "012f3297-5ece-4e66-8bb4-9509898a49ac",
+          "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+          "text": "[합성 데모] 현재 식사는 하루 두 번 했습니다. 외출은 일주일에 한 번 했습니다."
+        }
+      }
+    },
+    {
+      "path": "/api/stt/jobs/1e9edcbc-1c18-407b-89f4-ab4a9e81a89c",
+      "status": 200,
+      "elapsed_ms": 2,
+      "response": {
+        "data": {
+          "id": "1e9edcbc-1c18-407b-89f4-ab4a9e81a89c",
+          "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+          "created_by": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4",
+          "created_at": "2026-10-29T22:47:27.906Z",
+          "provider_kind": "injected",
+          "audio": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "bits_per_sample": 16,
+            "duration_ms": 8265,
+            "frames": 132240
+          },
+          "status": "succeeded",
+          "version": 1,
+          "revisions": [
+            {
+              "version": 1,
+              "text": "[합성 데모] 현재 식사는 하루 두 번 했습니다. 외출은 일주일에 한 번 했습니다.",
+              "segments": [
+                {
+                  "start_ms": 0,
+                  "end_ms": 8265,
+                  "speaker_id": "unknown",
+                  "text": "[합성 데모] 현재 식사는 하루 두 번 했습니다. 외출은 일주일에 한 번 했습니다."
+                }
+              ],
+              "edited_by": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4",
+              "edited_at": "2026-10-29T22:47:31.520Z"
+            }
+          ],
+          "original": {
+            "text": " 합성 상담입니다. 오늘 식사는 2번 했습니다. 후에 줄은 1주일에 한 번 했습니다.",
+            "segments": [
+              {
+                "start_ms": 0,
+                "end_ms": 2200,
+                "speaker_id": "unknown",
+                "text": " 합성 상담입니다."
+              },
+              {
+                "start_ms": 2200,
+                "end_ms": 5120,
+                "speaker_id": "unknown",
+                "text": " 오늘 식사는 2번 했습니다."
+              },
+              {
+                "start_ms": 5120,
+                "end_ms": 8265,
+                "speaker_id": "unknown",
+                "text": " 후에 줄은 1주일에 한 번 했습니다."
+              }
+            ],
+            "timing": "asr_timestamps",
+            "diarization": "none"
+          },
+          "confirmed": {
+            "version": 1,
+            "confirmed_by": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4",
+            "confirmed_at": "2026-10-29T22:47:31.525Z"
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/records/import",
+      "status": 201,
+      "elapsed_ms": 3,
+      "request": {
+        "source": "stt",
+        "job_id": "1e9edcbc-1c18-407b-89f4-ab4a9e81a89c"
+      },
+      "response": {
+        "data": {
+          "consultation_id": "d0fcb089-5c51-4291-b7e0-c2cae454082d",
+          "record_version_id": "7c72de6e-6d96-4094-b2e8-fd79b4505d7c",
+          "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+          "text": "[합성 데모] 현재 식사는 하루 두 번 했습니다. 외출은 일주일에 한 번 했습니다."
+        }
+      }
+    },
+    {
+      "path": "/api/analyses/face7802-7756-4872-8d5d-cb404246f045",
+      "status": 200,
+      "elapsed_ms": 1,
+      "response": {
+        "data": {
+          "id": "face7802-7756-4872-8d5d-cb404246f045",
+          "owner": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4",
+          "input": {
+            "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+            "past": [
+              {
+                "consultation_id": "6086dfbc-55c5-4e5c-bbb7-fb125b2dff08",
+                "record_version_id": "adedcf03-adc1-48e2-be5c-33bac9d3806c"
+              }
+            ],
+            "current": {
+              "consultation_id": "d0fcb089-5c51-4291-b7e0-c2cae454082d",
+              "record_version_id": "7c72de6e-6d96-4094-b2e8-fd79b4505d7c"
+            }
+          },
+          "sources": [
+            {
+              "consultation_id": "6086dfbc-55c5-4e5c-bbb7-fb125b2dff08",
+              "record_version_id": "adedcf03-adc1-48e2-be5c-33bac9d3806c",
+              "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+              "text": "[합성 데모] 과거에는 식사를 하루 세 번 했습니다. 외출은 일주일에 세 번 했습니다."
+            },
+            {
+              "consultation_id": "d0fcb089-5c51-4291-b7e0-c2cae454082d",
+              "record_version_id": "7c72de6e-6d96-4094-b2e8-fd79b4505d7c",
+              "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+              "text": "[합성 데모] 현재 식사는 하루 두 번 했습니다. 외출은 일주일에 한 번 했습니다."
+            }
+          ],
+          "provider_kind": "llm",
+          "status": "succeeded",
+          "review_state": "approved",
+          "version": 3,
+          "history": [
+            {
+              "actor_id": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4",
+              "at": "2026-10-29T22:47:35.038Z",
+              "action": "submit",
+              "version": 2,
+              "draft": {
+                "status": "draft",
+                "findings": [
+                  {
+                    "text": "식사 횟수는 감소했습니다.",
+                    "change": "worsened",
+                    "evidence": [
+                      {
+                        "consultation_id": "6086dfbc-55c5-4e5c-bbb7-fb125b2dff08",
+                        "record_version_id": "adedcf03-adc1-48e2-be5c-33bac9d3806c",
+                        "quote": "[합성 데모] 과거에는 식사를 하루 세 번 했습니다. 외출은 일주일에 세 번 했습니다."
+                      },
+                      {
+                        "consultation_id": "d0fcb089-5c51-4291-b7e0-c2cae454082d",
+                        "record_version_id": "7c72de6e-6d96-4094-b2e8-fd79b4505d7c",
+                        "quote": "[합성 데모] 현재 식사는 하루 두 번 했습니다. 외출은 일주일에 한 번 했습니다."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "외출 횟수는 감소했습니다.",
+                    "change": "worsened",
+                    "evidence": [
+                      {
+                        "consultation_id": "6086dfbc-55c5-4e5c-bbb7-fb125b2dff08",
+                        "record_version_id": "adedcf03-adc1-48e2-be5c-33bac9d3806c",
+                        "quote": "[합성 데모] 과거에는 식사를 하루 세 번 했습니다. 외출은 일주일에 세 번 했습니다."
+                      },
+                      {
+                        "consultation_id": "d0fcb089-5c51-4291-b7e0-c2cae454082d",
+                        "record_version_id": "7c72de6e-6d96-4094-b2e8-fd79b4505d7c",
+                        "quote": "[합성 데모] 현재 식사는 하루 두 번 했습니다. 외출은 일주일에 한 번 했습니다."
+                      }
+                    ]
+                  }
+                ],
+                "questions": [
+                  "과거와 현재의 식사 횟수를 비교해보면 어떤 변화가 있나요?",
+                  "과거와 현재의 외출 횟수를 비교해보면 어떤 변화가 있나요?"
+                ]
+              }
+            },
+            {
+              "actor_id": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4",
+              "at": "2026-10-29T22:47:35.043Z",
+              "action": "approve",
+              "version": 3,
+              "draft": {
+                "status": "draft",
+                "findings": [
+                  {
+                    "text": "식사 횟수는 감소했습니다.",
+                    "change": "worsened",
+                    "evidence": [
+                      {
+                        "consultation_id": "6086dfbc-55c5-4e5c-bbb7-fb125b2dff08",
+                        "record_version_id": "adedcf03-adc1-48e2-be5c-33bac9d3806c",
+                        "quote": "[합성 데모] 과거에는 식사를 하루 세 번 했습니다. 외출은 일주일에 세 번 했습니다."
+                      },
+                      {
+                        "consultation_id": "d0fcb089-5c51-4291-b7e0-c2cae454082d",
+                        "record_version_id": "7c72de6e-6d96-4094-b2e8-fd79b4505d7c",
+                        "quote": "[합성 데모] 현재 식사는 하루 두 번 했습니다. 외출은 일주일에 한 번 했습니다."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "외출 횟수는 감소했습니다.",
+                    "change": "worsened",
+                    "evidence": [
+                      {
+                        "consultation_id": "6086dfbc-55c5-4e5c-bbb7-fb125b2dff08",
+                        "record_version_id": "adedcf03-adc1-48e2-be5c-33bac9d3806c",
+                        "quote": "[합성 데모] 과거에는 식사를 하루 세 번 했습니다. 외출은 일주일에 세 번 했습니다."
+                      },
+                      {
+                        "consultation_id": "d0fcb089-5c51-4291-b7e0-c2cae454082d",
+                        "record_version_id": "7c72de6e-6d96-4094-b2e8-fd79b4505d7c",
+                        "quote": "[합성 데모] 현재 식사는 하루 두 번 했습니다. 외출은 일주일에 한 번 했습니다."
+                      }
+                    ]
+                  }
+                ],
+                "questions": [
+                  "과거와 현재의 식사 횟수를 비교해보면 어떤 변화가 있나요?",
+                  "과거와 현재의 외출 횟수를 비교해보면 어떤 변화가 있나요?"
+                ]
+              }
+            }
+          ],
+          "provider_metadata": {
+            "provider": "ollama",
+            "model": "qwen2.5vl:7b",
+            "prompt_version": "caregap-temporal-v2"
+          },
+          "inference": {
+            "provider": "ollama",
+            "model": "qwen2.5vl:7b",
+            "created_at": "2026-10-29T22:47:35.0283538Z",
+            "elapsed_ms": 3495,
+            "prompt_eval_duration": 146042000,
+            "eval_duration": 3290864000,
+            "load_duration": 27498000,
+            "eval_count": 146,
+            "evidence_validation": "passed"
+          },
+          "original": {
+            "status": "draft",
+            "findings": [
+              {
+                "text": "식사 횟수는 감소했습니다.",
+                "change": "worsened",
+                "evidence": [
+                  {
+                    "consultation_id": "6086dfbc-55c5-4e5c-bbb7-fb125b2dff08",
+                    "record_version_id": "adedcf03-adc1-48e2-be5c-33bac9d3806c",
+                    "quote": "[합성 데모] 과거에는 식사를 하루 세 번 했습니다. 외출은 일주일에 세 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "d0fcb089-5c51-4291-b7e0-c2cae454082d",
+                    "record_version_id": "7c72de6e-6d96-4094-b2e8-fd79b4505d7c",
+                    "quote": "[합성 데모] 현재 식사는 하루 두 번 했습니다. 외출은 일주일에 한 번 했습니다."
+                  }
+                ]
+              },
+              {
+                "text": "외출 횟수는 감소했습니다.",
+                "change": "worsened",
+                "evidence": [
+                  {
+                    "consultation_id": "6086dfbc-55c5-4e5c-bbb7-fb125b2dff08",
+                    "record_version_id": "adedcf03-adc1-48e2-be5c-33bac9d3806c",
+                    "quote": "[합성 데모] 과거에는 식사를 하루 세 번 했습니다. 외출은 일주일에 세 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "d0fcb089-5c51-4291-b7e0-c2cae454082d",
+                    "record_version_id": "7c72de6e-6d96-4094-b2e8-fd79b4505d7c",
+                    "quote": "[합성 데모] 현재 식사는 하루 두 번 했습니다. 외출은 일주일에 한 번 했습니다."
+                  }
+                ]
+              }
+            ],
+            "questions": [
+              "과거와 현재의 식사 횟수를 비교해보면 어떤 변화가 있나요?",
+              "과거와 현재의 외출 횟수를 비교해보면 어떤 변화가 있나요?"
+            ]
+          },
+          "edited": {
+            "status": "draft",
+            "findings": [
+              {
+                "text": "식사 횟수는 감소했습니다.",
+                "change": "worsened",
+                "evidence": [
+                  {
+                    "consultation_id": "6086dfbc-55c5-4e5c-bbb7-fb125b2dff08",
+                    "record_version_id": "adedcf03-adc1-48e2-be5c-33bac9d3806c",
+                    "quote": "[합성 데모] 과거에는 식사를 하루 세 번 했습니다. 외출은 일주일에 세 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "d0fcb089-5c51-4291-b7e0-c2cae454082d",
+                    "record_version_id": "7c72de6e-6d96-4094-b2e8-fd79b4505d7c",
+                    "quote": "[합성 데모] 현재 식사는 하루 두 번 했습니다. 외출은 일주일에 한 번 했습니다."
+                  }
+                ]
+              },
+              {
+                "text": "외출 횟수는 감소했습니다.",
+                "change": "worsened",
+                "evidence": [
+                  {
+                    "consultation_id": "6086dfbc-55c5-4e5c-bbb7-fb125b2dff08",
+                    "record_version_id": "adedcf03-adc1-48e2-be5c-33bac9d3806c",
+                    "quote": "[합성 데모] 과거에는 식사를 하루 세 번 했습니다. 외출은 일주일에 세 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "d0fcb089-5c51-4291-b7e0-c2cae454082d",
+                    "record_version_id": "7c72de6e-6d96-4094-b2e8-fd79b4505d7c",
+                    "quote": "[합성 데모] 현재 식사는 하루 두 번 했습니다. 외출은 일주일에 한 번 했습니다."
+                  }
+                ]
+              }
+            ],
+            "questions": [
+              "과거와 현재의 식사 횟수를 비교해보면 어떤 변화가 있나요?",
+              "과거와 현재의 외출 횟수를 비교해보면 어떤 변화가 있나요?"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/welfare-recommendations",
+      "status": 200,
+      "elapsed_ms": 2,
+      "request": {
+        "analysis_id": "face7802-7756-4872-8d5d-cb404246f045",
+        "expected_analysis_version": 3,
+        "confirmations": [
+          {
+            "need": "meal_support",
+            "finding_index": 0,
+            "evidence_index": 0,
+            "confirmed": true
+          }
+        ]
+      },
+      "response": {
+        "data": {
+          "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+          "algorithm": "rules-v1",
+          "candidates": [
+            {
+              "program_id": "demo-meal",
+              "program_name": "[합성] 식사 지원 연결 테스트",
+              "reason": "식사 지원 필요와 관련하여 확인해 볼 후보입니다. 자격·지원 제공은 미확인입니다.",
+              "eligibility_status": "unverified",
+              "matched_needs": [
+                "meal_support"
+              ],
+              "basis": [
+                {
+                  "need": "meal_support",
+                  "program_condition": "합성 식사 지원 필요와 연관",
+                  "source_excerpt": null
+                }
+              ],
+              "region_match": "unknown",
+              "missing_information": [
+                "합성 식사 필요 확인",
+                "실제 사업 탐색 및 관할 기관 확인",
+                "거주지역 확인 필요",
+                "연령대 확인 필요",
+                "사업의 연령 조건 확인 필요",
+                "소득·수급 관련 조건 확인 필요",
+                "공식 출처 확인 필요",
+                "실재하지 않는 합성 데이터: 실제 사업 별도 탐색 필요"
+              ],
+              "source_url": null,
+              "checked_at": null,
+              "data_status": "synthetic_demo",
+              "application_method": "신청 불가: 합성 시연 전용",
+              "warning": "합성 시연 전용이며 실제 제도·혜택이 아닙니다."
+            }
+          ],
+          "unmatched_needs": [],
+          "disclaimer": "확인해 볼 후보 정보이며 실제 수급 자격·지원 제공·금액을 판정하거나 보장하지 않습니다. 관할 기관 확인이 필요합니다."
+        },
+        "connection": {
+          "analysis_id": "face7802-7756-4872-8d5d-cb404246f045",
+          "analysis_version": 3,
+          "review_state": "approved",
+          "provider_kind": "llm",
+          "confirmed_by": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4",
+          "confirmed_at": "2026-10-29T23:00:20.860Z",
+          "needs_origin": "explicit_staff_confirmation",
+          "confirmations": [
+            {
+              "need": "meal_support",
+              "finding_index": 0,
+              "evidence_index": 0,
+              "confirmed": true,
+              "evidence": {
+                "consultation_id": "6086dfbc-55c5-4e5c-bbb7-fb125b2dff08",
+                "record_version_id": "adedcf03-adc1-48e2-be5c-33bac9d3806c",
+                "quote": "[합성 데모] 과거에는 식사를 하루 세 번 했습니다. 외출은 일주일에 세 번 했습니다."
+              }
+            }
+          ],
+          "recommendation_input": {
+            "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+            "needs": [
+              "meal_support"
+            ],
+            "region": null,
+            "age_group": null,
+            "income_status": "unknown"
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/follow-ups?person_id=b98d8c10-5360-419c-b967-29d2aaac4d0c",
+      "status": 200,
+      "elapsed_ms": 1,
+      "response": {
+        "data": [
+          {
+            "follow_up_id": "f8cabd6a-3e50-4600-bf5e-7dca6d17061b",
+            "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+            "title": "[합성 데모] 다음 주 식사 및 외출 상태 재확인",
+            "status": "open",
+            "consultation_id": "d0fcb089-5c51-4291-b7e0-c2cae454082d",
+            "record_version_id": "7c72de6e-6d96-4094-b2e8-fd79b4505d7c",
+            "assignee_user_id": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "elapsed_ms": 2,
+      "response": {
+        "data": [
+          {
+            "notification_id": "dcabd9a3-e08a-4f7b-8f81-428bc16f4e79",
+            "recipient_user_id": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4",
+            "kind": "manual",
+            "title": "[합성 데모] 상담 기록 검토 안내",
+            "body": "합성 상담 기록과 근거를 확인해 주세요. 실제 발송 알림이 아닙니다."
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/persons",
+      "status": 200,
+      "elapsed_ms": 1,
+      "response": {
+        "data": [
+          {
+            "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+            "name": "최정호 (가명·합성)",
+            "patient_user_id": "a3484420-d4c5-4185-b625-0040590c6f19",
+            "staff_user_id": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4",
+            "synthetic_only": true
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/records?person_id=b98d8c10-5360-419c-b967-29d2aaac4d0c",
+      "status": 200,
+      "elapsed_ms": 1,
+      "response": {
+        "data": [
+          {
+            "consultation_id": "6086dfbc-55c5-4e5c-bbb7-fb125b2dff08",
+            "record_version_id": "adedcf03-adc1-48e2-be5c-33bac9d3806c",
+            "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+            "text": "[합성 데모] 과거에는 식사를 하루 세 번 했습니다. 외출은 일주일에 세 번 했습니다."
+          },
+          {
+            "consultation_id": "b150dbfd-019d-494e-8d09-f7d3b05c396b",
+            "record_version_id": "012f3297-5ece-4e66-8bb4-9509898a49ac",
+            "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+            "text": "[합성 데모] 현재 식사는 하루 두 번 했습니다. 외출은 일주일에 한 번 했습니다."
+          },
+          {
+            "consultation_id": "d0fcb089-5c51-4291-b7e0-c2cae454082d",
+            "record_version_id": "7c72de6e-6d96-4094-b2e8-fd79b4505d7c",
+            "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+            "text": "[합성 데모] 현재 식사는 하루 두 번 했습니다. 외출은 일주일에 한 번 했습니다."
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/records?person_id=ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+      "status": 403,
+      "elapsed_ms": 1,
+      "response": {
+        "error": {
+          "code": "FORBIDDEN"
+        }
+      }
+    },
+    {
+      "path": "/api/records",
+      "status": 403,
+      "elapsed_ms": 2,
+      "request": {
+        "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+        "text": "forbidden"
+      },
+      "response": {
+        "error": {
+          "code": "FORBIDDEN"
+        }
+      }
+    },
+    {
+      "path": "/api/records?person_id=ddedb157-efa8-4e28-ba57-2e32bd5bbfa7",
+      "status": 403,
+      "elapsed_ms": 1,
+      "response": {
+        "error": {
+          "code": "FORBIDDEN"
+        }
+      }
+    },
+    {
+      "path": "/api/appointments",
+      "status": 200,
+      "elapsed_ms": 1,
+      "response": {
+        "data": [
+          {
+            "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+            "starts_at": "2026-10-28T01:00:00Z",
+            "ends_at": "2026-10-28T02:00:00Z",
+            "staff_user_id": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4",
+            "appointment_id": "c535c930-8677-4405-9149-b15d3a4129f5",
+            "status": "completed"
+          },
+          {
+            "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+            "starts_at": "2026-11-02T01:00:00Z",
+            "ends_at": "2026-11-02T02:00:00Z",
+            "staff_user_id": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4",
+            "appointment_id": "9a627aa5-6c31-467f-888f-583446adfd23",
+            "status": "scheduled"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/records?person_id=b98d8c10-5360-419c-b967-29d2aaac4d0c",
+      "status": 200,
+      "elapsed_ms": 1,
+      "response": {
+        "data": [
+          {
+            "consultation_id": "6086dfbc-55c5-4e5c-bbb7-fb125b2dff08",
+            "record_version_id": "adedcf03-adc1-48e2-be5c-33bac9d3806c",
+            "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+            "text": "[합성 데모] 과거에는 식사를 하루 세 번 했습니다. 외출은 일주일에 세 번 했습니다."
+          },
+          {
+            "consultation_id": "b150dbfd-019d-494e-8d09-f7d3b05c396b",
+            "record_version_id": "012f3297-5ece-4e66-8bb4-9509898a49ac",
+            "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+            "text": "[합성 데모] 현재 식사는 하루 두 번 했습니다. 외출은 일주일에 한 번 했습니다."
+          },
+          {
+            "consultation_id": "d0fcb089-5c51-4291-b7e0-c2cae454082d",
+            "record_version_id": "7c72de6e-6d96-4094-b2e8-fd79b4505d7c",
+            "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+            "text": "[합성 데모] 현재 식사는 하루 두 번 했습니다. 외출은 일주일에 한 번 했습니다."
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/follow-ups?person_id=b98d8c10-5360-419c-b967-29d2aaac4d0c",
+      "status": 200,
+      "elapsed_ms": 1,
+      "response": {
+        "data": [
+          {
+            "follow_up_id": "f8cabd6a-3e50-4600-bf5e-7dca6d17061b",
+            "person_id": "b98d8c10-5360-419c-b967-29d2aaac4d0c",
+            "title": "[합성 데모] 다음 주 식사 및 외출 상태 재확인",
+            "status": "open",
+            "consultation_id": "d0fcb089-5c51-4291-b7e0-c2cae454082d",
+            "record_version_id": "7c72de6e-6d96-4094-b2e8-fd79b4505d7c",
+            "assignee_user_id": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "elapsed_ms": 1,
+      "response": {
+        "data": [
+          {
+            "notification_id": "dcabd9a3-e08a-4f7b-8f81-428bc16f4e79",
+            "recipient_user_id": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4",
+            "kind": "manual",
+            "title": "[합성 데모] 상담 기록 검토 안내",
+            "body": "합성 상담 기록과 근거를 확인해 주세요. 실제 발송 알림이 아닙니다."
+          }
+        ]
+      }
+    }
+  ]
+}
