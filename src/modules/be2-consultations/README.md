@@ -13,3 +13,5 @@ BE2 담당 영역. 역할 문서와 docs/contracts.md를 기준으로 구현합�
 `appointment-conflict.ts`는 `relateUtcIntervals`로 같은 상담사 `user_id`와 같은 `person_id`를 각각 비교합니다. 점유 상태와 차단 관계는 호출자가 넘깁니다. 목록이 비어 있으면 충돌 없음이 아니라 정책 미설정입니다. `meets`는 호출자가 목록에 넣은 경우에만 차단됩니다.
 
 `api-schema.ts`와 `api-contract.md`는 예약·가능 시간의 JSON 입출력 초안입니다. 인증된 `user_id`는 요청 본문에 넣지 않습니다. 라우트, DB, 상태 이름 목록은 아직 없습니다.
+
+`consultation-record.ts`는 공통 `RecordVersion`을 수정하지 않고 새 버전으로만 추가합니다. 조회는 `consultation_id`와 `record_version_id`로 하며, 배열 순서를 최신 버전으로 보지 않습니다. 역할이나 검증되지 않은 접근 결정은 원문 조회를 허용하지 않습니다. 상세한 미확정 항목은 `consultation-record.md`에 있습니다.
