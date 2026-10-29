@@ -15,3 +15,5 @@ BE2 담당 영역. 역할 문서와 docs/contracts.md를 기준으로 구현합�
 `api-schema.ts`와 `api-contract.md`는 예약·가능 시간의 JSON 입출력 초안입니다. 인증된 `user_id`는 요청 본문에 넣지 않습니다. 라우트, DB, 상태 이름 목록은 아직 없습니다.
 
 `consultation-record.ts`는 공통 `RecordVersion`을 수정하지 않고 새 버전으로만 추가합니다. 조회는 `consultation_id`와 `record_version_id`로 하며, 배열 순서를 최신 버전으로 보지 않습니다. 역할이나 검증되지 않은 접근 결정은 원문 조회를 허용하지 않습니다. 상세한 미확정 항목은 `consultation-record.md`에 있습니다.
+
+`analysis-event.ts`는 분석 성공·실패 이벤트를 접수합니다. 같은 `event_id`의 재수신은 한 번만 남기고, 내용이 다르면 충돌입니다. 접수만으로 후속 업무나 알림이 만들어지지는 않습니다. 초안과의 차이는 `analysis-event.md`에 있습니다.
