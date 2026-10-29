@@ -11,3 +11,5 @@ try{$client=[Net.Sockets.TcpClient]::new('127.0.0.1',4326);$client.Dispose()}cat
 $env:PATH="C:\Program Files\Docker\Docker\resources\bin;"+$env:PATH
 docker compose -p caregap-final-real-ai -f compose.final.yaml up -d --build
 if($LASTEXITCODE -ne 0){throw 'Docker build/start failed'}
+for($n=0;$n -lt 30;$n++){try{$h=Invoke-RestMethod http://127.0.0.1:4325/health -TimeoutSec 2;if($h.data.providers.analysis -eq 'ollama'){$h|ConvertTo-Json -Depth 8;exit 0}}catch{};Start-Sleep -Milliseconds 500}
+throw 'Docker HTTP health check timed out'

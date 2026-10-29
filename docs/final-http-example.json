@@ -1,0 +1,1505 @@
+{
+  "base": "https://favourite-bizrate-passed-calibration.trycloudflare.com",
+  "source": "stt",
+  "total_ms": 12251,
+  "original": {
+    "text": " 오늘 식사는 세 번 했습니다. 약을 받들이지 않았습니다. 산책은 두 번 했습니다.",
+    "segments": [
+      {
+        "start_ms": 0,
+        "end_ms": 2960,
+        "speaker_id": "unknown",
+        "text": " 오늘 식사는 세 번 했습니다."
+      },
+      {
+        "start_ms": 2960,
+        "end_ms": 5500,
+        "speaker_id": "unknown",
+        "text": " 약을 받들이지 않았습니다."
+      },
+      {
+        "start_ms": 5500,
+        "end_ms": 8160,
+        "speaker_id": "unknown",
+        "text": " 산책은 두 번 했습니다."
+      }
+    ],
+    "timing": "asr_timestamps",
+    "diarization": "none"
+  },
+  "analysis_id": "b5d9d8ae-fd37-4a60-954e-53dd1c6d77e6",
+  "provider": {
+    "provider": "ollama",
+    "model": "qwen2.5vl:7b",
+    "prompt_version": "caregap-temporal-v2"
+  },
+  "inference": {
+    "provider": "ollama",
+    "model": "qwen2.5vl:7b",
+    "created_at": "2026-10-29T19:12:48.0044775Z",
+    "elapsed_ms": 4834,
+    "prompt_eval_duration": 443124000,
+    "eval_duration": 4331467000,
+    "load_duration": 18530200,
+    "eval_count": 184,
+    "evidence_validation": "passed"
+  },
+  "findings": [
+    {
+      "text": "식사 횟수는 향상되었습니다.",
+      "change": "improved",
+      "evidence": [
+        {
+          "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+          "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+          "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+        },
+        {
+          "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+          "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+          "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+        }
+      ]
+    },
+    {
+      "text": "약을 빠뜨리는 횟수는 개선되었습니다.",
+      "change": "improved",
+      "evidence": [
+        {
+          "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+          "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+          "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+        },
+        {
+          "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+          "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+          "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+        }
+      ]
+    },
+    {
+      "text": "산책 횟수는 개선되었습니다.",
+      "change": "improved",
+      "evidence": [
+        {
+          "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+          "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+          "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+        },
+        {
+          "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+          "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+          "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+        }
+      ]
+    }
+  ],
+  "candidate_count": 1,
+  "trace": [
+    {
+      "path": "/api/persons",
+      "request": {},
+      "status": 201,
+      "elapsed_ms": 38,
+      "response": {
+        "data": {
+          "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+          "synthetic_only": true
+        }
+      }
+    },
+    {
+      "path": "/api/persons",
+      "status": 200,
+      "elapsed_ms": 370,
+      "response": {
+        "data": [
+          {
+            "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+            "synthetic_only": true
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/appointments",
+      "request": {
+        "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+        "starts_at": "2026-11-01T01:00:00Z",
+        "ends_at": "2026-11-01T02:00:00Z"
+      },
+      "status": 201,
+      "elapsed_ms": 53,
+      "response": {
+        "data": {
+          "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+          "starts_at": "2026-11-01T01:00:00Z",
+          "ends_at": "2026-11-01T02:00:00Z",
+          "staff_user_id": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+          "appointment_id": "176e4db5-286c-403e-b873-ac8636e6f24c",
+          "status": "scheduled"
+        }
+      }
+    },
+    {
+      "path": "/api/appointments",
+      "status": 200,
+      "elapsed_ms": 322,
+      "response": {
+        "data": [
+          {
+            "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+            "starts_at": "2026-11-01T01:00:00Z",
+            "ends_at": "2026-11-01T02:00:00Z",
+            "staff_user_id": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+            "appointment_id": "176e4db5-286c-403e-b873-ac8636e6f24c",
+            "status": "scheduled"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/records",
+      "request": {
+        "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+        "text": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+      },
+      "status": 201,
+      "elapsed_ms": 31,
+      "response": {
+        "data": {
+          "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+          "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+          "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+          "text": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+        }
+      }
+    },
+    {
+      "path": "/api/stt/jobs",
+      "request": {
+        "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+        "request_key": "c25552ba-b363-4cd8-8945-d1899e9db08e",
+        "filename": "synthetic.wav",
+        "mimeType": "audio/wav",
+        "base64": "[synthetic fixture omitted]"
+      },
+      "status": 202,
+      "elapsed_ms": 116,
+      "response": {
+        "data": {
+          "id": "8d12edbd-0d4f-4f36-82a5-0fb03cfea6a9",
+          "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+          "created_by": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+          "created_at": "2026-10-29T19:12:39.757Z",
+          "provider_kind": "injected",
+          "audio": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "bits_per_sample": 16,
+            "duration_ms": 8175,
+            "frames": 130800
+          },
+          "status": "pending",
+          "version": 0,
+          "revisions": []
+        }
+      }
+    },
+    {
+      "path": "/api/records/import",
+      "request": {
+        "source": "stt",
+        "job_id": "8d12edbd-0d4f-4f36-82a5-0fb03cfea6a9"
+      },
+      "status": 409,
+      "elapsed_ms": 65,
+      "response": {
+        "error": {
+          "code": "NOT_CONFIRMED"
+        }
+      }
+    },
+    {
+      "path": "/api/stt/jobs/8d12edbd-0d4f-4f36-82a5-0fb03cfea6a9",
+      "status": 200,
+      "elapsed_ms": 345,
+      "response": {
+        "data": {
+          "id": "8d12edbd-0d4f-4f36-82a5-0fb03cfea6a9",
+          "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+          "created_by": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+          "created_at": "2026-10-29T19:12:39.757Z",
+          "provider_kind": "injected",
+          "audio": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "bits_per_sample": 16,
+            "duration_ms": 8175,
+            "frames": 130800
+          },
+          "status": "processing",
+          "version": 0,
+          "revisions": []
+        }
+      }
+    },
+    {
+      "path": "/api/stt/jobs/8d12edbd-0d4f-4f36-82a5-0fb03cfea6a9",
+      "status": 200,
+      "elapsed_ms": 38,
+      "response": {
+        "data": {
+          "id": "8d12edbd-0d4f-4f36-82a5-0fb03cfea6a9",
+          "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+          "created_by": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+          "created_at": "2026-10-29T19:12:39.757Z",
+          "provider_kind": "injected",
+          "audio": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "bits_per_sample": 16,
+            "duration_ms": 8175,
+            "frames": 130800
+          },
+          "status": "processing",
+          "version": 0,
+          "revisions": []
+        }
+      }
+    },
+    {
+      "path": "/api/stt/jobs/8d12edbd-0d4f-4f36-82a5-0fb03cfea6a9",
+      "status": 200,
+      "elapsed_ms": 136,
+      "response": {
+        "data": {
+          "id": "8d12edbd-0d4f-4f36-82a5-0fb03cfea6a9",
+          "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+          "created_by": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+          "created_at": "2026-10-29T19:12:39.757Z",
+          "provider_kind": "injected",
+          "audio": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "bits_per_sample": 16,
+            "duration_ms": 8175,
+            "frames": 130800
+          },
+          "status": "processing",
+          "version": 0,
+          "revisions": []
+        }
+      }
+    },
+    {
+      "path": "/api/stt/jobs/8d12edbd-0d4f-4f36-82a5-0fb03cfea6a9",
+      "status": 200,
+      "elapsed_ms": 74,
+      "response": {
+        "data": {
+          "id": "8d12edbd-0d4f-4f36-82a5-0fb03cfea6a9",
+          "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+          "created_by": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+          "created_at": "2026-10-29T19:12:39.757Z",
+          "provider_kind": "injected",
+          "audio": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "bits_per_sample": 16,
+            "duration_ms": 8175,
+            "frames": 130800
+          },
+          "status": "processing",
+          "version": 0,
+          "revisions": []
+        }
+      }
+    },
+    {
+      "path": "/api/stt/jobs/8d12edbd-0d4f-4f36-82a5-0fb03cfea6a9",
+      "status": 200,
+      "elapsed_ms": 322,
+      "response": {
+        "data": {
+          "id": "8d12edbd-0d4f-4f36-82a5-0fb03cfea6a9",
+          "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+          "created_by": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+          "created_at": "2026-10-29T19:12:39.757Z",
+          "provider_kind": "injected",
+          "audio": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "bits_per_sample": 16,
+            "duration_ms": 8175,
+            "frames": 130800
+          },
+          "status": "succeeded",
+          "version": 0,
+          "revisions": [],
+          "original": {
+            "text": " 오늘 식사는 세 번 했습니다. 약을 받들이지 않았습니다. 산책은 두 번 했습니다.",
+            "segments": [
+              {
+                "start_ms": 0,
+                "end_ms": 2960,
+                "speaker_id": "unknown",
+                "text": " 오늘 식사는 세 번 했습니다."
+              },
+              {
+                "start_ms": 2960,
+                "end_ms": 5500,
+                "speaker_id": "unknown",
+                "text": " 약을 받들이지 않았습니다."
+              },
+              {
+                "start_ms": 5500,
+                "end_ms": 8160,
+                "speaker_id": "unknown",
+                "text": " 산책은 두 번 했습니다."
+              }
+            ],
+            "timing": "asr_timestamps",
+            "diarization": "none"
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/stt/jobs/8d12edbd-0d4f-4f36-82a5-0fb03cfea6a9/corrections",
+      "request": {
+        "expected_version": 0,
+        "segments": [
+          {
+            "start_ms": 0,
+            "end_ms": 8175,
+            "speaker_id": "unknown",
+            "text": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+          }
+        ]
+      },
+      "status": 200,
+      "elapsed_ms": 39,
+      "response": {
+        "data": {
+          "id": "8d12edbd-0d4f-4f36-82a5-0fb03cfea6a9",
+          "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+          "created_by": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+          "created_at": "2026-10-29T19:12:39.757Z",
+          "provider_kind": "injected",
+          "audio": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "bits_per_sample": 16,
+            "duration_ms": 8175,
+            "frames": 130800
+          },
+          "status": "succeeded",
+          "version": 1,
+          "revisions": [
+            {
+              "version": 1,
+              "text": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다.",
+              "segments": [
+                {
+                  "start_ms": 0,
+                  "end_ms": 8175,
+                  "speaker_id": "unknown",
+                  "text": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                }
+              ],
+              "edited_by": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+              "edited_at": "2026-10-29T19:12:42.833Z"
+            }
+          ],
+          "original": {
+            "text": " 오늘 식사는 세 번 했습니다. 약을 받들이지 않았습니다. 산책은 두 번 했습니다.",
+            "segments": [
+              {
+                "start_ms": 0,
+                "end_ms": 2960,
+                "speaker_id": "unknown",
+                "text": " 오늘 식사는 세 번 했습니다."
+              },
+              {
+                "start_ms": 2960,
+                "end_ms": 5500,
+                "speaker_id": "unknown",
+                "text": " 약을 받들이지 않았습니다."
+              },
+              {
+                "start_ms": 5500,
+                "end_ms": 8160,
+                "speaker_id": "unknown",
+                "text": " 산책은 두 번 했습니다."
+              }
+            ],
+            "timing": "asr_timestamps",
+            "diarization": "none"
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/stt/jobs/8d12edbd-0d4f-4f36-82a5-0fb03cfea6a9/confirmation",
+      "request": {
+        "expected_version": 1
+      },
+      "status": 200,
+      "elapsed_ms": 150,
+      "response": {
+        "data": {
+          "id": "8d12edbd-0d4f-4f36-82a5-0fb03cfea6a9",
+          "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+          "created_by": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+          "created_at": "2026-10-29T19:12:39.757Z",
+          "provider_kind": "injected",
+          "audio": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "bits_per_sample": 16,
+            "duration_ms": 8175,
+            "frames": 130800
+          },
+          "status": "succeeded",
+          "version": 1,
+          "revisions": [
+            {
+              "version": 1,
+              "text": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다.",
+              "segments": [
+                {
+                  "start_ms": 0,
+                  "end_ms": 8175,
+                  "speaker_id": "unknown",
+                  "text": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                }
+              ],
+              "edited_by": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+              "edited_at": "2026-10-29T19:12:42.833Z"
+            }
+          ],
+          "original": {
+            "text": " 오늘 식사는 세 번 했습니다. 약을 받들이지 않았습니다. 산책은 두 번 했습니다.",
+            "segments": [
+              {
+                "start_ms": 0,
+                "end_ms": 2960,
+                "speaker_id": "unknown",
+                "text": " 오늘 식사는 세 번 했습니다."
+              },
+              {
+                "start_ms": 2960,
+                "end_ms": 5500,
+                "speaker_id": "unknown",
+                "text": " 약을 받들이지 않았습니다."
+              },
+              {
+                "start_ms": 5500,
+                "end_ms": 8160,
+                "speaker_id": "unknown",
+                "text": " 산책은 두 번 했습니다."
+              }
+            ],
+            "timing": "asr_timestamps",
+            "diarization": "none"
+          },
+          "confirmed": {
+            "version": 1,
+            "confirmed_by": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+            "confirmed_at": "2026-10-29T19:12:42.985Z"
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/records/import",
+      "request": {
+        "source": "stt",
+        "job_id": "8d12edbd-0d4f-4f36-82a5-0fb03cfea6a9"
+      },
+      "status": 201,
+      "elapsed_ms": 40,
+      "response": {
+        "data": {
+          "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+          "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+          "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+          "text": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+        }
+      }
+    },
+    {
+      "path": "/api/analyses",
+      "request": {
+        "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+        "past": [
+          {
+            "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+            "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce"
+          }
+        ],
+        "current": {
+          "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+          "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8"
+        }
+      },
+      "status": 200,
+      "elapsed_ms": 5060,
+      "response": {
+        "data": {
+          "id": "b5d9d8ae-fd37-4a60-954e-53dd1c6d77e6",
+          "owner": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+          "input": {
+            "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+            "past": [
+              {
+                "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce"
+              }
+            ],
+            "current": {
+              "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+              "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8"
+            }
+          },
+          "sources": [
+            {
+              "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+              "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+              "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+              "text": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+            },
+            {
+              "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+              "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+              "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+              "text": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+            }
+          ],
+          "provider_kind": "llm",
+          "status": "succeeded",
+          "review_state": "draft",
+          "version": 1,
+          "history": [],
+          "provider_metadata": {
+            "provider": "ollama",
+            "model": "qwen2.5vl:7b",
+            "prompt_version": "caregap-temporal-v2"
+          },
+          "inference": {
+            "provider": "ollama",
+            "model": "qwen2.5vl:7b",
+            "created_at": "2026-10-29T19:12:48.0044775Z",
+            "elapsed_ms": 4834,
+            "prompt_eval_duration": 443124000,
+            "eval_duration": 4331467000,
+            "load_duration": 18530200,
+            "eval_count": 184,
+            "evidence_validation": "passed"
+          },
+          "original": {
+            "status": "draft",
+            "findings": [
+              {
+                "text": "식사 횟수는 향상되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                    "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                    "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                    "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                    "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                  }
+                ]
+              },
+              {
+                "text": "약을 빠뜨리는 횟수는 개선되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                    "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                    "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                    "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                    "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                  }
+                ]
+              },
+              {
+                "text": "산책 횟수는 개선되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                    "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                    "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                    "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                    "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                  }
+                ]
+              }
+            ],
+            "questions": [
+              "어제와 오늘의 식사 횟수를 비교해보면 어떤 차이가 있나요?",
+              "약을 빠뜨리는 횟수는 어떻게 변했나요?"
+            ]
+          },
+          "edited": {
+            "status": "draft",
+            "findings": [
+              {
+                "text": "식사 횟수는 향상되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                    "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                    "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                    "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                    "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                  }
+                ]
+              },
+              {
+                "text": "약을 빠뜨리는 횟수는 개선되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                    "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                    "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                    "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                    "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                  }
+                ]
+              },
+              {
+                "text": "산책 횟수는 개선되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                    "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                    "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                    "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                    "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                  }
+                ]
+              }
+            ],
+            "questions": [
+              "어제와 오늘의 식사 횟수를 비교해보면 어떤 차이가 있나요?",
+              "약을 빠뜨리는 횟수는 어떻게 변했나요?"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/welfare-recommendations",
+      "request": {
+        "analysis_id": "b5d9d8ae-fd37-4a60-954e-53dd1c6d77e6",
+        "expected_analysis_version": 1,
+        "confirmations": [
+          {
+            "need": "meal_support",
+            "finding_index": 0,
+            "evidence_index": 0,
+            "confirmed": true
+          }
+        ]
+      },
+      "status": 409,
+      "elapsed_ms": 59,
+      "response": {
+        "error": {
+          "code": "NOT_APPROVED"
+        }
+      }
+    },
+    {
+      "path": "/api/analysis-reviews/b5d9d8ae-fd37-4a60-954e-53dd1c6d77e6",
+      "request": {
+        "action": "submit",
+        "expected_version": 1
+      },
+      "status": 200,
+      "elapsed_ms": 148,
+      "response": {
+        "data": {
+          "id": "b5d9d8ae-fd37-4a60-954e-53dd1c6d77e6",
+          "owner": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+          "input": {
+            "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+            "past": [
+              {
+                "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce"
+              }
+            ],
+            "current": {
+              "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+              "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8"
+            }
+          },
+          "sources": [
+            {
+              "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+              "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+              "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+              "text": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+            },
+            {
+              "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+              "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+              "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+              "text": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+            }
+          ],
+          "provider_kind": "llm",
+          "status": "succeeded",
+          "review_state": "review",
+          "version": 2,
+          "history": [
+            {
+              "actor_id": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+              "at": "2026-10-29T19:12:48.291Z",
+              "action": "submit",
+              "version": 2,
+              "draft": {
+                "status": "draft",
+                "findings": [
+                  {
+                    "text": "식사 횟수는 향상되었습니다.",
+                    "change": "improved",
+                    "evidence": [
+                      {
+                        "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                        "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                        "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                      },
+                      {
+                        "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                        "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                        "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "약을 빠뜨리는 횟수는 개선되었습니다.",
+                    "change": "improved",
+                    "evidence": [
+                      {
+                        "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                        "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                        "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                      },
+                      {
+                        "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                        "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                        "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "산책 횟수는 개선되었습니다.",
+                    "change": "improved",
+                    "evidence": [
+                      {
+                        "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                        "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                        "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                      },
+                      {
+                        "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                        "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                        "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                      }
+                    ]
+                  }
+                ],
+                "questions": [
+                  "어제와 오늘의 식사 횟수를 비교해보면 어떤 차이가 있나요?",
+                  "약을 빠뜨리는 횟수는 어떻게 변했나요?"
+                ]
+              }
+            }
+          ],
+          "provider_metadata": {
+            "provider": "ollama",
+            "model": "qwen2.5vl:7b",
+            "prompt_version": "caregap-temporal-v2"
+          },
+          "inference": {
+            "provider": "ollama",
+            "model": "qwen2.5vl:7b",
+            "created_at": "2026-10-29T19:12:48.0044775Z",
+            "elapsed_ms": 4834,
+            "prompt_eval_duration": 443124000,
+            "eval_duration": 4331467000,
+            "load_duration": 18530200,
+            "eval_count": 184,
+            "evidence_validation": "passed"
+          },
+          "original": {
+            "status": "draft",
+            "findings": [
+              {
+                "text": "식사 횟수는 향상되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                    "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                    "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                    "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                    "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                  }
+                ]
+              },
+              {
+                "text": "약을 빠뜨리는 횟수는 개선되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                    "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                    "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                    "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                    "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                  }
+                ]
+              },
+              {
+                "text": "산책 횟수는 개선되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                    "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                    "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                    "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                    "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                  }
+                ]
+              }
+            ],
+            "questions": [
+              "어제와 오늘의 식사 횟수를 비교해보면 어떤 차이가 있나요?",
+              "약을 빠뜨리는 횟수는 어떻게 변했나요?"
+            ]
+          },
+          "edited": {
+            "status": "draft",
+            "findings": [
+              {
+                "text": "식사 횟수는 향상되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                    "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                    "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                    "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                    "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                  }
+                ]
+              },
+              {
+                "text": "약을 빠뜨리는 횟수는 개선되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                    "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                    "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                    "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                    "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                  }
+                ]
+              },
+              {
+                "text": "산책 횟수는 개선되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                    "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                    "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                    "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                    "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                  }
+                ]
+              }
+            ],
+            "questions": [
+              "어제와 오늘의 식사 횟수를 비교해보면 어떤 차이가 있나요?",
+              "약을 빠뜨리는 횟수는 어떻게 변했나요?"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/analysis-reviews/b5d9d8ae-fd37-4a60-954e-53dd1c6d77e6",
+      "request": {
+        "action": "approve",
+        "expected_version": 2
+      },
+      "status": 200,
+      "elapsed_ms": 39,
+      "response": {
+        "data": {
+          "id": "b5d9d8ae-fd37-4a60-954e-53dd1c6d77e6",
+          "owner": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+          "input": {
+            "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+            "past": [
+              {
+                "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce"
+              }
+            ],
+            "current": {
+              "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+              "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8"
+            }
+          },
+          "sources": [
+            {
+              "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+              "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+              "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+              "text": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+            },
+            {
+              "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+              "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+              "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+              "text": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+            }
+          ],
+          "provider_kind": "llm",
+          "status": "succeeded",
+          "review_state": "approved",
+          "version": 3,
+          "history": [
+            {
+              "actor_id": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+              "at": "2026-10-29T19:12:48.291Z",
+              "action": "submit",
+              "version": 2,
+              "draft": {
+                "status": "draft",
+                "findings": [
+                  {
+                    "text": "식사 횟수는 향상되었습니다.",
+                    "change": "improved",
+                    "evidence": [
+                      {
+                        "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                        "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                        "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                      },
+                      {
+                        "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                        "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                        "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "약을 빠뜨리는 횟수는 개선되었습니다.",
+                    "change": "improved",
+                    "evidence": [
+                      {
+                        "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                        "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                        "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                      },
+                      {
+                        "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                        "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                        "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "산책 횟수는 개선되었습니다.",
+                    "change": "improved",
+                    "evidence": [
+                      {
+                        "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                        "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                        "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                      },
+                      {
+                        "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                        "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                        "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                      }
+                    ]
+                  }
+                ],
+                "questions": [
+                  "어제와 오늘의 식사 횟수를 비교해보면 어떤 차이가 있나요?",
+                  "약을 빠뜨리는 횟수는 어떻게 변했나요?"
+                ]
+              }
+            },
+            {
+              "actor_id": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+              "at": "2026-10-29T19:12:48.330Z",
+              "action": "approve",
+              "version": 3,
+              "draft": {
+                "status": "draft",
+                "findings": [
+                  {
+                    "text": "식사 횟수는 향상되었습니다.",
+                    "change": "improved",
+                    "evidence": [
+                      {
+                        "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                        "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                        "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                      },
+                      {
+                        "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                        "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                        "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "약을 빠뜨리는 횟수는 개선되었습니다.",
+                    "change": "improved",
+                    "evidence": [
+                      {
+                        "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                        "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                        "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                      },
+                      {
+                        "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                        "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                        "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                      }
+                    ]
+                  },
+                  {
+                    "text": "산책 횟수는 개선되었습니다.",
+                    "change": "improved",
+                    "evidence": [
+                      {
+                        "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                        "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                        "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                      },
+                      {
+                        "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                        "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                        "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                      }
+                    ]
+                  }
+                ],
+                "questions": [
+                  "어제와 오늘의 식사 횟수를 비교해보면 어떤 차이가 있나요?",
+                  "약을 빠뜨리는 횟수는 어떻게 변했나요?"
+                ]
+              }
+            }
+          ],
+          "provider_metadata": {
+            "provider": "ollama",
+            "model": "qwen2.5vl:7b",
+            "prompt_version": "caregap-temporal-v2"
+          },
+          "inference": {
+            "provider": "ollama",
+            "model": "qwen2.5vl:7b",
+            "created_at": "2026-10-29T19:12:48.0044775Z",
+            "elapsed_ms": 4834,
+            "prompt_eval_duration": 443124000,
+            "eval_duration": 4331467000,
+            "load_duration": 18530200,
+            "eval_count": 184,
+            "evidence_validation": "passed"
+          },
+          "original": {
+            "status": "draft",
+            "findings": [
+              {
+                "text": "식사 횟수는 향상되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                    "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                    "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                    "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                    "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                  }
+                ]
+              },
+              {
+                "text": "약을 빠뜨리는 횟수는 개선되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                    "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                    "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                    "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                    "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                  }
+                ]
+              },
+              {
+                "text": "산책 횟수는 개선되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                    "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                    "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                    "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                    "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                  }
+                ]
+              }
+            ],
+            "questions": [
+              "어제와 오늘의 식사 횟수를 비교해보면 어떤 차이가 있나요?",
+              "약을 빠뜨리는 횟수는 어떻게 변했나요?"
+            ]
+          },
+          "edited": {
+            "status": "draft",
+            "findings": [
+              {
+                "text": "식사 횟수는 향상되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                    "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                    "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                    "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                    "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                  }
+                ]
+              },
+              {
+                "text": "약을 빠뜨리는 횟수는 개선되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                    "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                    "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                    "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                    "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                  }
+                ]
+              },
+              {
+                "text": "산책 횟수는 개선되었습니다.",
+                "change": "improved",
+                "evidence": [
+                  {
+                    "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                    "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                    "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+                  },
+                  {
+                    "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+                    "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+                    "quote": "오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다."
+                  }
+                ]
+              }
+            ],
+            "questions": [
+              "어제와 오늘의 식사 횟수를 비교해보면 어떤 차이가 있나요?",
+              "약을 빠뜨리는 횟수는 어떻게 변했나요?"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/welfare-recommendations",
+      "request": {
+        "analysis_id": "b5d9d8ae-fd37-4a60-954e-53dd1c6d77e6",
+        "expected_analysis_version": 3,
+        "confirmations": [
+          {
+            "need": "meal_support",
+            "finding_index": 0,
+            "evidence_index": 0,
+            "confirmed": true
+          }
+        ]
+      },
+      "status": 200,
+      "elapsed_ms": 33,
+      "response": {
+        "data": {
+          "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+          "algorithm": "rules-v1",
+          "candidates": [
+            {
+              "program_id": "demo-meal",
+              "program_name": "[합성] 식사 지원 연결 테스트",
+              "reason": "식사 지원 필요와 관련하여 확인해 볼 후보입니다. 자격·지원 제공은 미확인입니다.",
+              "eligibility_status": "unverified",
+              "matched_needs": [
+                "meal_support"
+              ],
+              "basis": [
+                {
+                  "need": "meal_support",
+                  "program_condition": "합성 식사 지원 필요와 연관",
+                  "source_excerpt": null
+                }
+              ],
+              "region_match": "unknown",
+              "missing_information": [
+                "합성 식사 필요 확인",
+                "실제 사업 탐색 및 관할 기관 확인",
+                "거주지역 확인 필요",
+                "연령대 확인 필요",
+                "사업의 연령 조건 확인 필요",
+                "소득·수급 관련 조건 확인 필요",
+                "공식 출처 확인 필요",
+                "실재하지 않는 합성 데이터: 실제 사업 별도 탐색 필요"
+              ],
+              "source_url": null,
+              "checked_at": null,
+              "data_status": "synthetic_demo",
+              "application_method": "신청 불가: 합성 시연 전용",
+              "warning": "합성 시연 전용이며 실제 제도·혜택이 아닙니다."
+            }
+          ],
+          "unmatched_needs": [],
+          "disclaimer": "확인해 볼 후보 정보이며 실제 수급 자격·지원 제공·금액을 판정하거나 보장하지 않습니다. 관할 기관 확인이 필요합니다."
+        },
+        "connection": {
+          "analysis_id": "b5d9d8ae-fd37-4a60-954e-53dd1c6d77e6",
+          "analysis_version": 3,
+          "review_state": "approved",
+          "provider_kind": "llm",
+          "confirmed_by": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+          "confirmed_at": "2026-10-29T19:12:48.364Z",
+          "needs_origin": "explicit_staff_confirmation",
+          "confirmations": [
+            {
+              "need": "meal_support",
+              "finding_index": 0,
+              "evidence_index": 0,
+              "confirmed": true,
+              "evidence": {
+                "consultation_id": "d243f7b3-3bab-4d9d-8132-97da504951fb",
+                "record_version_id": "8026c2eb-79df-4af6-a4df-ce45ae8459ce",
+                "quote": "어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다."
+              }
+            }
+          ],
+          "recommendation_input": {
+            "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+            "needs": [
+              "meal_support"
+            ],
+            "region": null,
+            "age_group": null,
+            "income_status": "unknown"
+          }
+        }
+      }
+    },
+    {
+      "path": "/api/follow-ups",
+      "request": {
+        "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+        "title": "합성 대상자 식사 상태 재확인",
+        "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+        "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8"
+      },
+      "status": 201,
+      "elapsed_ms": 132,
+      "response": {
+        "data": {
+          "follow_up_id": "c478e82a-3b4e-4f09-9a1c-ac6fd08a5e93",
+          "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+          "title": "합성 대상자 식사 상태 재확인",
+          "status": "open",
+          "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+          "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+          "assignee_user_id": "7193b8b0-8de9-4880-bbcc-11041da42c00"
+        }
+      }
+    },
+    {
+      "path": "/api/follow-ups?person_id=f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+      "status": 200,
+      "elapsed_ms": 325,
+      "response": {
+        "data": [
+          {
+            "follow_up_id": "c478e82a-3b4e-4f09-9a1c-ac6fd08a5e93",
+            "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+            "title": "합성 대상자 식사 상태 재확인",
+            "status": "open",
+            "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+            "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+            "assignee_user_id": "7193b8b0-8de9-4880-bbcc-11041da42c00"
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/follow-ups/c478e82a-3b4e-4f09-9a1c-ac6fd08a5e93/actions",
+      "request": {
+        "action": "complete",
+        "expected_status": "open"
+      },
+      "status": 200,
+      "elapsed_ms": 48,
+      "response": {
+        "data": {
+          "follow_up_id": "c478e82a-3b4e-4f09-9a1c-ac6fd08a5e93",
+          "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+          "title": "합성 대상자 식사 상태 재확인",
+          "status": "completed",
+          "consultation_id": "c205568b-4a87-4b91-8de9-c019042ee28c",
+          "record_version_id": "6c50fff0-aaf2-4d8d-a86a-a25d04ab8fd8",
+          "assignee_user_id": "7193b8b0-8de9-4880-bbcc-11041da42c00"
+        }
+      }
+    },
+    {
+      "path": "/api/notifications",
+      "request": {
+        "title": "합성 후속 확인",
+        "body": "담당자 검토를 완료했습니다."
+      },
+      "status": 201,
+      "elapsed_ms": 26,
+      "response": {
+        "data": {
+          "notification_id": "43aeccb0-21a9-4bc5-81bb-399c04a52807",
+          "recipient_user_id": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+          "kind": "manual",
+          "title": "합성 후속 확인",
+          "body": "담당자 검토를 완료했습니다."
+        }
+      }
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "elapsed_ms": 319,
+      "response": {
+        "data": [
+          {
+            "notification_id": "43aeccb0-21a9-4bc5-81bb-399c04a52807",
+            "recipient_user_id": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+            "kind": "manual",
+            "title": "합성 후속 확인",
+            "body": "담당자 검토를 완료했습니다."
+          }
+        ]
+      }
+    },
+    {
+      "path": "/api/notifications/43aeccb0-21a9-4bc5-81bb-399c04a52807/read",
+      "request": {},
+      "status": 200,
+      "elapsed_ms": 54,
+      "response": {
+        "data": {
+          "notification_id": "43aeccb0-21a9-4bc5-81bb-399c04a52807",
+          "recipient_user_id": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+          "kind": "manual",
+          "title": "합성 후속 확인",
+          "body": "담당자 검토를 완료했습니다.",
+          "read_at": "2026-10-29T19:12:49.242Z"
+        }
+      }
+    },
+    {
+      "path": "/api/appointments/176e4db5-286c-403e-b873-ac8636e6f24c/actions",
+      "request": {
+        "action": "complete",
+        "expected_status": "scheduled"
+      },
+      "status": 200,
+      "elapsed_ms": 45,
+      "response": {
+        "data": {
+          "person_id": "f75c0b4d-64ec-48f0-99be-33059cd3f0fc",
+          "starts_at": "2026-11-01T01:00:00Z",
+          "ends_at": "2026-11-01T02:00:00Z",
+          "staff_user_id": "7193b8b0-8de9-4880-bbcc-11041da42c00",
+          "appointment_id": "176e4db5-286c-403e-b873-ac8636e6f24c",
+          "status": "completed"
+        }
+      }
+    }
+  ]
+}
