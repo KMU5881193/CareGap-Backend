@@ -49,6 +49,9 @@ Origins must exactly match comma-separated FE_ORIGINS. No wildcard or cookies.
 | POST /api/{ocr,stt}/jobs/:id/confirmation | {expected_version:1} |
 | POST /api/records/import | {source:"ocr" or "stt",job_id}; confirmed owned result only; repeated import returns same record |
 | POST /api/analyses | {person_id,past:[{consultation_id,record_version_id}],current:{consultation_id,record_version_id}}; Idempotency-Key required |
+| POST /api/vision/analyses | `{person_id,filename,mimeType,base64}` JPEG/PNG max 5 MiB; staff Bearer + owned person + Idempotency-Key; direct image→Qwen multimodal, synthetic demo only |
+
+Direct vision does not run OCR first and does not create, confirm, or approve a care record. The response includes `observations[].evidence`, uncertainty, model/prompt provenance, `stored_image:false`, and `human_review_required:true`. Images are validated, metadata-stripped in memory, sent only to the configured local Ollama, and are not retained. Identity, health, emotion, risk, and welfare eligibility inference is prohibited. A human must review any note before separately entering it into the existing record flow.
 | GET /api/analyses/:id | draft/status/version |
 | POST /api/analysis-reviews/:id | {action:"submit",expected_version:1}, then {action:"approve",expected_version:2} |
 | POST /api/welfare-recommendations | {analysis_id,expected_analysis_version:3,confirmations:[{need:"meal_support",finding_index:0,evidence_index:1,confirmed:true}]} |
