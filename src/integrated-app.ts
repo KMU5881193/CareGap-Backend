@@ -20,6 +20,9 @@ import { createAnalysisRouter } from './modules/be3-intelligence/analysis-router
 import { WelfareRecommendationService } from './modules/be3-intelligence/welfare-service.js';
 import { syntheticWelfareCatalog } from './modules/be3-intelligence/welfare-catalog.js';
 import { AnalysisWelfareBridge } from './modules/be3-intelligence/analysis-welfare-bridge.js';
+import { VisionService } from './modules/be3-intelligence/vision.js';
+import { OllamaVisionProvider } from './modules/be3-intelligence/ollama-vision-provider.js';
+import { createVisionRouter } from './modules/be3-intelligence/vision-router.js';
 
 const fail = (status:number, code:string):never => { throw Object.assign(new Error(code), {status,code}); };
 const credentials = z.object({identifier:z.string().min(3).max(80),password:z.string().min(12).max(128)}).strict();
@@ -85,6 +88,7 @@ export function createIntegratedApp(env:NodeJS.ProcessEnv) {
  const imports=new Map<string,RecordVersion>();
  app.post('/api/records/import',(async(req,res)=>{const b=z.object({source:z.enum(['ocr','stt']),job_id:z.uuid()}).strict().parse(req.body);const input=b.source==='ocr'?await ocr.confirmedInput(actor(res),b.job_id):await stt.confirmedInput(actor(res),b.job_id);access(res,input.person_id);const key=`${actor(res).user_id}:${b.source}:${b.job_id}`;let data=imports.get(key);if(!data){data=save(input.person_id,input.text);imports.set(key,data);}res.status(201).json({data});}));
  const live=env.ANALYSIS_PROVIDER==='ollama'?new OllamaAnalysisProvider(env.OLLAMA_MODEL ?? 'qwen2.5vl:7b',env.OLLAMA_BASE_URL):null;
+ if(live){const vision=new VisionService(new OllamaVisionProvider(env.OLLAMA_MODEL ?? 'qwen2.5vl:7b',env.OLLAMA_BASE_URL),authorization);app.use('/api/vision',createVisionRouter(vision,authenticate));}
  const workflow=new AnalysisWorkflow({authorization,provider:live ?? new SyntheticAnalysisProvider(),provider_kind:live?'llm':'mock',...(live?{provider_metadata:{provider:'ollama' as const,model:env.OLLAMA_MODEL ?? 'qwen2.5vl:7b',prompt_version:'caregap-temporal-v2'}}:{}),records:{async getVersion(c,v){const r=records.get(v);return r?.consultation_id===c?r:null;}}});
  const welfare=new WelfareRecommendationService({authorization,catalog:syntheticWelfareCatalog()});
  const bridge=new AnalysisWelfareBridge(workflow,welfare);
