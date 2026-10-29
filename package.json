@@ -17,7 +17,9 @@
     "call:demo:server": "tsx examples/call-prototype/server/main.ts",
     "call:demo:web": "npm --prefix examples/call-prototype/web run dev",
     "call:demo:web:build": "npm --prefix examples/call-prototype/web run build",
-    "call:demo:web:typecheck": "npm --prefix examples/call-prototype/web run typecheck"
+    "call:demo:web:typecheck": "npm --prefix examples/call-prototype/web run typecheck",
+    "call:staging:start": "node dist/call-staging-server.js",
+    "call:staging:dev": "tsx src/call-staging-server.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.118.0",
@@ -27,6 +29,7 @@
     "livekit-server-sdk": "^2.19.2",
     "pg": "8.16.3",
     "sharp": "0.34.5",
+    "ws": "^8.22.0",
     "zod": "4.1.12"
   },
   "devDependencies": {
@@ -38,7 +41,6 @@
     "supertest": "7.1.4",
     "tsx": "4.23.15",
     "typescript": "7.0.2",
-    "vitest": "5.0.5",
-    "ws": "^8.22.0"
+    "vitest": "5.0.5"
   }
 }

@@ -6,7 +6,10 @@
 - Demo binds `127.0.0.1` only.
 - Browser Origin allow-list for demo HTTP/WS.
 - Demo limited to `demo-staff` / `demo-patient`.
-- Production `src/app.ts` does not expose `/api/demo/*` or `/api/calls/*`.
+- Production `src/app.ts` does not expose `/api/demo/*`, `/api/staging/*`, or `/api/calls/*`.
+- Staging (`CALL_STAGING_ENABLED=true`) requires Bearer access tokens; rejects `X-Demo-Participant`.
+- Staging login uses scrypt password verification + HMAC access tokens; rate-limited.
+- Clients cannot choose LiveKit room name / identity / arbitrary callee on staging.
 - LiveKit API key/secret used only server-side.
 - Join tokens: room-scoped, microphone-only, no roomAdmin/roomRecord, short TTL.
 - Tokens denied before accept and after terminal states.

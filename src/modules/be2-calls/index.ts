@@ -7,3 +7,6 @@ export * from './livekit-provider.js';
 export * from './in-memory-repository.js';
 export * from './synthetic-adapters.js';
 export * from './local-signaling.js';
+export * from './staging-auth.js';
+export * from './staging-rate-limit.js';
+export * from './staging-app.js';

@@ -101,6 +101,9 @@ export type CallErrorCode =
   | 'MEDIA_UNAVAILABLE'
   | 'LIVEKIT_CONFIG_MISSING'
   | 'DEMO_DISABLED'
+  | 'STAGING_DISABLED'
+  | 'RATE_LIMITED'
+  | 'INVALID_CREDENTIALS'
   | 'INVALID_REQUEST';
 
 export class CallError extends Error {

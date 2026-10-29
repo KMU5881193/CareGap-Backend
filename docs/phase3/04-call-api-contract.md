@@ -1,4 +1,7 @@
-# Call Prototype API Contract (Demo Only)
+# Call Prototype API Contract (Local Demo Only)
+
+> **External / Flutter clients:** use [08-staging-api-contract.md](./08-staging-api-contract.md)  
+> (`Bearer` auth, `/api/staging/*`). Do **not** expose this local demo on `0.0.0.0`.
 
 Base URL: `http://127.0.0.1:4091`  
 Auth header: `X-Demo-Participant: demo-staff | demo-patient`  
