@@ -11,3 +11,12 @@ describe('unconfigured legacy authorization fails closed', () => {
   });
  }
 });
+
+describe('phase2 notification HTTP on createApp', () => {
+ it('rejects unauthenticated notification access via BE1 auth port', async () => {
+  const app = createApp(parseConfig({ NODE_ENV: 'production' }));
+  expect((await request(app).get('/api/notifications')).status).toBe(401);
+  expect((await request(app).get('/api/notification-preferences')).status).toBe(401);
+  expect((await request(app).post('/api/notification-devices').send({})).status).toBe(401);
+ });
+});
