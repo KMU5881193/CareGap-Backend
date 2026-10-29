@@ -226,6 +226,8 @@ PR #31도 verify 두 개 success 후 MERGED, 실제 merge SHA `c04b88efd2aeabb94
 
 새 #33 CI https://github.com/KMU5881193/CareGap-Backend/actions/runs/40973268044 — success. #32·#33 검토를 최종 문서에 추가하며 실제 통화·배포를 완료로 표시하지 않는다.
 
+이 추가 검토의 문서 PR: https://github.com/KMU5881193/CareGap-Backend/pull/34.
+
 ## 19. 남은 위험과 우선순위
 
 P0: 4324 메모리 보존, 합성·운영 서버 혼동 방지, 자격증명 비공개, 배정/자기 자료 인가 유지. 시연자가 STT 교정과 Qwen 인용·Vision 내용을 직접 확인해야 한다.
