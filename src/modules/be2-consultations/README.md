@@ -17,3 +17,4 @@ BE2 담당 영역. 역할 문서와 docs/contracts.md를 기준으로 구현합�
 `consultation-record.ts`는 공통 `RecordVersion`을 수정하지 않고 새 버전으로만 추가합니다. 조회는 `consultation_id`와 `record_version_id`로 하며, 배열 순서를 최신 버전으로 보지 않습니다. 역할이나 검증되지 않은 접근 결정은 원문 조회를 허용하지 않습니다. 상세한 미확정 항목은 `consultation-record.md`에 있습니다.
 
 `analysis-event.ts`는 분석 성공·실패 이벤트를 접수합니다. 같은 `event_id`의 재수신은 한 번만 남기고, 내용이 다르면 충돌입니다. 접수만으로 후속 업무나 알림이 만들어지지는 않습니다. 초안과의 차이는 `analysis-event.md`에 있습니다.
+`follow-up.ts`는 상담사가 등록하는 후속 업무만 다룹니다. 출처 버전은 `readRecordVersion`으로 확인하고, 상태 이름은 호출자가 넣은 규칙으로만 바꿉니다. 분석 이벤트에서 업무를 만들거나 알림을 보내지 않습니다. 미확정 항목은 `follow-up.md`에 있습니다.
