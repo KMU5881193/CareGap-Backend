@@ -1,6 +1,26 @@
 # 2026-10-30 최종 통합 상태
 
-기준 커밋: Backend `94dc2cfaf8539013709c7d5d7d149f35a771f03b`, Frontend `379f61acfa8891449d16e5677c7be6dc250016b6`.
+재확인 기준 main: Backend `fccb6344fa59168541ccfd171e4637124f291d6f`, Frontend `d72b94700f8fd83ac77dc3276971a88fa4889b4c`.
+
+## 이번 최종 검증의 우선 적용 사항
+
+- **기존 4324는 재시작·변경하지 않았다.** 이번 4계정과 역할 연결은 별도 4334 API에 생성했다. Flutter 웹은 Windows Node 프로세스의 `http://127.0.0.1:4335`이며 Docker 목록에 나타나지 않는다.
+- 실제 로그인 가능한 합성 담당자 2명(staff), 예약자 2명(patient). staff는 배정된 대상자만, patient는 자기 자료만 읽고 자기 예약을 생성한다. patient는 기록 쓰기·OCR/STT/Vision·분석·승인·담당자 업무 생성이 403이다.
+- 비밀번호/로그인 정보는 검증용 Backend 복제본 `.runtime/demo-credentials.json`에만 보관한다. 계정 생성 스크립트는 이 파일을 재사용하며 password는 Git에 없다.
+- Flutter 실제 서버 모드에서 4계정 화면과 OCR/STT→교정→확정→기록→Qwen→근거→승인→합성 복지 후보를 검사했다. Android 실기기는 연결되지 않아 미검증이다.
+- 상세 건수·실패·증거·최신 PR 상태는 [최종 검증 보고서](reports/CAREGAP_FINAL_INTEGRATION_VERIFICATION_2026-10-30.md)를 따른다. 아래 기존 4324 설명과 격리 서버 기능을 혼동하지 않는다.
+
+### 선택적 Vision (main PR #28)
+
+`POST /api/vision/analyses`, Bearer + `Idempotency-Key` 필수.
+요청: `{person_id,filename,mimeType:"image/png" 또는 "image/jpeg",base64}`.
+성공 201 `{data:{status:"succeeded",provider_metadata,provenance:{input_kind:"direct_multimodal_image",ocr_used:false,human_review_required:true},result:{care_note,observations,uncertainties,safety_notice}}}`.
+
+원본 이미지가 Ollama messages.images에 직접 전달되며 OCR과 별개다. 실제 PNG/JPEG 추론은 4334에서 확인했다. Flutter PR #5는 기존 OCR을 유지하고 별도 Vision 버튼을 제공한다. 그림 설명 오류가 발견돼 사람이 검토하기 전 자동 기록 채택·승인하지 않는다. 기존 4324에는 이번 배포를 적용하지 않았다.
+
+### 새 프로토타입/PR 추가분
+
+#29 최신 `aad64a6b`는 이전 충돌을 해소했으며 격리 646개 테스트·타입·빌드가 통과했다. 실제 LiveKit은 CONFIG_MISSING으로 미검증이다. #26의 DB/FCM 영속화 변경도 포함하므로 실제 통화 완료로 표현하지 않는다. #24의 인증 우회·평문 secret·Prisma/기존 users migration 불일치는 병합 차단 사항이다. BE3 #5/#7/#14는 main에 이미 포함된 중복 PR이다.
 
 - 완료·병합: FE 카메라 촬영 → 기존 OCR 요청/교정/확정/기록 import 흐름, WAV 전용 선택, 관련 Flutter CI. BE 구형 인증·관계·상담·복지 표면의 fail-closed 및 내부 오류 메시지 비노출.
 - 보존: 기존 4324 통합 시연 서버의 실제 OCR/STT/Qwen/근거 검증/복지 후보 계약. 아래 API 표는 해당 통합 서버 기준이다.

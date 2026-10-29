@@ -1,0 +1,20 @@
+{
+  "frontend": {
+    "actual_server_widget_passed": 1,
+    "failed": 0,
+    "passed": 42,
+    "skip": 0
+  },
+  "backend": {
+    "failed": 0,
+    "passed": 542,
+    "skip": 0
+  },
+  "livekit": "CONFIG_MISSING_NOT_VERIFIED",
+  "pr29": {
+    "failed": 0,
+    "sha": "aad64a6b5777fa0edd0b57fd20d249d1d4e94615",
+    "skip": 0,
+    "passed": 646
+  }
+}
