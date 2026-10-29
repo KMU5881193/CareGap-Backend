@@ -5,7 +5,7 @@
 - ID: UUID 문자열 제안. user_id는 행위자 계정, person_id는 대상자, staff_id는 담당자 식별자. staff_id와 user_id의 동일성은 BE1 결정 전 가정하지 않음.
 - appointment_id는 예약, consultation_id는 상담 기록, record_version_id는 불변 원문 버전. AI는 consultation_id와 record_version_id를 함께 참조.
 - 시간: RFC3339 UTC, 화면 Asia/Seoul. 목록은 cursor/limit 및 next_cursor 제안. 세부 상한은 미정.
-- actor: user_id + role(person/family/staff/admin). 역할 이름도 초안. 권한은 매 요청마다 현재 승인·배정·가족 연결 및 동의를 서버에서 확인. admin 역할만으로 상담 원문 접근 금지. BE1 AuthorizationPort 제공 전 업무 경로 미노출.
+- actor: user_id + role(patient/family/staff/admin). 역할 이름은 확정이다. BE1 users.role CHECK와 requireRole이 같은 네 값을 쓴다. 역할 이름이 맞는 것은 승인·배정·가족 연결·동의가 끝났다는 뜻이 아니다. patient, staff, admin 역할만으로 상담 원문을 열지 않는다. 그 검사는 매 요청마다 서버에서 한다. AuthorizationPort 제공 전 업무 경로 미노출.
 - 개발 X-Test-Actor는 명시적 opt-in 상태에서 /api/dev/actor에만 사용. 인증 수단이나 관계 증명이 아니며 운영에서 경로 차단. 운영 opt-in은 시작 오류.
 - BE1: 인증·사용자·관계·관리자, BE2: 예약·상담 기록/버전·후속 업무·알림, BE3: media/OCR/STT/분석/검토/복지 후보.
 - BE3 초안 경로: /api/media, /api/ocr, /api/transcripts, /api/analyses, /api/analysis-reviews, /api/welfare-programs. 아직 구현/확정되지 않음.

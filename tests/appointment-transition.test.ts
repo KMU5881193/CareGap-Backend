@@ -34,7 +34,7 @@ describe('appointment transition interpreter', () => {
     expect(applyTransition(
       { status: 'requested', starts_at: startsAt, ends_at: endsAt },
       'accept',
-      'person',
+      'patient',
       [acceptByStaff],
     )).toEqual({ ok: false, reason: 'actor_not_allowed' });
   });
@@ -59,12 +59,12 @@ describe('appointment transition interpreter', () => {
 
   it('does not reserve completion for staff unless the caller rule says so', () => {
     const rules: TransitionRule[] = [
-      { from: 'confirmed', action: 'complete', to: 'completed', actors: ['person'] },
+      { from: 'confirmed', action: 'complete', to: 'completed', actors: ['patient'] },
     ];
     expect(applyTransition(
       { status: 'confirmed', starts_at: startsAt, ends_at: endsAt },
       'complete',
-      'person',
+      'patient',
       rules,
     )).toEqual({ ok: true, status: 'completed' });
     expect(applyTransition(
