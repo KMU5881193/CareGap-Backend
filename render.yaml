@@ -1,0 +1,41 @@
+# CareGap Phase 3B — secure call staging (Blueprint)
+# Deploy as a separate Render Web Service. Does not run src/app.ts.
+# Set secrets in the Render dashboard — never commit real passwords/keys.
+
+services:
+  - type: web
+    name: caregap-call-staging
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: pnpm install --frozen-lockfile && pnpm build
+    startCommand: pnpm call:staging:start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CALL_STAGING_ENABLED
+        value: "true"
+      - key: CALL_STAGING_TRUST_PROXY
+        value: "true"
+      - key: CALL_STAGING_BIND_HOST
+        value: 0.0.0.0
+      - key: CALL_STAGING_TOKEN_SECRET
+        generateValue: true
+      - key: CALL_STAGING_STAFF_USERNAME
+        sync: false
+      - key: CALL_STAGING_STAFF_PASSWORD
+        sync: false
+      - key: CALL_STAGING_PATIENT_USERNAME
+        sync: false
+      - key: CALL_STAGING_PATIENT_PASSWORD
+        sync: false
+      - key: CALL_STAGING_ALLOWED_ORIGINS
+        sync: false
+      - key: LIVEKIT_URL
+        sync: false
+      - key: LIVEKIT_API_KEY
+        sync: false
+      - key: LIVEKIT_API_SECRET
+        sync: false
+      # PORT is injected automatically by Render
