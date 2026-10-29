@@ -1,0 +1,188 @@
+{
+  "data": {
+    "demo": {
+      "synthetic_input": true,
+      "provider_kind": "mock",
+      "real_llm_called": false,
+      "review_mode": "simulated_staff",
+      "need_confirmation_mode": "fixed_synthetic_checklist",
+      "catalog_mode": "official_snapshot",
+      "warning": "합성 Mock 시연입니다. 실제 LLM·의료 판단·실제 담당자의 승인·수급 자격 확정이 아닙니다."
+    },
+    "person_id": "00000000-0000-4000-8000-000000000002",
+    "analysis": {
+      "id": "19e4b3a0-8152-4906-b8b8-c1fe527e19ed",
+      "status": "succeeded",
+      "review_state": "approved",
+      "version": 4,
+      "evidence_validation": "passed",
+      "original_preserved": true,
+      "input_versions": [
+        {
+          "consultation_id": "00000000-0000-4000-8000-000000000003",
+          "record_version_id": "00000000-0000-4000-8000-000000000004"
+        },
+        {
+          "consultation_id": "00000000-0000-4000-8000-000000000005",
+          "record_version_id": "00000000-0000-4000-8000-000000000006"
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "demo-finding-1",
+          "text": "식사 횟수: 하루 3회 → 하루 2회로 기록됨.",
+          "change": "worsened",
+          "evidence": [
+            {
+              "consultation_id": "00000000-0000-4000-8000-000000000003",
+              "record_version_id": "00000000-0000-4000-8000-000000000004",
+              "quote": "지난주에는 하루 세 끼 식사를 했다고 함."
+            },
+            {
+              "consultation_id": "00000000-0000-4000-8000-000000000005",
+              "record_version_id": "00000000-0000-4000-8000-000000000006",
+              "quote": "최근 일주일 동안 식사를 하루 두 번 했다고 함."
+            }
+          ]
+        },
+        {
+          "finding_id": "demo-finding-2",
+          "text": "외출: 주 1회 → 외출하지 못함으로 기록됨.",
+          "change": "worsened",
+          "evidence": [
+            {
+              "consultation_id": "00000000-0000-4000-8000-000000000003",
+              "record_version_id": "00000000-0000-4000-8000-000000000004",
+              "quote": "무릎 통증으로 외출은 주 1회였다고 함."
+            },
+            {
+              "consultation_id": "00000000-0000-4000-8000-000000000005",
+              "record_version_id": "00000000-0000-4000-8000-000000000006",
+              "quote": "무릎 통증으로 외출하지 못했다고 함."
+            }
+          ]
+        },
+        {
+          "finding_id": "demo-finding-3",
+          "text": "약 복용: 매일 복용 → 2일 미복용으로 기록됨.",
+          "change": "worsened",
+          "evidence": [
+            {
+              "consultation_id": "00000000-0000-4000-8000-000000000003",
+              "record_version_id": "00000000-0000-4000-8000-000000000004",
+              "quote": "약은 매일 복용했다고 함."
+            },
+            {
+              "consultation_id": "00000000-0000-4000-8000-000000000005",
+              "record_version_id": "00000000-0000-4000-8000-000000000006",
+              "quote": "약을 복용하지 않은 날이 2일 있었다고 함."
+            }
+          ]
+        }
+      ],
+      "questions": [
+        "식사가 하루 두 번으로 줄어든 이유와 필요한 도움을 확인할까요?",
+        "외출하지 못한 상황과 필요한 도움은 무엇인가요?",
+        "약을 복용하지 못한 이틀의 이유는 무엇인가요?"
+      ],
+      "review_history": [
+        {
+          "action": "edit",
+          "actor_id": "00000000-0000-4000-8000-000000000001",
+          "at": "2026-10-29T15:39:45.542Z",
+          "version": 2
+        },
+        {
+          "action": "submit",
+          "actor_id": "00000000-0000-4000-8000-000000000001",
+          "at": "2026-10-29T15:39:45.544Z",
+          "version": 3
+        },
+        {
+          "action": "approve",
+          "actor_id": "00000000-0000-4000-8000-000000000001",
+          "at": "2026-10-29T15:39:45.545Z",
+          "version": 4
+        }
+      ],
+      "warning": "인용 일치는 출처 확인이며 사실 해석·진단의 정확성을 보증하지 않습니다. 변화 라벨을 건강 악화로 표시하지 마세요."
+    },
+    "needs": [
+      {
+        "need": "meal_support",
+        "label": "식사",
+        "status": "simulated_staff_confirmed",
+        "finding_id": "demo-finding-1",
+        "analysis_id": "19e4b3a0-8152-4906-b8b8-c1fe527e19ed",
+        "analysis_version": 4
+      },
+      {
+        "need": "mobility_support",
+        "label": "이동",
+        "status": "simulated_staff_confirmed",
+        "finding_id": "demo-finding-2",
+        "analysis_id": "19e4b3a0-8152-4906-b8b8-c1fe527e19ed",
+        "analysis_version": 4
+      },
+      {
+        "need": "medication_management",
+        "label": "복약",
+        "status": "simulated_staff_confirmed",
+        "finding_id": "demo-finding-3",
+        "analysis_id": "19e4b3a0-8152-4906-b8b8-c1fe527e19ed",
+        "analysis_version": 4
+      }
+    ],
+    "unknown_information": {
+      "region": null,
+      "age_group": null,
+      "income_status": "unknown"
+    },
+    "welfare": {
+      "algorithm": "rules-v1",
+      "candidates": [
+        {
+          "program_id": "mohw-tailored-elderly-care",
+          "program_name": "노인맞춤돌봄서비스",
+          "reason": "식사 지원·이동 지원 필요와 관련하여 확인해 볼 후보입니다. 자격·지원 제공은 미확인입니다.",
+          "eligibility_status": "unverified",
+          "matched_needs": [
+            "meal_support",
+            "mobility_support"
+          ],
+          "basis": [
+            {
+              "need": "meal_support",
+              "program_condition": "제공계획에 따른 식사관리 지원 범위 확인",
+              "source_excerpt": "식사관리"
+            },
+            {
+              "need": "mobility_support",
+              "program_condition": "제공계획에 따른 외출동행 지원 범위 확인",
+              "source_excerpt": "외출동행"
+            }
+          ],
+          "region_match": "unknown",
+          "missing_information": [
+            "만 65세 이상 여부 확인",
+            "수급·차상위·기초연금 관련 대상 조건 확인",
+            "돌봄 필요성·선정조사와 제공계획 확인",
+            "관할 수행기관의 실제 제공 범위 확인",
+            "거주지역 확인 필요",
+            "연령대 확인 필요",
+            "소득·수급 관련 조건 확인 필요"
+          ],
+          "source_url": "https://www.mohw.go.kr/menu.es?mid=a10712010400",
+          "checked_at": "2026-10-29T11:26:22Z",
+          "data_status": "verified_official",
+          "application_method": "주민등록지 관할 읍·면·동 행정복지센터에 신청 절차와 서류를 확인합니다.",
+          "warning": "공식 안내 확인은 개인의 자격 확인을 뜻하지 않습니다."
+        }
+      ],
+      "unmatched_needs": [
+        "medication_management"
+      ],
+      "disclaimer": "확인해 볼 후보 정보이며 실제 수급 자격·지원 제공·금액을 판정하거나 보장하지 않습니다. 관할 기관 확인이 필요합니다."
+    }
+  }
+}
