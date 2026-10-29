@@ -1,0 +1,38 @@
+[
+  {
+    "path": "tessdata/kor.traineddata",
+    "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/kor.traineddata",
+    "bytes": 1677415,
+    "sha256": "6b85e11d9bbf07863b97b3523b1b112844c43e713df8b66418a081fd1060b3b2"
+  },
+  {
+    "path": "tessdata/eng.traineddata",
+    "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/87416418657359cb625c412a48b6e1d6d41c29bd/eng.traineddata",
+    "bytes": 4113088,
+    "sha256": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2"
+  },
+  {
+    "path": "korean_PP-OCRv5_mobile_rec_infer.tar",
+    "url": "https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0.0/korean_PP-OCRv5_mobile_rec_infer.tar",
+    "bytes": 13680640,
+    "sha256": "a6261f800ad335aa6ef77b6f7c4dcedfd5e11b95f4d70982d41ee31c2ace5e66"
+  },
+  {
+    "path": "PP-OCRv5_mobile_det_infer.tar",
+    "url": "https://paddle-model-ecology.bj.bcebos.com/paddlex/official_inference_model/paddle3.0.0/PP-OCRv5_mobile_det_infer.tar",
+    "bytes": 4935680,
+    "sha256": "50446e5d01ac2a73d5319c89513281f6578414c888c602f9af13f93feefffc58"
+  },
+  {
+    "path": "handwriting/rec_korean_hw.onnx",
+    "url": "https://huggingface.co/Rebeccaaaaaaaa/korean-handwriting-rec/resolve/f12ca8b5e2e26a90f1f5188d993fe69e699a27df/model/rec_korean_hw.onnx",
+    "bytes": 14790116,
+    "sha256": "1655d6abd17989f1922855dd77922e532e74275fe237e5f07174b623993fef81"
+  },
+  {
+    "path": "handwriting/ppocrv5_korean_dict.txt",
+    "url": "https://huggingface.co/Rebeccaaaaaaaa/korean-handwriting-rec/resolve/f12ca8b5e2e26a90f1f5188d993fe69e699a27df/model/ppocrv5_korean_dict.txt",
+    "bytes": 47451,
+    "sha256": "a88071c68c01707489baa79ebe0405b7beb5cca229f4fc94cc3ef992328802d7"
+  }
+]
