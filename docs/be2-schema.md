@@ -164,7 +164,7 @@ PK는 같은 `event_id`의 두 번째 삽입을 거절한다. 내용이 같은 �
 
 ## HTTP
 
-`src/modules/be2-consultations/http.ts`의 라우터는 이 초안을 읽는 저장소에 연결된다. `src/app.ts`에는 등록하지 않는다. `authenticateUser`는 이 브랜치에 없다. 운영 인증으로 연결되기 전에는 공개 경로가 아니다. 예약 행의 확정 저장은 점유 상태와 겹침 배제 제약이 없으므로 하지 않는다.
+`src/modules/be2-consultations/http.ts`의 라우터는 이 초안을 읽는 저장소에 연결된다. `src/app.ts`에는 등록하지 않는다. `authenticateUser`는 이 브랜치에 없다. 운영 인증으로 연결되기 전에는 공개 경로가 아니다. 예약 행의 확정 저장은 점유 상태와 겹침 배제 제약이 없으므로 하지 않는다. 로컬 시연 하네스는 `src/demo/be2-local.ts`이며 폐기용 loopback 데이터베이스에서만 이 초안을 적용한다.
 
 ## 아직 없는 것
 

@@ -23,3 +23,5 @@ BE2 담당 영역. 역할 문서와 docs/contracts.md를 기준으로 구현합�
 데이터베이스 초안은 `docs/be2-schema.md`와 `migrations/drafts/`에 있습니다. `pnpm migrate`는 그 초안을 적용하지 않습니다. `person_id`의 대상자 테이블은 아직 없고, 가능 시간 테이블과 예약 겹침 배제 제약도 아직 없습니다.
 
 `repository.ts`는 그 초안의 컬럼에 맞춘 저장소입니다. `http.ts`의 라우터는 `src/app.ts`에 등록하지 않습니다. BE1 인증 미들웨어는 이 브랜치에 없으므로, 라우터는 호출자가 넣은 인증과 `AuthorizationPort`가 있어야 동작합니다. 요청 본문은 사용자 ID나 접근 허용의 증거가 아닙니다. 예약 생성은 점유 정책과 배제 제약이 없으므로 행을 저장하지 않습니다.
+
+로컬 시연은 `pnpm demo:be2`다. `127.0.0.1`에서만 듣고 production에서는 시작하지 않는다. 호출 예는 `docs/be2-fe-api.md`, BE1·BE3 전달 사항은 `docs/be2-integration-handoff.md`에 있다.
