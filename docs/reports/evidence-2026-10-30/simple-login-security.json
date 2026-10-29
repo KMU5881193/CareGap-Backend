@@ -1,0 +1,8 @@
+{
+  "base": "https://wash-mighty-dust-director.trycloudflare.com",
+  "private_file_http": 404,
+  "four_actual_logins": "passed",
+  "role_injection_http": 401,
+  "wrong_password_http": 401,
+  "foreign_origin_http": 403
+}
