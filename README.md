@@ -14,3 +14,5 @@ pnpm typecheck / pnpm test / pnpm build. Docker 실행은 선택이며 /health�
 공유 서버·공용 DB·Supabase 변경 금지. 실제 개인정보/토큰/녹음은 커밋 금지.
 BE1/BE2 업무 구현은 담당자에게 남겨 둡니다. docs/contracts.md 및 docs/openapi.yaml 참고.
 main은 공통 초기 환경, feature/ai-foundation은 BE3 작업용. 각 담당자는 feature/auth-*, feature/appointments-*, feature/ai-* 브랜치 및 PR 리뷰 사용.
+
+초대 없이 참여하는 Fork/PR 절차와 직접 Push 권한의 차이는 [CONTRIBUTING.md](CONTRIBUTING.md)를 참고하세요. 출처·포트 감사표는 [docs/initialization-audit.md](docs/initialization-audit.md)에 있습니다.
