@@ -1,0 +1,10 @@
+# CPU experiment dependencies; production Node dependencies are unchanged.
+# Windows CPython 3.12 exact transitive hashes: requirements-windows.lock
+tesserocr==2.12.0
+paddlepaddle==3.3.1
+paddleocr==3.7.0
+paddlex[ocr-core]==3.7.2
+Pillow==13.0.0
+psutil==7.2.2
+onnxruntime==1.31.1
+numpy==2.3.5
