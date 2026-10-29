@@ -1,3 +1,25 @@
+# 2026-10-30 최종 통합 상태
+
+기준 커밋: Backend `94dc2cfaf8539013709c7d5d7d149f35a771f03b`, Frontend `379f61acfa8891449d16e5677c7be6dc250016b6`.
+
+- 완료·병합: FE 카메라 촬영 → 기존 OCR 요청/교정/확정/기록 import 흐름, WAV 전용 선택, 관련 Flutter CI. BE 구형 인증·관계·상담·복지 표면의 fail-closed 및 내부 오류 메시지 비노출.
+- 보존: 기존 4324 통합 시연 서버의 실제 OCR/STT/Qwen/근거 검증/복지 후보 계약. 아래 API 표는 해당 통합 서버 기준이다.
+- 주의: 일반 `src/app.ts`의 구형 `/api/auth`, `/api/relationships`, `/api/consultations`, `/api/welfare`는 검증된 운영 인증 어댑터가 없으므로 의도적으로 503이다. 프론트는 4324 통합 서버 외의 구형 엔트리포인트를 운영 API로 사용하지 않는다.
+- 미완료·병합 금지: PR #26의 Supabase JWT/ID 매핑/FCM outbox/worker/통화 적격성은 코드 검토 단계다. PostgreSQL relation·migration 적용, 운영 worker, 실제 Firebase, 실기기 수신, 실제 통화가 검증되기 전에는 완료로 표시하거나 병합하지 않는다.
+- 비밀 관리: 서비스 계정 JSON·개인키·서명키를 Git/문서/앱에 넣지 않는다. 회전된 키와 운영 비밀 저장소만 사용한다.
+- 실기기 필수 확인: Android/iOS 카메라 권한·촬영 포맷, 실제 터널 OCR/STT/Qwen, FCM 수신, 양방향 통화/녹음. 현재 자동 테스트 통과와 실기기 통과를 구분한다.
+
+## FE가 지금 연결할 최소 완성 흐름
+
+1. `BACKEND_URL`을 현재 HTTPS 터널로 주입하고 `GET /health` 확인.
+2. 합성 담당자 등록/로그인 → 합성 대상자 생성.
+3. 카메라/파일 → OCR 또는 WAV → STT 작업 생성 → 성공 폴링 → 사람 교정 → 확정 → 기록 import.
+4. 이전/현재 기록 선택 → Qwen 분석 → 근거 대조 → submit → approve/reject.
+5. 승인본에서 담당자가 필요·근거를 선택 → 합성 복지 후보 표시.
+6. 서버 재시작 시 메모리 데이터와 세션이 사라지므로 다시 합성 계정을 만든다.
+
+---
+
 # FE 최종 API 연결 계약
 
 로컬: `http://127.0.0.1:4324`
