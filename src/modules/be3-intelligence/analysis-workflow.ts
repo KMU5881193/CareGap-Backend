@@ -1,7 +1,8 @@
 import { randomUUID } from 'node:crypto';
 import { z } from 'zod';
 import { Actor, Id, type AuthorizationPort, type RecordReader, type RecordVersion } from '../../shared/contracts.js';
-import { AnalysisDraft, validateDraft, type AnalysisProvider } from './analysis.js';
+import { AnalysisDraft, validateDraft } from './analysis.js';
+import { AnalysisProviderError, type AnalysisRunOptions, type WorkflowAnalysisProvider, type AnalysisProviderMetadata } from './analysis-provider-support.js';
 
 const Ref = z.object({ consultation_id: Id, record_version_id: Id }).strict();
 export const AnalysisRequest = z.object({ person_id: Id, past: z.array(Ref).min(1).max(20), current: Ref }).strict();
@@ -12,6 +13,7 @@ type ReviewState = 'draft' | 'review' | 'approved' | 'rejected';
 interface History { actor_id: string; at: string; action: string; version: number; draft: Draft }
 interface Entry {
   id: string; owner: string; input: Input; sources: RecordVersion[]; provider_kind: 'mock' | 'llm';
+  provider_metadata?: AnalysisProviderMetadata;
   status: 'running' | 'succeeded' | 'failed'; error_code?: string;
   original?: Draft; edited?: Draft; review_state: ReviewState; version: number; history: History[];
 }
@@ -26,7 +28,13 @@ export class AnalysisWorkflow {
   private entries = new Map<string, Entry>();
   private keys = new Map<string, { fingerprint: string; id: string }>();
   private completed = new Map<string, string>();
-  constructor(private deps: { authorization: AuthorizationPort; records: RecordReader; provider: AnalysisProvider; provider_kind: 'mock' | 'llm' }) {}
+  private readonly providerMetadata?: AnalysisProviderMetadata;
+  constructor(private deps: { authorization: AuthorizationPort; records: RecordReader; provider: WorkflowAnalysisProvider; provider_kind: 'mock' | 'llm'; provider_metadata?: AnalysisProviderMetadata }) {
+    if (deps.provider_metadata) {
+      if (deps.provider_kind !== 'llm') fail('INVALID_REQUEST', 400);
+      this.providerMetadata = z.object({ provider: z.literal('openai'), model: z.string().min(1).max(100), prompt_version: z.string().min(1).max(100) }).strict().parse(deps.provider_metadata);
+    }
+  }
 
   private async authorize(actor: Actor, person: string, action: 'read' | 'write' | 'analyze') {
     let allowed = false;
@@ -58,7 +66,7 @@ export class AnalysisWorkflow {
     const current = await this.sources(actor, entry.input, action);
     if (JSON.stringify(current) !== JSON.stringify(entry.sources)) fail('SOURCE_MISMATCH', 409);
   }
-  async create(actor: Actor, raw: unknown, key: string) {
+  async create(actor: Actor, raw: unknown, key: string, options: AnalysisRunOptions = {}) {
     if (actor.role !== 'staff') fail('FORBIDDEN', 403);
     const input = AnalysisRequest.parse(raw);
     if (!key || key.length > 128) fail('INVALID_REQUEST', 400);
@@ -79,19 +87,23 @@ export class AnalysisWorkflow {
       return this.get(actor, completed);
     }
     const entry: Entry = { id: randomUUID(), owner: actor.user_id, input: clone(input), sources, provider_kind: this.deps.provider_kind, status: 'running', review_state: 'draft', version: 1, history: [] };
+    if (this.providerMetadata) entry.provider_metadata = clone(this.providerMetadata);
     this.entries.set(entry.id, entry);
     this.keys.set(scope, { fingerprint, id: entry.id });
     try {
       // Never pass person/account identifiers to the provider. Input order is past then current.
       await this.authorize(actor, input.person_id, 'analyze');
-      const generated = await this.deps.provider.generate(sources.map(({ consultation_id, record_version_id, text }) => ({ consultation_id, record_version_id, text })));
+      if (options.signal?.aborted) throw new AnalysisProviderError('LLM_CANCELLED');
+      const generated = await this.deps.provider.generate(sources.map(({ consultation_id, record_version_id, text }) => ({ consultation_id, record_version_id, text })), options);
+      if (options.signal?.aborted) throw new AnalysisProviderError('LLM_CANCELLED');
       let draft: Draft;
       try { draft = validateDraft(generated, sources); } catch { return fail('INVALID_ANALYSIS', 422); }
       await this.unchanged(actor, entry, 'analyze');
+      if (options.signal?.aborted) throw new AnalysisProviderError('LLM_CANCELLED');
       entry.original = clone(draft); entry.edited = clone(draft); entry.status = 'succeeded';
       this.completed.set(signature, entry.id);
     } catch (error) {
-      entry.status = 'failed'; entry.error_code = error instanceof AnalysisError ? error.code : 'PROVIDER_ERROR';
+      entry.status = 'failed'; entry.error_code = error instanceof AnalysisError || error instanceof AnalysisProviderError ? error.code : 'PROVIDER_ERROR';
     }
     return this.get(actor, entry.id);
   }
@@ -131,6 +143,6 @@ export class AnalysisWorkflow {
     const e = await this.accessible(actor, id, 'read');
     await this.unchanged(actor, e, 'read');
     if (e.review_state !== 'approved') fail('NOT_APPROVED', 409);
-    return clone({ id: e.id, input: e.input, provider_kind: e.provider_kind, review_state: e.review_state, draft: e.edited, version: e.version });
+    return clone({ id: e.id, input: e.input, provider_kind: e.provider_kind, ...(e.provider_metadata ? { provider_metadata: e.provider_metadata } : {}), review_state: e.review_state, draft: e.edited, version: e.version });
   }
 }
