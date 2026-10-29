@@ -7,3 +7,6 @@ coverage/
 playwright-report/
 test-results/
 integrated-server*.log
+real-server*.log
+scripts/new-synthetic.wav
+scripts/new-synthetic.png

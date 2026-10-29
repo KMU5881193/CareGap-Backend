@@ -68,8 +68,8 @@ export function createIntegratedApp(env:NodeJS.ProcessEnv) {
  const save=(person_id:string,text:string)=>{const data=ConsultationRecordVersion.parse({person_id,text,consultation_id:randomUUID(),record_version_id:randomUUID()});records.set(data.record_version_id,data);return data;};
  app.post('/api/records',(req,res)=>{const b=z.object({person_id:z.uuid(),text:z.string().min(1).max(100000)}).strict().parse(req.body);access(res,b.person_id);res.status(201).json({data:save(b.person_id,b.text)});});
  app.get('/api/records',(req,res)=>{const id=z.uuid().parse(req.query.person_id);access(res,id);res.json({data:[...records.values()].filter(r=>r.person_id===id)});});
- const ocr=new OcrService(new InMemoryOcrRepository(),env.OCR_PROVIDER==='python'?new PythonOcrProvider({pythonPath:env.OCR_PYTHON_PATH ?? '',engine:'tesseract'}):new MockOcrProvider(),authorization);
- const stt=new TranscriptService(new InMemoryTranscriptRepository(),env.STT_PROVIDER==='local'?new LocalWhisperProvider({pythonPath:env.STT_PYTHON_PATH ?? '',modelPath:env.STT_MODEL_PATH ?? ''}):new MockSttProvider(),authorization);
+ const ocr=new OcrService(new InMemoryOcrRepository(),env.OCR_PROVIDER==='python'?new PythonOcrProvider({pythonPath:env.OCR_PYTHON_PATH ?? '',engine:z.enum(['tesseract','paddle','handwriting-line']).parse(env.OCR_ENGINE ?? 'tesseract'),workerPath:env.OCR_WORKER_PATH}):new MockOcrProvider(),authorization,undefined,env.OCR_PROVIDER==='python'?65000:5000);
+ const stt=new TranscriptService(new InMemoryTranscriptRepository(),env.STT_PROVIDER==='local'?new LocalWhisperProvider({pythonPath:env.STT_PYTHON_PATH ?? '',modelPath:env.STT_MODEL_PATH ?? ''}):new MockSttProvider(),authorization,env.STT_PROVIDER==='local'?95000:10000);
  app.use('/api/ocr',createOcrRouter(ocr,authenticate));
  app.use('/api/stt',createTranscriptRouter(stt,authenticate));
  const imports=new Map<string,RecordVersion>();
