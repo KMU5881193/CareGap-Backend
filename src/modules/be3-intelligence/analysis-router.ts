@@ -17,7 +17,13 @@ export function createAnalysisRouter(workflow: AnalysisWorkflow, authenticate: A
     } catch { next(new AnalysisError('UNAUTHENTICATED', 401)); }
   });
   router.post('/api/analyses', async (req, res) => {
-    res.status(200).json({ data: await workflow.create(res.locals.actor, req.body, req.get('Idempotency-Key') ?? '') });
+    const controller = new AbortController();
+    const disconnected = () => { if (!res.writableEnded) controller.abort(); };
+    res.once('close', disconnected);
+    try {
+      const data = await workflow.create(res.locals.actor, req.body, req.get('Idempotency-Key') ?? '', { signal: controller.signal });
+      if (!res.destroyed) res.status(200).json({ data });
+    } finally { res.off('close', disconnected); }
   });
   router.get('/api/analyses/:id', async (req, res) => {
     res.json({ data: await workflow.get(res.locals.actor, Id.parse(req.params.id)) });
