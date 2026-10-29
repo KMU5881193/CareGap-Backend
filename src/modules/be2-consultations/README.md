@@ -11,3 +11,5 @@ BE2 담당 영역. 역할 문서와 docs/contracts.md를 기준으로 구현합�
 `appointment-transition.ts`는 호출자가 넣은 규칙으로 상태만 계산합니다. 예약 시각은 바꾸지 않고, 변경 요청의 수락 정책은 이 함수에 없습니다. 역할이 맞아도 본인 예약, 가족 연결, 상담사 승인, 담당자 배정을 검사하지 않으며 접근 권한을 보장하지 않습니다.
 
 `appointment-conflict.ts`는 `relateUtcIntervals`로 같은 상담사 `user_id`와 같은 `person_id`를 각각 비교합니다. 점유 상태와 차단 관계는 호출자가 넘깁니다. 목록이 비어 있으면 충돌 없음이 아니라 정책 미설정입니다. `meets`는 호출자가 목록에 넣은 경우에만 차단됩니다.
+
+`api-schema.ts`와 `api-contract.md`는 예약·가능 시간의 JSON 입출력 초안입니다. 인증된 `user_id`는 요청 본문에 넣지 않습니다. 라우트, DB, 상태 이름 목록은 아직 없습니다.
