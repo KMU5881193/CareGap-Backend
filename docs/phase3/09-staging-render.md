@@ -1,6 +1,21 @@
 # Render Deployment — Call Staging
 
-## Build / Start
+Deploy branch that contains Staging (`call:staging:start`), currently
+`feature/be2-call-prototype` (commit with secure call staging).
+`feature/be2-call-staging` without that commit will fail Start Command.
+
+## Render Dashboard — exact fields
+
+| Field | Value |
+|---|---|
+| **Runtime** | Node |
+| **Build Command** | `pnpm install --frozen-lockfile && pnpm build` |
+| **Start Command** | `pnpm call:staging:start` |
+| **Health Check Path** | `/health` |
+
+Equivalent Start Command (same script): `node dist/call-staging-server.js`
+
+## Build / Start (local parity)
 
 | Step | Command |
 |---|---|
