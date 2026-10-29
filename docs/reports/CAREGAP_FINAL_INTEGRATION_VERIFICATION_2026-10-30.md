@@ -84,6 +84,8 @@ Frontend: patient 역할을 beneficiary로 매핑하고 자기 예약·기록 �
 
 인증 요청은 identifier/password 계약을 사용하되 실제 값·토큰은 문서와 증거에서 제외했다. 다음은 실제 API 또는 명시된 보안 자동 테스트에서 확인했다.
 
+API 키 안내: 현재 CareGap API, 로컬 OCR/Whisper/Ollama 및 Quick Tunnel은 호출용 별도 API 키를 요구하지 않는다. CareGap 인증은 `Authorization: Bearer <access_token>`이다. 최종 사용자 요청에 따라 4계정의 실제 토큰을 새 시연 도메인에서 발급해 Frontend 복제본 `.runtime/demo-api-access.json`에 보관했다(발급 후 3600초, Git 비추적·현재 사용자 전용 ACL). 토큰 값은 이 문서나 Git에 넣지 않았다. LiveKit 키는 구성되지 않았고 FCM 서비스 계정은 검증되지 않아 제공된 키나 실제 통화·발송 성공으로 주장하지 않는다.
+
 | 요청 | 응답/HTTP |
 |---|---|
 | POST `/api/auth/login` | 200 `{data:{access_token,expires_in:3600,actor}}`, 4계정 role 일치 |
