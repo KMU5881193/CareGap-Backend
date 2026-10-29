@@ -1,0 +1,2 @@
+# CPU-only local experiment. Exact Windows CPython 3.12 wheel hashes in lock file.
+faster-whisper==1.2.1
