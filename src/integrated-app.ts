@@ -13,6 +13,7 @@ import { createOcrRouter } from './modules/be3-intelligence/ocr-router.js';
 import { createTranscriptRouter } from './modules/be3-intelligence/stt/router.js';
 import { AnalysisWorkflow } from './modules/be3-intelligence/analysis-workflow.js';
 import { SyntheticAnalysisProvider } from './modules/be3-intelligence/analysis-mock.js';
+import { OllamaAnalysisProvider } from './modules/be3-intelligence/ollama-provider.js';
 import { createAnalysisRouter } from './modules/be3-intelligence/analysis-router.js';
 import { WelfareRecommendationService } from './modules/be3-intelligence/welfare-service.js';
 import { syntheticWelfareCatalog } from './modules/be3-intelligence/welfare-catalog.js';
@@ -24,7 +25,7 @@ const credentials = z.object({identifier:z.string().min(3).max(80),password:z.st
 export function createIntegratedApp(env:NodeJS.ProcessEnv) {
  if(env.CAREGAP_SYNTHETIC_HTTP !== '1' || env.NODE_ENV === 'production') throw new Error('SYNTHETIC_HTTP_OPT_IN_REQUIRED');
  if(env.STORAGE_MODE && env.STORAGE_MODE !== 'memory') throw new Error('DB_ADAPTER_NOT_IMPLEMENTED');
- if(env.ANALYSIS_PROVIDER && env.ANALYSIS_PROVIDER !== 'mock') throw new Error('ANALYSIS_PROVIDER_NOT_CONFIGURED');
+ if(env.ANALYSIS_PROVIDER && !['mock','ollama'].includes(env.ANALYSIS_PROVIDER)) throw new Error('ANALYSIS_PROVIDER_NOT_CONFIGURED');
  if(!['mock','python'].includes(env.OCR_PROVIDER ?? 'mock') || !['mock','local'].includes(env.STT_PROVIDER ?? 'mock')) throw new Error('INVALID_PROVIDER');
  const users = new Map<string,{actor:Actor;salt:Buffer;hash:Buffer}>();
  const sessions = new Map<string,{actor:Actor;expires:number}>();
@@ -74,7 +75,8 @@ export function createIntegratedApp(env:NodeJS.ProcessEnv) {
  app.use('/api/stt',createTranscriptRouter(stt,authenticate));
  const imports=new Map<string,RecordVersion>();
  app.post('/api/records/import',(async(req,res)=>{const b=z.object({source:z.enum(['ocr','stt']),job_id:z.uuid()}).strict().parse(req.body);const input=b.source==='ocr'?await ocr.confirmedInput(actor(res),b.job_id):await stt.confirmedInput(actor(res),b.job_id);access(res,input.person_id);const key=`${actor(res).user_id}:${b.source}:${b.job_id}`;let data=imports.get(key);if(!data){data=save(input.person_id,input.text);imports.set(key,data);}res.status(201).json({data});}));
- const workflow=new AnalysisWorkflow({authorization,provider:new SyntheticAnalysisProvider(),provider_kind:'mock',records:{async getVersion(c,v){const r=records.get(v);return r?.consultation_id===c?r:null;}}});
+ const live=env.ANALYSIS_PROVIDER==='ollama'?new OllamaAnalysisProvider(env.OLLAMA_MODEL ?? 'qwen2.5vl:7b'):null;
+ const workflow=new AnalysisWorkflow({authorization,provider:live ?? new SyntheticAnalysisProvider(),provider_kind:live?'llm':'mock',records:{async getVersion(c,v){const r=records.get(v);return r?.consultation_id===c?r:null;}}});
  const welfare=new WelfareRecommendationService({authorization,catalog:syntheticWelfareCatalog()});
  const bridge=new AnalysisWelfareBridge(workflow,welfare);
  app.post('/api/welfare-recommendations',async(req,res)=>res.json(await bridge.recommend(actor(res),req.body)));
