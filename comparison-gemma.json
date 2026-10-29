@@ -1,0 +1,93 @@
+[
+  {
+    "case": "meal-down",
+    "expected": "worsened",
+    "status": "failed",
+    "error": "PROVIDER_ERROR",
+    "pass": false,
+    "ms": 88945
+  },
+  {
+    "case": "medication-missed",
+    "expected": "worsened",
+    "status": "succeeded",
+    "actual": [
+      {
+        "text": "약 복용 상태가 악화되었습니다. (매일 복용하던 것에서 2일간 복용하지 않게 됨)",
+        "change": "worsened",
+        "evidence": [
+          {
+            "consultation_id": "d3ccaeeb-162e-4193-8d5d-e33666130aff",
+            "record_version_id": "c97a834e-0abf-4ccc-ab89-b4b7e00eb775",
+            "quote": "매일 약을 복용했습니다."
+          },
+          {
+            "consultation_id": "752bd89e-8a1a-4145-b32b-3acb329efd58",
+            "record_version_id": "05d5b19f-1887-4266-9bd9-fd4f71ac1f9c",
+            "quote": "2일 동안 약을 복용하지 않았습니다."
+          }
+        ]
+      }
+    ],
+    "pass": true,
+    "ms": 11757
+  },
+  {
+    "case": "walking-up",
+    "expected": "improved",
+    "status": "succeeded",
+    "actual": [
+      {
+        "text": "산책 횟수가 주 1회 (index 0)에서 주 3회 (index 1)로 증가하여 개선되었습니다.",
+        "change": "improved",
+        "evidence": [
+          {
+            "consultation_id": "9c490a46-6a5d-4bbb-a48d-0cc52a9ad7d5",
+            "record_version_id": "d0798aa7-cbb1-486c-bb69-107557475da6",
+            "quote": "주 1회 산책했습니다."
+          },
+          {
+            "consultation_id": "feadbcb1-f58b-4167-be08-2b8d44cfa8e0",
+            "record_version_id": "3662e127-b184-4242-ad90-c0aab6bd65f6",
+            "quote": "주 3회 산책했습니다."
+          }
+        ]
+      }
+    ],
+    "pass": true,
+    "ms": 11723
+  },
+  {
+    "case": "meal-same",
+    "expected": "unchanged",
+    "status": "succeeded",
+    "actual": [
+      {
+        "text": "식사 횟수: 하루 3회 식사했습니다. (변화 없음)",
+        "change": "unchanged",
+        "evidence": [
+          {
+            "consultation_id": "808d0ada-b132-451b-8526-99f283ae5670",
+            "record_version_id": "8f978445-ff2e-4d6c-9c6a-d9378b021c7d",
+            "quote": "하루 3회 식사했습니다."
+          },
+          {
+            "consultation_id": "94b947e6-70fa-4aeb-af61-847216343c04",
+            "record_version_id": "ca36b220-19a4-48dd-a72e-cfc762d9211b",
+            "quote": "하루 3회 식사했습니다."
+          }
+        ]
+      }
+    ],
+    "pass": true,
+    "ms": 12002
+  },
+  {
+    "case": "insufficient",
+    "expected": "unknown",
+    "status": "failed",
+    "error": "PROVIDER_ERROR",
+    "pass": false,
+    "ms": 12348
+  }
+]

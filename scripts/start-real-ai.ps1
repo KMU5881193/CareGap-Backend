@@ -1,10 +1,11 @@
+param([string]$Port='4322',[string]$Model='qwen2.5vl:7b')
 $ErrorActionPreference='Stop'
 Set-Location (Join-Path $PSScriptRoot '..')
 $root=Split-Path (Get-Location).Path
-$env:PORT='4322'
+$env:PORT=$Port
 $env:CAREGAP_SYNTHETIC_HTTP='1'
 $env:ANALYSIS_PROVIDER='ollama'
-$env:OLLAMA_MODEL='qwen2.5vl:7b'
+$env:OLLAMA_MODEL=$Model
 $env:STT_PROVIDER='local'
 $env:STT_PYTHON_PATH=Join-Path $root 'CareGap-Backend-STT/experiments/stt/.venv/Scripts/python.exe'
 $env:STT_MODEL_PATH=Join-Path $root 'CareGap-Backend-STT/experiments/stt/models/base'
