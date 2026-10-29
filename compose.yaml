@@ -1,19 +1,27 @@
-name: caregap-team-local
 services:
-  db:
-    image: postgres:16
-    environment:
-      POSTGRES_USER: caregap
-      POSTGRES_PASSWORD: local-only
-      POSTGRES_DB: caregap_local
+  api:
+    build: .
     ports:
-      - "127.0.0.1:${POSTGRES_HOST_PORT:?Set POSTGRES_HOST_PORT to an available local DB port}:5432"
-    volumes:
-      - caregap_local_data:/var/lib/postgresql/data
+      - "127.0.0.1:4320:4320"
+    environment:
+      NODE_ENV: development
+      PORT: "4320"
+      API_HOST: "0.0.0.0"
+      CAREGAP_SYNTHETIC_HTTP: "1"
+      STORAGE_MODE: memory
+      OCR_PROVIDER: mock
+      STT_PROVIDER: mock
+      ANALYSIS_PROVIDER: mock
+      FE_ORIGINS: ${FE_ORIGINS:-http://localhost:5173}
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U caregap -d caregap_local"]
-      interval: 5s
-      timeout: 3s
-      retries: 10
-volumes:
-  caregap_local_data:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:4320/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 3

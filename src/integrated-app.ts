@@ -1,0 +1,85 @@
+import express from 'express';
+import { randomBytes, randomUUID, scryptSync, timingSafeEqual, createHash } from 'node:crypto';
+import { z, ZodError } from 'zod';
+import type { Actor, RecordVersion } from './shared/contracts.js';
+import { AppointmentCreateInput } from './modules/be2-consultations/api-schema.js';
+import { findAppointmentConflicts } from './modules/be2-consultations/appointment-conflict.js';
+import { ConsultationRecordVersion } from './modules/be2-consultations/consultation-record.js';
+import { OcrService, InMemoryOcrRepository, MockOcrProvider } from './modules/be3-intelligence/ocr.js';
+import { TranscriptService, InMemoryTranscriptRepository, MockSttProvider } from './modules/be3-intelligence/stt/service.js';
+import { PythonOcrProvider } from './modules/be3-intelligence/python-ocr-provider.js';
+import { LocalWhisperProvider } from './modules/be3-intelligence/stt/local-provider.js';
+import { createOcrRouter } from './modules/be3-intelligence/ocr-router.js';
+import { createTranscriptRouter } from './modules/be3-intelligence/stt/router.js';
+import { AnalysisWorkflow } from './modules/be3-intelligence/analysis-workflow.js';
+import { SyntheticAnalysisProvider } from './modules/be3-intelligence/analysis-mock.js';
+import { createAnalysisRouter } from './modules/be3-intelligence/analysis-router.js';
+import { WelfareRecommendationService } from './modules/be3-intelligence/welfare-service.js';
+import { syntheticWelfareCatalog } from './modules/be3-intelligence/welfare-catalog.js';
+import { AnalysisWelfareBridge } from './modules/be3-intelligence/analysis-welfare-bridge.js';
+
+const fail = (status:number, code:string):never => { throw Object.assign(new Error(code), {status,code}); };
+const credentials = z.object({identifier:z.string().min(3).max(80),password:z.string().min(12).max(128)}).strict();
+// Explicit development adapter: no database credentials, seed accounts or automatic admin role.
+export function createIntegratedApp(env:NodeJS.ProcessEnv) {
+ if(env.CAREGAP_SYNTHETIC_HTTP !== '1' || env.NODE_ENV === 'production') throw new Error('SYNTHETIC_HTTP_OPT_IN_REQUIRED');
+ if(env.STORAGE_MODE && env.STORAGE_MODE !== 'memory') throw new Error('DB_ADAPTER_NOT_IMPLEMENTED');
+ if(env.ANALYSIS_PROVIDER && env.ANALYSIS_PROVIDER !== 'mock') throw new Error('ANALYSIS_PROVIDER_NOT_CONFIGURED');
+ if(!['mock','python'].includes(env.OCR_PROVIDER ?? 'mock') || !['mock','local'].includes(env.STT_PROVIDER ?? 'mock')) throw new Error('INVALID_PROVIDER');
+ const users = new Map<string,{actor:Actor;salt:Buffer;hash:Buffer}>();
+ const sessions = new Map<string,{actor:Actor;expires:number}>();
+ const persons = new Map<string,string>();
+ const records = new Map<string,RecordVersion>();
+ const appointments = new Map<string,z.infer<typeof AppointmentCreateInput> & {appointment_id:string;staff_user_id:string;status:string}>();
+ const app=express(); app.disable('x-powered-by');
+ const origins=(env.FE_ORIGINS ?? '').split(',').filter(Boolean);
+ app.use((req,res,next)=>{
+  res.set('Cache-Control','no-store');
+  const origin=req.get('origin');
+  if(origin && !origins.includes(origin)) return res.status(403).json({error:{code:'ORIGIN_REJECTED'}});
+  if(origin){res.set('Access-Control-Allow-Origin',origin);res.vary('Origin');res.set('Access-Control-Allow-Headers','Authorization, Content-Type, Idempotency-Key');res.set('Access-Control-Allow-Methods','GET, POST, OPTIONS');}
+  if(req.method==='OPTIONS') return res.sendStatus(204);
+  next();
+ });
+ app.use(express.json({limit:'14mb'}));
+ const metadata={synthetic_only:true,storage:'memory_non_durable',providers:{ocr:env.OCR_PROVIDER ?? 'mock',stt:env.STT_PROVIDER ?? 'mock',analysis:'mock',welfare:'synthetic_unverified'}};
+ app.get('/health',(_req,res)=>res.json({data:{status:'ok',...metadata}}));
+ const attempts=new Map<string,{count:number;until:number}>();
+ app.use('/api/auth',(req,res,next)=>{const key=req.socket.remoteAddress ?? 'unknown';const now=Date.now();let entry=attempts.get(key);if(!entry || entry.until<now){entry={count:0,until:now+60000};attempts.set(key,entry);}if(++entry.count>30)return res.status(429).json({error:{code:'RATE_LIMITED'}});next();});
+ app.post('/api/auth/register',(req,res)=>{
+  const body=credentials.parse(req.body);if(users.has(body.identifier))fail(409,'IDENTIFIER_EXISTS');if(users.size>=100)fail(429,'DEMO_CAPACITY');
+  const salt=randomBytes(16);const actor:Actor={user_id:randomUUID(),role:'staff'};
+  users.set(body.identifier,{actor,salt,hash:scryptSync(body.password,salt,32)});
+  res.status(201).json({data:{...actor,synthetic_only:true}});
+ });
+ const digest=(s:string)=>createHash('sha256').update(s).digest('hex');
+ app.post('/api/auth/login',(req,res)=>{const body=credentials.parse(req.body);const user=users.get(body.identifier);const hash=scryptSync(body.password,user?.salt ?? Buffer.alloc(16),32);if(!user || !timingSafeEqual(hash,user.hash))return fail(401,'UNAUTHENTICATED');const token=randomBytes(32).toString('base64url');sessions.set(digest(token),{actor:user.actor,expires:Date.now()+3600000});res.json({data:{access_token:token,token_type:'Bearer',expires_in:3600,actor:user.actor,...metadata}});});
+ const authenticate=async(req:express.Request)=>{const raw=req.get('authorization');if(!raw?.startsWith('Bearer '))return fail(401,'UNAUTHENTICATED');const key=digest(raw.slice(7));const session=sessions.get(key);if(!session || session.expires<=Date.now()){sessions.delete(key);return fail(401,'UNAUTHENTICATED');}return session.actor;};
+ app.use('/api',async(req,res,next)=>{try{res.locals.actor=await authenticate(req);next();}catch(e){next(e);}});
+ app.post('/api/auth/logout',(req,res)=>{sessions.delete(digest(req.get('authorization')!.slice(7)));res.sendStatus(204);});
+ app.get('/api/auth/me',(_req,res)=>res.json({data:res.locals.actor}));
+ app.use('/api/auth/staff',(_req,res)=>res.status(404).json({error:{code:'NOT_FOUND'}}));
+ const authorization={async canAccess(actor:Actor,person:string){return persons.get(person)===actor.user_id;}};
+ const actor=(res:express.Response)=>res.locals.actor as Actor;
+ const access=(res:express.Response,id:string)=>{if(persons.get(id)!==actor(res).user_id)fail(403,'FORBIDDEN');};
+ app.post('/api/persons',(_req,res)=>{if(persons.size>=1000)fail(429,'DEMO_CAPACITY');const person_id=randomUUID();persons.set(person_id,actor(res).user_id);res.status(201).json({data:{person_id,synthetic_only:true}});});
+ app.post('/api/appointments',(req,res)=>{const b=AppointmentCreateInput.parse(req.body);access(res,b.person_id);const candidate={...b,staff_user_id:actor(res).user_id};const conflicts=findAppointmentConflicts(candidate,[...appointments.values()],{occupyingStatuses:['scheduled'],blockingRelations:['overlaps','overlapped-by','starts','started-by','during','contains','finishes','finished-by','equal']});if(!conflicts.configured || conflicts.conflicts.length)fail(409,'APPOINTMENT_CONFLICT');const data={...candidate,appointment_id:randomUUID(),status:'scheduled'};appointments.set(data.appointment_id,data);res.status(201).json({data});});
+ app.get('/api/appointments',(_req,res)=>res.json({data:[...appointments.values()].filter(a=>a.staff_user_id===actor(res).user_id)}));
+ const save=(person_id:string,text:string)=>{const data=ConsultationRecordVersion.parse({person_id,text,consultation_id:randomUUID(),record_version_id:randomUUID()});records.set(data.record_version_id,data);return data;};
+ app.post('/api/records',(req,res)=>{const b=z.object({person_id:z.uuid(),text:z.string().min(1).max(100000)}).strict().parse(req.body);access(res,b.person_id);res.status(201).json({data:save(b.person_id,b.text)});});
+ app.get('/api/records',(req,res)=>{const id=z.uuid().parse(req.query.person_id);access(res,id);res.json({data:[...records.values()].filter(r=>r.person_id===id)});});
+ const ocr=new OcrService(new InMemoryOcrRepository(),env.OCR_PROVIDER==='python'?new PythonOcrProvider({pythonPath:env.OCR_PYTHON_PATH ?? '',engine:'tesseract'}):new MockOcrProvider(),authorization);
+ const stt=new TranscriptService(new InMemoryTranscriptRepository(),env.STT_PROVIDER==='local'?new LocalWhisperProvider({pythonPath:env.STT_PYTHON_PATH ?? '',modelPath:env.STT_MODEL_PATH ?? ''}):new MockSttProvider(),authorization);
+ app.use('/api/ocr',createOcrRouter(ocr,authenticate));
+ app.use('/api/stt',createTranscriptRouter(stt,authenticate));
+ const imports=new Map<string,RecordVersion>();
+ app.post('/api/records/import',(async(req,res)=>{const b=z.object({source:z.enum(['ocr','stt']),job_id:z.uuid()}).strict().parse(req.body);const input=b.source==='ocr'?await ocr.confirmedInput(actor(res),b.job_id):await stt.confirmedInput(actor(res),b.job_id);access(res,input.person_id);const key=`${actor(res).user_id}:${b.source}:${b.job_id}`;let data=imports.get(key);if(!data){data=save(input.person_id,input.text);imports.set(key,data);}res.status(201).json({data});}));
+ const workflow=new AnalysisWorkflow({authorization,provider:new SyntheticAnalysisProvider(),provider_kind:'mock',records:{async getVersion(c,v){const r=records.get(v);return r?.consultation_id===c?r:null;}}});
+ const welfare=new WelfareRecommendationService({authorization,catalog:syntheticWelfareCatalog()});
+ const bridge=new AnalysisWelfareBridge(workflow,welfare);
+ app.post('/api/welfare-recommendations',async(req,res)=>res.json(await bridge.recommend(actor(res),req.body)));
+ app.use(createAnalysisRouter(workflow,authenticate));
+ app.use((_req,res)=>res.status(404).json({error:{code:'NOT_FOUND'}}));
+ app.use((error:unknown,_req:express.Request,res:express.Response,_next:express.NextFunction)=>{const e=error as {status?:number;code?:string;type?:string};const status=error instanceof ZodError||error instanceof SyntaxError?400:e.status ?? 500;res.status(status).json({error:{code:status===500?'INTERNAL_ERROR':e.code ?? 'INVALID_REQUEST'}});});
+ return app;
+}
