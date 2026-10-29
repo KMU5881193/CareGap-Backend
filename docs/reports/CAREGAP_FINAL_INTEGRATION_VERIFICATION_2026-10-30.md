@@ -4,9 +4,13 @@
 
 2026-10-30 KST, Windows 11, Node 22.15.0, pnpm 11.25.0, TypeScript 7.0.2, Flutter 3.47.4 / Dart 3.13.3. 별도 복제본 `final-verification-CareGap-Backend`, `final-verification-CareGap-Frontend`에서 작업했다. 추가 PR #29는 `final-review-pr29`에서 별도로 검사했다. `sources/`와 다른 작업 브랜치는 수정하지 않았다.
 
+최종 추가 PR 확인 기준 시각: **2026-10-30 08:31 KST**. 이 시각까지 발견한 #32·#33도 아래에 포함한다. 이후 등록되는 변경은 이 검증 결과에 자동 포함되지 않는다.
+
 ## 2. 최신 main과 검증 코드
 
 최초 재조회 Backend main: `fccb6344fa59168541ccfd171e4637124f291d6f`. 이번 안전 검증 PR #30 병합 후 main: `35348e12dcfbb47c4d8c082b3425171fd4757b65`.
+
+최종 문서 PR #31의 실제 merge SHA 및 08:31 관측 main: `c04b88efd2aeabb94ecfe53797548cd7e59be98f`. 코드 검증 대상과 문서 후속 커밋을 구분한다.
 
 최초 재조회 Frontend main: `d72b94700f8fd83ac77dc3276971a88fa4889b4c`. 이번 안전 검증 PR #5 병합 후 main: `e2431f3858f16fb4ccc2b36adccb2343fc1543de`.
 
@@ -24,10 +28,14 @@ Backend #1·#2·#3·#4·#6·#8·#9·#10·#11·#12·#13·#15·#16·#17·#18·#19�
 | #24 | OPEN, dirty | `src/app.ts`, 의존성/lock, 인증 보안 코드 충돌. x-user-identifier 및 단순 Bearer 식별자 fallback, 평문 secret 저장·재설정, Prisma의 별도 User/관계 모델이 기존 users SQL 계약과 다름. 인증·DB 이행안 없이는 병합 불가 |
 | #26 | OPEN, dirty | `src/app.ts`, `tests/integration-security.test.ts` 충돌. Supabase JWT/ID 매핑/FCM·outbox·draft migrations 대규모 변경. BE1 관계·binding 영속 어댑터와 실제 DB·FCM 검증 미완료. 보류 |
 | #29 | OPEN, 최신 clean | 작업 중 `34fee7c4` → `aad64a6b5777fa0edd0b57fd20d249d1d4e94615`로 갱신. 최신 추가분은 구형 인증 차단·오류 비노출·Vision 반영이며 Vision 파일은 main과 동일. 재검토한 최신 HEAD의 타입·646개 테스트·빌드 통과. 실제 LiveKit은 `CONFIG_MISSING`. #26의 DB/알림 변경을 포함하며 실제 통화·DB 검증 없이 안전한 전체 운영 통합으로 판정하지 않음 |
+| #32 | OPEN, clean | HEAD `aad64a6b5777fa0edd0b57fd20d249d1d4e94615`로 #29와 정확히 동일. 별도 추가 구현이 없는 중복 PR이며 #29와 같은 보류 사유 |
+| #33 | OPEN, clean | HEAD `967569c62e31166153e2b3e5c2c339aaa54cbdda`. #29 이후 staging 서버·scrypt/HMAC 인증·rate limit·Render blueprint·Flutter 계약 등 17파일/1316추가/10삭제를 검토. 타입·658개 테스트·빌드 및 CI 통과. 실제 LiveKit/Render 배포·양방향 통화 미검증, 현재 4계정/예약 앱과 별개 2참여자 staging. #26의 미검증 DB/FCM 변경도 포함하여 전체 병합 보류 |
 
 #29 최신 diff에서는 이전 충돌이 해소됐고 `git merge-tree`도 성공했다. 따라서 #29를 현재도 충돌이라고 기록하지 않는다. CI 성공과 실제 통화 성공은 별개다. 다른 개발자의 PR을 닫거나 수정하지 않았다.
 
 추가 #29 웹 프로토타입도 npm ci·typecheck·Vite build를 별도로 통과했다. 다만 설치 시 `machina@7.0.1`은 Node >=22.22를 요구하여 현재 22.15.0에서 EBADENGINE 경고가 발생했다. 빌드 성공으로 런타임 호환성·양방향 통화 성공을 보장하지 않는다.
+
+#33의 인증은 로컬 demo 헤더를 거부하고 서명·만료·고정 참여자, 서버가 결정한 callee/room, Origin과 역할 주입 제한을 구현한다. 테스트의 media는 FakeCallMediaProvider이며 실제 음성 검증이 아니다. 실제 엔트리를 설정 없이 실행하면 `Refusing to start: set CALL_STAGING_ENABLED=true`로 exit 1을 반환했다. 이를 성공한 staging 기동으로 계산하지 않았다. 기존 서버를 건드리지 않았으며 Render 배포를 실행하지 않았다. 이 staging의 별도 인증 계약에 간편 시연 비밀번호를 적용하지 않았다.
 
 ## 4. 기능별 검증표
 
@@ -75,6 +83,8 @@ Frontend: patient 역할을 beneficiary로 매핑하고 자기 예약·기록 �
 ## 7. API 요청·응답·HTTP 상태
 
 인증 요청은 identifier/password 계약을 사용하되 실제 값·토큰은 문서와 증거에서 제외했다. 다음은 실제 API 또는 명시된 보안 자동 테스트에서 확인했다.
+
+API 키 안내: 현재 CareGap API, 로컬 OCR/Whisper/Ollama 및 Quick Tunnel은 호출용 별도 API 키를 요구하지 않는다. CareGap 인증은 `Authorization: Bearer <access_token>`이다. 최종 사용자 요청에 따라 4계정의 실제 토큰을 새 시연 도메인에서 발급해 Frontend 복제본 `.runtime/demo-api-access.json`에 보관했다(발급 후 3600초, Git 비추적·현재 사용자 전용 ACL). 토큰 값은 이 문서나 Git에 넣지 않았다. LiveKit 키는 구성되지 않았고 FCM 서비스 계정은 검증되지 않아 제공된 키나 실제 통화·발송 성공으로 주장하지 않는다.
 
 | 요청 | 응답/HTTP |
 |---|---|
@@ -154,6 +164,7 @@ Flutter가 OCR 현재 기록을 선택한 추가 비교 1건을 포함해 실제
 |---|---:|---:|---|
 | 이번 Backend 전체 | 542 | 0 | 0 |
 | 추가 PR #29 최신 HEAD 전체(별도) | 646 | 0 | 0 |
+| 추가 PR #33 최신 HEAD 전체(별도) | 658 | 0 | 0 |
 | Flutter 전체 최종 | 42 | 0 | 0 |
 | Flutter 실제 4334 서버 4계정 위젯 | 1 | 0 | 0 |
 | 간편 로그인 매핑·오류·권한 주입 Node 테스트 | 1 | 0 | 0 |
@@ -212,6 +223,12 @@ Frontend 신규 PR https://github.com/KMU5881193/CareGap-Frontend/pull/5 — 구
 최종 확정: Frontend #5는 위 두 Flutter CI와 두 verify CI 모두 success 후 MERGED. 실제 merge SHA는 `e2431f3858f16fb4ccc2b36adccb2343fc1543de`다. 분석·42개 Flutter 테스트·Node 별칭 테스트·APK 빌드가 통과했다. APK CI는 mock 빌드이며 실서버 검증은 별도 실제 웹/Repository/HTTP 증거로 충족했다.
 
 최종 보고서 후속 PR: https://github.com/KMU5881193/CareGap-Backend/pull/31. 코드 PR #30 이후의 보고서·handoff·합성 화면 증거만 반영한다. 문서 커밋 자체를 그 문서의 검증 코드 SHA로 표시하지 않는다. 보고서의 Backend 코드 검증 기준은 `35348e12dcfbb47c4d8c082b3425171fd4757b65`, Frontend 기준은 `e2431f3858f16fb4ccc2b36adccb2343fc1543de`다.
+
+PR #31도 verify 두 개 success 후 MERGED, 실제 merge SHA `c04b88efd2aeabb94ecfe53797548cd7e59be98f`. CI https://github.com/KMU5881193/CareGap-Backend/actions/runs/40973260997 및 https://github.com/KMU5881193/CareGap-Backend/actions/runs/40973267742.
+
+새 #33 CI https://github.com/KMU5881193/CareGap-Backend/actions/runs/40973268044 — success. #32·#33 검토를 최종 문서에 추가하며 실제 통화·배포를 완료로 표시하지 않는다.
+
+이 추가 검토의 문서 PR: https://github.com/KMU5881193/CareGap-Backend/pull/34.
 
 ## 19. 남은 위험과 우선순위
 

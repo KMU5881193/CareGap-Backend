@@ -24,6 +24,8 @@
 
 #29 최신 `aad64a6b`는 이전 충돌을 해소했으며 격리 646개 테스트·타입·빌드가 통과했다. 실제 LiveKit은 CONFIG_MISSING으로 미검증이다. #26의 DB/FCM 영속화 변경도 포함하므로 실제 통화 완료로 표현하지 않는다. #24의 인증 우회·평문 secret·Prisma/기존 users migration 불일치는 병합 차단 사항이다. BE3 #5/#7/#14는 main에 이미 포함된 중복 PR이다.
 
+08:31 KST 추가 확인: #32는 #29와 같은 HEAD의 중복 PR. #33 `967569c6`는 별도 `/api/staging/*` 및 Render 배포 구성 추가이며 격리 658개 테스트·타입·빌드·CI가 통과했다. 실제 LiveKit/Render 기동·음성은 미검증이고 현재 4계정 앱에 통화가 연결된 것은 아니다. 이 staging 계약은 별도 2참여자용이므로 간편 시연 로그인을 그대로 사용하지 않는다.
+
 - 완료·병합: FE 카메라 촬영 → 기존 OCR 요청/교정/확정/기록 import 흐름, WAV 전용 선택, 관련 Flutter CI. BE 구형 인증·관계·상담·복지 표면의 fail-closed 및 내부 오류 메시지 비노출.
 - 보존: 기존 4324 통합 시연 서버의 실제 OCR/STT/Qwen/근거 검증/복지 후보 계약. 아래 API 표는 해당 통합 서버 기준이다.
 - 주의: 일반 `src/app.ts`의 구형 `/api/auth`, `/api/relationships`, `/api/consultations`, `/api/welfare`는 검증된 운영 인증 어댑터가 없으므로 의도적으로 503이다. 프론트는 4324 통합 서버 외의 구형 엔트리포인트를 운영 API로 사용하지 않는다.
