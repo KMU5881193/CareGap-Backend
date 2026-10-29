@@ -1,0 +1,105 @@
+{
+  "data": {
+    "person_id": "00000000-0000-4000-8000-000000000002",
+    "algorithm": "rules-v1",
+    "candidates": [
+      {
+        "program_id": "demo-meal",
+        "program_name": "[합성] 식사 지원 연결 테스트",
+        "reason": "식사 지원 필요와 관련하여 확인해 볼 후보입니다. 자격·지원 제공은 미확인입니다.",
+        "eligibility_status": "unverified",
+        "matched_needs": [
+          "meal_support"
+        ],
+        "basis": [
+          {
+            "need": "meal_support",
+            "program_condition": "합성 식사 지원 필요와 연관",
+            "source_excerpt": null
+          }
+        ],
+        "region_match": "unknown",
+        "missing_information": [
+          "합성 식사 필요 확인",
+          "실제 사업 탐색 및 관할 기관 확인",
+          "거주지역 확인 필요",
+          "연령대 확인 필요",
+          "사업의 연령 조건 확인 필요",
+          "소득·수급 관련 조건 확인 필요",
+          "공식 출처 확인 필요",
+          "실재하지 않는 합성 데이터: 실제 사업 별도 탐색 필요"
+        ],
+        "source_url": null,
+        "checked_at": null,
+        "data_status": "synthetic_demo",
+        "application_method": "신청 불가: 합성 시연 전용",
+        "warning": "합성 시연 전용이며 실제 제도·혜택이 아닙니다."
+      },
+      {
+        "program_id": "demo-medication",
+        "program_name": "[합성] 복약 확인 연결 테스트",
+        "reason": "복약 확인 필요와 관련하여 확인해 볼 후보입니다. 자격·지원 제공은 미확인입니다.",
+        "eligibility_status": "unverified",
+        "matched_needs": [
+          "medication_management"
+        ],
+        "basis": [
+          {
+            "need": "medication_management",
+            "program_condition": "합성 복약 확인 필요와 연관",
+            "source_excerpt": null
+          }
+        ],
+        "region_match": "unknown",
+        "missing_information": [
+          "실제 서비스 존재 여부 및 지역 확인",
+          "복약 관련 상담 필요를 담당자에게 확인",
+          "거주지역 확인 필요",
+          "사업 제공지역 확인 필요",
+          "연령대 확인 필요",
+          "사업의 연령 조건 확인 필요",
+          "공식 출처 확인 필요",
+          "실재하지 않는 합성 데이터: 실제 사업 별도 탐색 필요"
+        ],
+        "source_url": null,
+        "checked_at": null,
+        "data_status": "synthetic_demo",
+        "application_method": "신청 불가: 합성 시연 전용",
+        "warning": "합성 시연 전용이며 실제 제도·혜택이 아닙니다."
+      },
+      {
+        "program_id": "demo-mobility",
+        "program_name": "[합성] 지역 이동 지원 연결 테스트",
+        "reason": "이동 지원 필요와 관련하여 확인해 볼 후보입니다. 자격·지원 제공은 미확인입니다.",
+        "eligibility_status": "unverified",
+        "matched_needs": [
+          "mobility_support"
+        ],
+        "basis": [
+          {
+            "need": "mobility_support",
+            "program_condition": "합성 이동 지원 필요와 연관",
+            "source_excerpt": null
+          }
+        ],
+        "region_match": "unknown",
+        "missing_information": [
+          "합성 지역 범위 확인",
+          "이동 지원 방식 확인",
+          "거주지역 확인 필요",
+          "연령대 확인 필요",
+          "사업의 연령 조건 확인 필요",
+          "공식 출처 확인 필요",
+          "실재하지 않는 합성 데이터: 실제 사업 별도 탐색 필요"
+        ],
+        "source_url": null,
+        "checked_at": null,
+        "data_status": "synthetic_demo",
+        "application_method": "신청 불가: 합성 시연 전용",
+        "warning": "합성 시연 전용이며 실제 제도·혜택이 아닙니다."
+      }
+    ],
+    "unmatched_needs": [],
+    "disclaimer": "확인해 볼 후보 정보이며 실제 수급 자격·지원 제공·금액을 판정하거나 보장하지 않습니다. 관할 기관 확인이 필요합니다."
+  }
+}

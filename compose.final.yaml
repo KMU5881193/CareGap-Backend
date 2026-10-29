@@ -1,0 +1,19 @@
+services:
+  api:
+    build: .
+    image: caregap-final-real-ai:local
+    ports:
+      - "127.0.0.1:4325:4320"
+    environment:
+      PORT: "4320"
+      API_HOST: "0.0.0.0"
+      CAREGAP_SYNTHETIC_HTTP: "1"
+      CAREGAP_RELEASE: "final-docker-hybrid"
+      ANALYSIS_PROVIDER: ollama
+      OLLAMA_MODEL: qwen2.5vl:7b
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+      OCR_PROVIDER: host
+      STT_PROVIDER: host
+      HOST_AI_URL: http://host.docker.internal:4326
+      HOST_AI_TOKEN: ${HOST_AI_TOKEN:?Run start-docker-final.ps1}
+    restart: unless-stopped

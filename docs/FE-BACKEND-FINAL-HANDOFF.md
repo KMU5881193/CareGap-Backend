@@ -1,0 +1,74 @@
+# FE 최종 API 연결 계약
+
+로컬: `http://127.0.0.1:4324`
+
+임시 HTTPS: `https://favourite-bizrate-passed-calibration.trycloudflare.com`
+
+합성 데이터 전용, 메모리 저장소입니다. 재시작하면 계정·토큰·기록·작업이 모두 초기화됩니다. Quick Tunnel 주소도 재시작 시 변경됩니다. 공개 자가등록은 운영 인증이 아니며 실제 개인정보를 입력하면 안 됩니다. 별도 PC의 FE 검증은 아직 필요합니다. Ollama는 공개하지 않습니다.
+
+Vite 서버 프록시(브라우저에서 상대 경로 fetch 사용):
+```ts
+server: { proxy: {
+ '/api': { target:'https://favourite-bizrate-passed-calibration.trycloudflare.com', changeOrigin:true,
+   configure(proxy) { proxy.on('proxyReq', req => req.removeHeader('origin')); } },
+ '/health': { target:'https://favourite-bizrate-passed-calibration.trycloudflare.com', changeOrigin:true,
+   configure(proxy) { proxy.on('proxyReq', req => req.removeHeader('origin')); } }
+} }
+```
+Bearer 헤더는 그대로 전달합니다. 직접 브라우저 교차 출처 호출은 FE_ORIGINS에 정확한 출처를 등록해야 하며 기본값은 거절합니다.
+
+## 인증
+`POST /api/auth/register` 및 `POST /api/auth/login`:
+```json
+{"identifier":"synthetic-fe-demo-unique","password":"synthetic-password-unique-2026"}
+```
+등록은 201 `{data:{user_id,role:"staff",synthetic_only:true}}`. 로그인은 200 `{data:{access_token,token_type:"Bearer",expires_in:3600,actor,...}}`입니다. 아래 요청은 모두 `Authorization: Bearer <access_token>`을 사용합니다. `GET /api/auth/me`, `POST /api/auth/logout`(204). 고정 계정은 없습니다.
+
+## 화면별 경로
+모든 예시 ID는 직전 응답 값을 사용합니다. 성공 응답은 `{data:...}`이며 분석도 이 계약을 사용합니다. 정확한 실행 요청·응답은 `final-http-example.json`에 기록합니다.
+
+|기능|API|요청|
+|---|---|---|
+|대상자 생성/목록|POST/GET `/api/persons`|POST `{}` → `{person_id,synthetic_only:true}`|
+|예약 생성|POST `/api/appointments`|`{person_id,starts_at:"2026-11-01T01:00:00Z",ends_at:"2026-11-01T02:00:00Z"}`|
+|예약 조회|GET `/api/appointments`|내 예약 배열|
+|예약 완료/취소|POST `/api/appointments/:id/actions`|`{action:"complete",expected_status:"scheduled"}` 또는 cancel|
+|기록 생성|POST `/api/records`|`{person_id,text}` → `{person_id,consultation_id,record_version_id,text}`|
+|기록 목록/버전 이력|GET `/api/records?person_id=...`|수정 전후 불변 버전 모두 반환|
+|새 기록 버전|POST `/api/records/:consultation_id/versions`|`{expected_record_version_id,text}`|
+|후속 업무 생성|POST `/api/follow-ups`|`{person_id,title,consultation_id?,record_version_id?}` 참조 두 필드는 함께 사용|
+|후속 업무 목록|GET `/api/follow-ups?person_id=...`|내 대상자 업무 배열|
+|업무 완료/취소|POST `/api/follow-ups/:id/actions`|`{action:"complete",expected_status:"open"}` 또는 cancel|
+|내 알림 생성|POST `/api/notifications`|`{title,body}` 수신자는 로그인 사용자로 강제|
+|내 알림 조회/읽음|GET `/api/notifications`, POST `/api/notifications/:id/read`|읽음 요청 `{}`|
+
+알림은 인앱 수동 알림입니다. 자동 푸시·문자 발송은 구현하지 않았습니다. PostgreSQL 저장은 활성화하지 않았습니다.
+
+## OCR/STT 순서
+1. POST `/api/ocr/jobs` 또는 `/api/stt/jobs`: `{person_id,request_key,filename,mimeType,base64}`. PNG/JPEG 또는 16kHz mono PCM16 WAV. 202의 `data.id` 보관.
+2. GET `/api/{ocr|stt}/jobs/:id`를 폴링. `status`가 succeeded인지 확인. `original`은 실제 모델 원문이며 교정문과 다릅니다. failed는 정상 성공으로 취급하지 않습니다.
+3. POST `/api/ocr/jobs/:id/corrections`: `{expected_version:0,text}`. STT는 `{expected_version:0,segments:[{start_ms:0,end_ms:8175,speaker_id:"unknown",text}]}`.
+4. POST `/api/{ocr|stt}/jobs/:id/confirmation`: `{expected_version:1}`.
+5. POST `/api/records/import`: `{source:"stt",job_id}`. 반환된 consultation_id/record_version_id를 분석에 전달.
+
+OCR은 실제 ONNX지만 손글씨 정확도 보장은 아닙니다. STT 자동 화자 분리는 없습니다. `provider_kind:injected` 및 health의 실제 제공자를 함께 확인합니다. corrections/confirmed는 사람의 작업입니다.
+
+## 실제 Qwen 분석·승인·추천
+POST `/api/analyses`, 새 분석마다 새로운 `Idempotency-Key`:
+```json
+{"person_id":"<person>","past":[{"consultation_id":"<past>","record_version_id":"<past-version>"}],"current":{"consultation_id":"<current>","record_version_id":"<current-version>"}}
+```
+응답 `data.status`를 반드시 확인합니다. HTTP 200이어도 failed일 수 있습니다. 정상은 `provider_kind:"llm"`, `provider_metadata:{provider:"ollama",model:"qwen2.5vl:7b",prompt_version:"caregap-temporal-v2"}`, `original.findings`의 change/evidence 및 questions입니다. GET `/api/analyses/:id`로 조회합니다.
+
+POST `/api/analysis-reviews/:id`: `{action:"submit",expected_version:1}` 이후 `{action:"approve",expected_version:2}`. 담당자가 원문과 의미를 확인해야 하며 자동으로 승인하면 안 됩니다.
+
+POST `/api/welfare-recommendations`:
+```json
+{"analysis_id":"<id>","expected_analysis_version":3,"confirmations":[{"need":"meal_support","finding_index":0,"evidence_index":0,"confirmed":true}]}
+```
+`data.candidates`를 표시합니다. 복지 목록은 합성·미확인 후보이며 자격 판정이 아닙니다. 정보 부족 분석은 현재 INVALID_ANALYSIS로 차단될 수 있습니다.
+
+## 오류 및 합성 시연
+401 인증 실패/만료/로그아웃, 403 다른 대상자 또는 Origin 거절, 404 없음, 409 버전 충돌·미확정 가져오기·미승인 추천, 400 잘못된 입력, 429 호출 제한. `{error:{code}}`를 표시하고 오류 상태에서 다음 단계로 진행하지 마세요.
+
+검증 입력: 이전 “어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다.” → 현재 음성 교정문 “오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다.” 실제 STT 원문은 복약 표현을 오인식했으므로 반드시 교정 화면에서 구분합니다.

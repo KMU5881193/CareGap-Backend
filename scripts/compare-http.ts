@@ -1,0 +1,8 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import {randomBytes} from 'node:crypto';
+const base=process.env.API_BASE_URL ?? 'http://127.0.0.1:4322';let token='';
+async function call(path:string,body:unknown){const r=await fetch(base+path,{method:'POST',headers:{'Content-Type':'application/json',Authorization:`Bearer ${token}`,'Idempotency-Key':randomBytes(12).toString('hex')},body:JSON.stringify(body)});if(!r.ok)throw Error(await r.text());return (await r.json() as any).data;}
+const creds={identifier:randomBytes(8).toString('hex'),password:randomBytes(20).toString('hex')};await call('/api/auth/register',creds);token=(await call('/api/auth/login',creds)).access_token;
+const cases=JSON.parse(await readFile('scripts/ollama-evaluation.json','utf8'));const report=[];
+for(const c of cases.filter((c:any)=>!process.env.CASE_IDS||process.env.CASE_IDS.split(',').includes(c.id))){const person=(await call('/api/persons',{})).person_id;const rows=[];for(const text of [c.past,c.current])rows.push(await call('/api/records',{person_id:person,text}));const ref=(r:any)=>({consultation_id:r.consultation_id,record_version_id:r.record_version_id});const t=Date.now();const a=await call('/api/analyses',{person_id:person,past:[ref(rows[0])],current:ref(rows[1])});const findings=a.original?.findings;const result={case:c.id,expected:c.expected,status:a.status,error:a.error_code,actual:findings,pass:a.status==='succeeded'&&findings.length===1&&findings[0].change===c.expected,ms:Date.now()-t};report.push(result);console.log(JSON.stringify(result));}
+await writeFile(`comparison-${process.env.REPORT_NAME ?? 'qwen'}.json`,JSON.stringify(report,null,2));

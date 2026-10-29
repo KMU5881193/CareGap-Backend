@@ -1,0 +1,31 @@
+import {randomBytes,randomUUID} from 'node:crypto';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const base=process.env.API_BASE_URL ?? 'http://127.0.0.1:4324';
+const source=process.env.E2E_SOURCE ?? 'stt';let token='';const start=Date.now();const trace:any[]=[];
+async function call(path:string,body?:unknown,status?:number){const t=Date.now();const r=await fetch(base+path,{method:body===undefined?'GET':'POST',headers:{'Content-Type':'application/json',Authorization:`Bearer ${token}`,'Idempotency-Key':randomUUID()},body:body===undefined?undefined:JSON.stringify(body)});const value=r.status===204?null:await r.json() as any;if(!path.startsWith('/api/auth'))trace.push({path,request:body && typeof body==='object'?{...body as any,...('base64' in body?{base64:'[synthetic fixture omitted]'}:{})}:body,status:r.status,elapsed_ms:Date.now()-t,response:value});if(status!==undefined)assert.equal(r.status,status,JSON.stringify(value));else assert(r.ok,JSON.stringify(value));return value?.data ?? value;}
+const credentials={identifier:'synthetic-'+randomBytes(8).toString('hex'),password:randomBytes(20).toString('hex')};
+await call('/api/auth/register',credentials,201);token=(await call('/api/auth/login',credentials)).access_token;await call('/api/auth/me');
+const p=await call('/api/persons',{},201);await call('/api/persons');const person_id=p.person_id;
+const appointment=await call('/api/appointments',{person_id,starts_at:'2026-11-01T01:00:00Z',ends_at:'2026-11-01T02:00:00Z'},201);await call('/api/appointments');
+const past=await call('/api/records',{person_id,text:source==='stt'?'어제 식사는 두 번 했습니다. 약을 빠뜨렸습니다. 산책은 한 번 했습니다.':'어제 식사는 두 번 했고 약을 빠뜨렸습니다.'},201);
+const job=await call(`/api/${source}/jobs`,{person_id,request_key:randomUUID(),filename:source==='stt'?'synthetic.wav':'synthetic.png',mimeType:source==='stt'?'audio/wav':'image/png',base64:(await readFile(`scripts/new-synthetic.${source==='stt'?'wav':'png'}`)).toString('base64')},202);
+await call('/api/records/import',{source,job_id:job.id},409);
+let result:any;for(let n=0;n<120;n++){result=await call(`/api/${source}/jobs/${job.id}`);if(result.status==='succeeded')break;assert.notEqual(result.status,'failed',JSON.stringify(result));await new Promise(r=>setTimeout(r,500));}assert.equal(result.status,'succeeded');
+const text=source==='stt'?'오늘 식사는 세 번 했습니다. 약을 빠뜨리지 않았습니다. 산책은 두 번 했습니다.':'오늘 식사는 세 번 했고 약을 빠뜨리지 않았습니다.';
+await call(`/api/${source}/jobs/${job.id}/corrections`,source==='stt'?{expected_version:0,segments:[{start_ms:0,end_ms:8175,speaker_id:'unknown',text}]}:{expected_version:0,text});
+await call(`/api/${source}/jobs/${job.id}/confirmation`,{expected_version:1});const current=await call('/api/records/import',{source,job_id:job.id},201);
+const ref=(r:any)=>({consultation_id:r.consultation_id,record_version_id:r.record_version_id});
+const analysis=await call('/api/analyses',{person_id,past:[ref(past)],current:ref(current)});assert.equal(analysis.status,'succeeded',JSON.stringify(analysis));assert.equal(analysis.provider_kind,'llm');assert.equal(analysis.provider_metadata.provider,'ollama');
+assert.deepEqual(analysis.original.findings.map((f:any)=>f.change),source==='stt'?['improved','improved','improved']:['improved','improved']);
+for(const f of analysis.original.findings)for(const e of f.evidence){const r=[past,current].find(r=>r.record_version_id===e.record_version_id);assert(r);assert.equal(r.consultation_id,e.consultation_id);assert(r.text.includes(e.quote));}
+await call('/api/welfare-recommendations',{analysis_id:analysis.id,expected_analysis_version:1,confirmations:[{need:'meal_support',finding_index:0,evidence_index:0,confirmed:true}]},409);
+await call(`/api/analysis-reviews/${analysis.id}`,{action:'submit',expected_version:1});await call(`/api/analysis-reviews/${analysis.id}`,{action:'approve',expected_version:2});
+const welfare=await call('/api/welfare-recommendations',{analysis_id:analysis.id,expected_analysis_version:3,confirmations:[{need:'meal_support',finding_index:0,evidence_index:0,confirmed:true}]});assert(welfare.candidates.length>0);
+const task=await call('/api/follow-ups',{person_id,title:'합성 대상자 식사 상태 재확인',...ref(current)},201);await call(`/api/follow-ups?person_id=${person_id}`);await call(`/api/follow-ups/${task.follow_up_id}/actions`,{action:'complete',expected_status:'open'});
+const notice=await call('/api/notifications',{title:'합성 후속 확인',body:'담당자 검토를 완료했습니다.'},201);await call('/api/notifications');await call(`/api/notifications/${notice.notification_id}/read`,{});
+await call(`/api/appointments/${appointment.appointment_id}/actions`,{action:'complete',expected_status:'scheduled'});
+await call('/api/auth/logout',{},204);await call('/api/auth/me',undefined,401);
+assert.equal(analysis.inference?.provider,'ollama');assert(analysis.inference.eval_count>0);
+const report={base,source,total_ms:Date.now()-start,original:result.original,analysis_id:analysis.id,provider:analysis.provider_metadata,inference:analysis.inference,findings:analysis.original.findings,candidate_count:welfare.candidates.length,trace};
+await mkdir('.runtime',{recursive:true});const path=`.runtime/e2e-${source}-${Date.now()}.json`;await writeFile(path,JSON.stringify(report,null,2));console.log(JSON.stringify({...report,trace:undefined,report:path}));

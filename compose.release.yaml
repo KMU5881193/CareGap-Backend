@@ -1,0 +1,15 @@
+services:
+  api:
+    image: caregap-api:${RELEASE_TAG:?Set RELEASE_TAG}
+    platform: linux/amd64
+    ports: ["127.0.0.1:${HOST_PORT:-4321}:4320"]
+    environment:
+      PORT: "4320"
+      API_HOST: 0.0.0.0
+      CAREGAP_SYNTHETIC_HTTP: "1"
+      FE_ORIGINS: ${FE_ORIGINS:-http://localhost:5173}
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:4320/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 5s
+      timeout: 3s
+      retries: 5

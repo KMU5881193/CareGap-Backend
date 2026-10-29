@@ -1,0 +1,7 @@
+[
+ {"id":"meal-down","past":"하루 3회 식사했습니다.","current":"하루 2회 식사했습니다.","expected":"worsened"},
+ {"id":"medication-missed","past":"매일 약을 복용했습니다.","current":"2일 동안 약을 복용하지 않았습니다.","expected":"worsened"},
+ {"id":"walking-up","past":"주 1회 산책했습니다.","current":"주 3회 산책했습니다.","expected":"improved"},
+ {"id":"meal-same","past":"하루 3회 식사했습니다.","current":"하루 3회 식사했습니다.","expected":"unchanged"},
+ {"id":"insufficient","past":"하루 3회 식사했습니다.","current":"식사 횟수는 확인하지 못했습니다.","expected":"unknown"}
+]

@@ -1,0 +1,17 @@
+import express from 'express';
+import {readFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {timingSafeEqual} from 'node:crypto';
+import {z} from 'zod';
+import {PythonOcrProvider} from '../src/modules/be3-intelligence/python-ocr-provider.js';
+import {LocalWhisperProvider} from '../src/modules/be3-intelligence/stt/local-provider.js';
+const token=readFileSync('.runtime/host-ai.key','utf8').trim();if(token.length<32)throw Error('MISSING_HOST_KEY');
+const root=resolve('..');
+const ocr=new PythonOcrProvider({pythonPath:resolve(root,'CareGap-Backend/experiments/handwriting-ocr/.venv/Scripts/python.exe'),workerPath:resolve(root,'CareGap-Backend/experiments/handwriting-ocr/worker.py'),engine:'handwriting-line'});
+const stt=new LocalWhisperProvider({pythonPath:resolve(root,'CareGap-Backend-STT/experiments/stt/.venv/Scripts/python.exe'),modelPath:resolve(root,'CareGap-Backend-STT/experiments/stt/models/base')});
+const app=express();app.disable('x-powered-by');
+app.use((req,res,next)=>{const value=Buffer.from(req.get('authorization')??'');const expected=Buffer.from(`Bearer ${token}`);if(value.length!==expected.length||!timingSafeEqual(value,expected))return res.sendStatus(401);next();});
+app.use(express.json({limit:'14mb'}));
+let busy=false;
+app.post('/:kind',async(req,res)=>{if(busy)return res.status(429).json({error:'BUSY'});busy=true;try{const b=z.object({base64:z.string().max(14000000),mimeType:z.enum(['audio/wav','image/png','image/jpeg'])}).strict().parse(req.body);const bytes=Buffer.from(b.base64,'base64');if(req.params.kind==='ocr')res.json({text:await ocr.extract(bytes,b.mimeType)});else if(req.params.kind==='stt')res.json(await stt.transcribeSegments(bytes,b.mimeType));else res.sendStatus(404);}catch{res.status(502).json({error:'HOST_INFERENCE_FAILED'});}finally{busy=false;}});
+app.listen(4326,'127.0.0.1',()=>console.log('Authenticated Windows inference bridge on loopback 4326'));

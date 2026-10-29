@@ -1,6 +1,6 @@
 import { z } from 'zod';
 export const Id=z.uuid();
-export const Actor=z.object({user_id:Id, role:z.enum(['person','family','staff','admin'])});
+export const Actor=z.object({user_id:Id, role:z.enum(['patient','family','staff','admin'])});
 export type Actor=z.infer<typeof Actor>;
 // BE1 must supply current relationship checks; role alone never grants record access.
 export interface AuthorizationPort { canAccess(actor:Actor, personId:string, action:'read'|'write'|'analyze'):Promise<boolean> }

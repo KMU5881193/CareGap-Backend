@@ -1,0 +1,1643 @@
+{
+  "fixture_origin": "captured_from_synthetic_preview_services",
+  "demo_mode": true,
+  "data_origin": "synthetic",
+  "screens": {
+    "scenario": {
+      "demo_mode": true,
+      "data_origin": "synthetic",
+      "providers": {
+        "ocr": "mock",
+        "stt": "mock",
+        "analysis": "mock"
+      },
+      "authentication": "fixed_synthetic_actor_only",
+      "authorization": "synthetic_fixture_check_only",
+      "records": "code_owned_fixture_not_official_be2_storage",
+      "catalog": "synthetic_demo",
+      "data": {
+        "scenario_id": "caregap-fixed-v1",
+        "actor": {
+          "user_id": "00000000-0000-4000-8000-000000000001",
+          "role": "staff"
+        },
+        "records": [
+          {
+            "consultation_id": "00000000-0000-4000-8000-000000000003",
+            "record_version_id": "00000000-0000-4000-8000-000000000004",
+            "person_id": "00000000-0000-4000-8000-000000000002",
+            "text": "지난주에는 하루 세 끼 식사를 했다고 함. 무릎 통증으로 외출은 주 1회였다고 함. 약은 매일 복용했다고 함."
+          },
+          {
+            "consultation_id": "00000000-0000-4000-8000-000000000005",
+            "record_version_id": "00000000-0000-4000-8000-000000000006",
+            "person_id": "00000000-0000-4000-8000-000000000002",
+            "text": "최근 일주일 동안 식사를 하루 두 번 했다고 함. 무릎 통증으로 외출하지 못했다고 함. 약을 복용하지 않은 날이 2일 있었다고 함."
+          }
+        ],
+        "ocr": null,
+        "stt": null,
+        "analysis": null,
+        "needs": null,
+        "corrections": {
+          "ocr_text": "최근 일주일 동안 식사를 하루 두 번 했다고 함. 무릎 통증으로 외출하지 못했다고 함. 약을 복용하지 않은 날이 2일 있었다고 함.",
+          "stt_segments": [
+            {
+              "start_ms": 0,
+              "end_ms": 1000,
+              "speaker_id": "speaker_1",
+              "text": "최근 일주일 동안 식사를 하루 두 번 했다고 함. 무릎 통증으로 외출하지 못했다고 함. 약을 복용하지 않은 날이 2일 있었다고 함."
+            }
+          ]
+        },
+        "connection": "confirmed_ocr_or_stt_gate_then_existing_synthetic_record_fixture"
+      }
+    },
+    "ocr_original": {
+      "demo_mode": true,
+      "data_origin": "synthetic",
+      "providers": {
+        "ocr": "mock",
+        "stt": "mock",
+        "analysis": "mock"
+      },
+      "authentication": "fixed_synthetic_actor_only",
+      "authorization": "synthetic_fixture_check_only",
+      "records": "code_owned_fixture_not_official_be2_storage",
+      "catalog": "synthetic_demo",
+      "data": {
+        "id": "659101ca-af62-49e2-baae-d759596008ce",
+        "person_id": "00000000-0000-4000-8000-000000000002",
+        "created_by": "00000000-0000-4000-8000-000000000001",
+        "created_at": "2026-10-29T15:21:04.315Z",
+        "provider_kind": "mock",
+        "status": "succeeded",
+        "version": 0,
+        "corrections": [],
+        "original": "최근 식사를 자주 거르고 있다고 말씀하심. 다리가 불편하여 장보기가 어렵다고 함."
+      }
+    },
+    "ocr_corrected": {
+      "demo_mode": true,
+      "data_origin": "synthetic",
+      "providers": {
+        "ocr": "mock",
+        "stt": "mock",
+        "analysis": "mock"
+      },
+      "authentication": "fixed_synthetic_actor_only",
+      "authorization": "synthetic_fixture_check_only",
+      "records": "code_owned_fixture_not_official_be2_storage",
+      "catalog": "synthetic_demo",
+      "data": {
+        "id": "659101ca-af62-49e2-baae-d759596008ce",
+        "person_id": "00000000-0000-4000-8000-000000000002",
+        "created_by": "00000000-0000-4000-8000-000000000001",
+        "created_at": "2026-10-29T15:21:04.315Z",
+        "provider_kind": "mock",
+        "status": "succeeded",
+        "version": 1,
+        "corrections": [
+          {
+            "version": 1,
+            "text": "최근 일주일 동안 식사를 하루 두 번 했다고 함. 무릎 통증으로 외출하지 못했다고 함. 약을 복용하지 않은 날이 2일 있었다고 함.",
+            "edited_by": "00000000-0000-4000-8000-000000000001",
+            "edited_at": "2026-10-29T15:21:04.332Z"
+          }
+        ],
+        "original": "최근 식사를 자주 거르고 있다고 말씀하심. 다리가 불편하여 장보기가 어렵다고 함."
+      }
+    },
+    "ocr_confirmed": {
+      "demo_mode": true,
+      "data_origin": "synthetic",
+      "providers": {
+        "ocr": "mock",
+        "stt": "mock",
+        "analysis": "mock"
+      },
+      "authentication": "fixed_synthetic_actor_only",
+      "authorization": "synthetic_fixture_check_only",
+      "records": "code_owned_fixture_not_official_be2_storage",
+      "catalog": "synthetic_demo",
+      "data": {
+        "id": "659101ca-af62-49e2-baae-d759596008ce",
+        "person_id": "00000000-0000-4000-8000-000000000002",
+        "created_by": "00000000-0000-4000-8000-000000000001",
+        "created_at": "2026-10-29T15:21:04.315Z",
+        "provider_kind": "mock",
+        "status": "succeeded",
+        "version": 1,
+        "corrections": [
+          {
+            "version": 1,
+            "text": "최근 일주일 동안 식사를 하루 두 번 했다고 함. 무릎 통증으로 외출하지 못했다고 함. 약을 복용하지 않은 날이 2일 있었다고 함.",
+            "edited_by": "00000000-0000-4000-8000-000000000001",
+            "edited_at": "2026-10-29T15:21:04.332Z"
+          }
+        ],
+        "original": "최근 식사를 자주 거르고 있다고 말씀하심. 다리가 불편하여 장보기가 어렵다고 함.",
+        "confirmed": {
+          "version": 1,
+          "confirmed_by": "00000000-0000-4000-8000-000000000001",
+          "confirmed_at": "2026-10-29T15:21:04.340Z"
+        }
+      }
+    },
+    "stt_original": {
+      "demo_mode": true,
+      "data_origin": "synthetic",
+      "providers": {
+        "ocr": "mock",
+        "stt": "mock",
+        "analysis": "mock"
+      },
+      "authentication": "fixed_synthetic_actor_only",
+      "authorization": "synthetic_fixture_check_only",
+      "records": "code_owned_fixture_not_official_be2_storage",
+      "catalog": "synthetic_demo",
+      "data": {
+        "id": "a72e0e02-c3fc-4ad8-b5c2-76d02991de8a",
+        "person_id": "00000000-0000-4000-8000-000000000002",
+        "created_by": "00000000-0000-4000-8000-000000000001",
+        "created_at": "2026-10-29T15:21:04.350Z",
+        "provider_kind": "mock",
+        "audio": {
+          "sample_rate": 8000,
+          "channels": 1,
+          "bits_per_sample": 16,
+          "duration_ms": 1000,
+          "frames": 8000
+        },
+        "status": "succeeded",
+        "version": 0,
+        "revisions": [],
+        "original": {
+          "text": "합성 테스트: 최근 식사는 하루 두 번 했습니다.",
+          "segments": [
+            {
+              "start_ms": 0,
+              "end_ms": 1000,
+              "speaker_id": "unknown",
+              "text": "합성 테스트: 최근 식사는 하루 두 번 했습니다."
+            }
+          ],
+          "timing": "whole_audio",
+          "diarization": "none"
+        }
+      }
+    },
+    "stt_corrected": {
+      "demo_mode": true,
+      "data_origin": "synthetic",
+      "providers": {
+        "ocr": "mock",
+        "stt": "mock",
+        "analysis": "mock"
+      },
+      "authentication": "fixed_synthetic_actor_only",
+      "authorization": "synthetic_fixture_check_only",
+      "records": "code_owned_fixture_not_official_be2_storage",
+      "catalog": "synthetic_demo",
+      "data": {
+        "id": "a72e0e02-c3fc-4ad8-b5c2-76d02991de8a",
+        "person_id": "00000000-0000-4000-8000-000000000002",
+        "created_by": "00000000-0000-4000-8000-000000000001",
+        "created_at": "2026-10-29T15:21:04.350Z",
+        "provider_kind": "mock",
+        "audio": {
+          "sample_rate": 8000,
+          "channels": 1,
+          "bits_per_sample": 16,
+          "duration_ms": 1000,
+          "frames": 8000
+        },
+        "status": "succeeded",
+        "version": 1,
+        "revisions": [
+          {
+            "version": 1,
+            "text": "최근 일주일 동안 식사를 하루 두 번 했다고 함. 무릎 통증으로 외출하지 못했다고 함. 약을 복용하지 않은 날이 2일 있었다고 함.",
+            "segments": [
+              {
+                "start_ms": 0,
+                "end_ms": 1000,
+                "speaker_id": "speaker_1",
+                "text": "최근 일주일 동안 식사를 하루 두 번 했다고 함. 무릎 통증으로 외출하지 못했다고 함. 약을 복용하지 않은 날이 2일 있었다고 함."
+              }
+            ],
+            "edited_by": "00000000-0000-4000-8000-000000000001",
+            "edited_at": "2026-10-29T15:21:04.365Z"
+          }
+        ],
+        "original": {
+          "text": "합성 테스트: 최근 식사는 하루 두 번 했습니다.",
+          "segments": [
+            {
+              "start_ms": 0,
+              "end_ms": 1000,
+              "speaker_id": "unknown",
+              "text": "합성 테스트: 최근 식사는 하루 두 번 했습니다."
+            }
+          ],
+          "timing": "whole_audio",
+          "diarization": "none"
+        }
+      }
+    },
+    "stt_confirmed": {
+      "demo_mode": true,
+      "data_origin": "synthetic",
+      "providers": {
+        "ocr": "mock",
+        "stt": "mock",
+        "analysis": "mock"
+      },
+      "authentication": "fixed_synthetic_actor_only",
+      "authorization": "synthetic_fixture_check_only",
+      "records": "code_owned_fixture_not_official_be2_storage",
+      "catalog": "synthetic_demo",
+      "data": {
+        "id": "a72e0e02-c3fc-4ad8-b5c2-76d02991de8a",
+        "person_id": "00000000-0000-4000-8000-000000000002",
+        "created_by": "00000000-0000-4000-8000-000000000001",
+        "created_at": "2026-10-29T15:21:04.350Z",
+        "provider_kind": "mock",
+        "audio": {
+          "sample_rate": 8000,
+          "channels": 1,
+          "bits_per_sample": 16,
+          "duration_ms": 1000,
+          "frames": 8000
+        },
+        "status": "succeeded",
+        "version": 1,
+        "revisions": [
+          {
+            "version": 1,
+            "text": "최근 일주일 동안 식사를 하루 두 번 했다고 함. 무릎 통증으로 외출하지 못했다고 함. 약을 복용하지 않은 날이 2일 있었다고 함.",
+            "segments": [
+              {
+                "start_ms": 0,
+                "end_ms": 1000,
+                "speaker_id": "speaker_1",
+                "text": "최근 일주일 동안 식사를 하루 두 번 했다고 함. 무릎 통증으로 외출하지 못했다고 함. 약을 복용하지 않은 날이 2일 있었다고 함."
+              }
+            ],
+            "edited_by": "00000000-0000-4000-8000-000000000001",
+            "edited_at": "2026-10-29T15:21:04.365Z"
+          }
+        ],
+        "original": {
+          "text": "합성 테스트: 최근 식사는 하루 두 번 했습니다.",
+          "segments": [
+            {
+              "start_ms": 0,
+              "end_ms": 1000,
+              "speaker_id": "unknown",
+              "text": "합성 테스트: 최근 식사는 하루 두 번 했습니다."
+            }
+          ],
+          "timing": "whole_audio",
+          "diarization": "none"
+        },
+        "confirmed": {
+          "version": 1,
+          "confirmed_by": "00000000-0000-4000-8000-000000000001",
+          "confirmed_at": "2026-10-29T15:21:04.374Z"
+        }
+      }
+    },
+    "analysis_draft": {
+      "demo_mode": true,
+      "data_origin": "synthetic",
+      "providers": {
+        "ocr": "mock",
+        "stt": "mock",
+        "analysis": "mock"
+      },
+      "authentication": "fixed_synthetic_actor_only",
+      "authorization": "synthetic_fixture_check_only",
+      "records": "code_owned_fixture_not_official_be2_storage",
+      "catalog": "synthetic_demo",
+      "data": {
+        "id": "ffb11935-2f90-4e2e-80bf-0c2a3b10d619",
+        "owner": "00000000-0000-4000-8000-000000000001",
+        "input": {
+          "person_id": "00000000-0000-4000-8000-000000000002",
+          "past": [
+            {
+              "consultation_id": "00000000-0000-4000-8000-000000000003",
+              "record_version_id": "00000000-0000-4000-8000-000000000004"
+            }
+          ],
+          "current": {
+            "consultation_id": "00000000-0000-4000-8000-000000000005",
+            "record_version_id": "00000000-0000-4000-8000-000000000006"
+          }
+        },
+        "sources": [
+          {
+            "consultation_id": "00000000-0000-4000-8000-000000000003",
+            "record_version_id": "00000000-0000-4000-8000-000000000004",
+            "person_id": "00000000-0000-4000-8000-000000000002",
+            "text": "지난주에는 하루 세 끼 식사를 했다고 함. 무릎 통증으로 외출은 주 1회였다고 함. 약은 매일 복용했다고 함."
+          },
+          {
+            "consultation_id": "00000000-0000-4000-8000-000000000005",
+            "record_version_id": "00000000-0000-4000-8000-000000000006",
+            "person_id": "00000000-0000-4000-8000-000000000002",
+            "text": "최근 일주일 동안 식사를 하루 두 번 했다고 함. 무릎 통증으로 외출하지 못했다고 함. 약을 복용하지 않은 날이 2일 있었다고 함."
+          }
+        ],
+        "provider_kind": "mock",
+        "status": "succeeded",
+        "review_state": "draft",
+        "version": 1,
+        "history": [],
+        "original": {
+          "status": "draft",
+          "findings": [
+            {
+              "text": "식사 횟수: 하루 3회 → 하루 2회로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "지난주에는 하루 세 끼 식사를 했다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "최근 일주일 동안 식사를 하루 두 번 했다고 함."
+                }
+              ]
+            },
+            {
+              "text": "외출: 주 1회 → 외출하지 못함으로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "무릎 통증으로 외출은 주 1회였다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "무릎 통증으로 외출하지 못했다고 함."
+                }
+              ]
+            },
+            {
+              "text": "약 복용: 매일 복용 → 2일 미복용으로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "약은 매일 복용했다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "약을 복용하지 않은 날이 2일 있었다고 함."
+                }
+              ]
+            }
+          ],
+          "questions": [
+            "식사가 하루 두 번으로 줄어든 이유는 무엇인가요?",
+            "외출하지 못한 상황과 필요한 도움은 무엇인가요?",
+            "약을 복용하지 못한 이틀의 이유는 무엇인가요?"
+          ]
+        },
+        "edited": {
+          "status": "draft",
+          "findings": [
+            {
+              "text": "식사 횟수: 하루 3회 → 하루 2회로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "지난주에는 하루 세 끼 식사를 했다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "최근 일주일 동안 식사를 하루 두 번 했다고 함."
+                }
+              ]
+            },
+            {
+              "text": "외출: 주 1회 → 외출하지 못함으로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "무릎 통증으로 외출은 주 1회였다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "무릎 통증으로 외출하지 못했다고 함."
+                }
+              ]
+            },
+            {
+              "text": "약 복용: 매일 복용 → 2일 미복용으로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "약은 매일 복용했다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "약을 복용하지 않은 날이 2일 있었다고 함."
+                }
+              ]
+            }
+          ],
+          "questions": [
+            "식사가 하루 두 번으로 줄어든 이유는 무엇인가요?",
+            "외출하지 못한 상황과 필요한 도움은 무엇인가요?",
+            "약을 복용하지 못한 이틀의 이유는 무엇인가요?"
+          ]
+        }
+      }
+    },
+    "analysis_edited": {
+      "demo_mode": true,
+      "data_origin": "synthetic",
+      "providers": {
+        "ocr": "mock",
+        "stt": "mock",
+        "analysis": "mock"
+      },
+      "authentication": "fixed_synthetic_actor_only",
+      "authorization": "synthetic_fixture_check_only",
+      "records": "code_owned_fixture_not_official_be2_storage",
+      "catalog": "synthetic_demo",
+      "data": {
+        "id": "ffb11935-2f90-4e2e-80bf-0c2a3b10d619",
+        "owner": "00000000-0000-4000-8000-000000000001",
+        "input": {
+          "person_id": "00000000-0000-4000-8000-000000000002",
+          "past": [
+            {
+              "consultation_id": "00000000-0000-4000-8000-000000000003",
+              "record_version_id": "00000000-0000-4000-8000-000000000004"
+            }
+          ],
+          "current": {
+            "consultation_id": "00000000-0000-4000-8000-000000000005",
+            "record_version_id": "00000000-0000-4000-8000-000000000006"
+          }
+        },
+        "sources": [
+          {
+            "consultation_id": "00000000-0000-4000-8000-000000000003",
+            "record_version_id": "00000000-0000-4000-8000-000000000004",
+            "person_id": "00000000-0000-4000-8000-000000000002",
+            "text": "지난주에는 하루 세 끼 식사를 했다고 함. 무릎 통증으로 외출은 주 1회였다고 함. 약은 매일 복용했다고 함."
+          },
+          {
+            "consultation_id": "00000000-0000-4000-8000-000000000005",
+            "record_version_id": "00000000-0000-4000-8000-000000000006",
+            "person_id": "00000000-0000-4000-8000-000000000002",
+            "text": "최근 일주일 동안 식사를 하루 두 번 했다고 함. 무릎 통증으로 외출하지 못했다고 함. 약을 복용하지 않은 날이 2일 있었다고 함."
+          }
+        ],
+        "provider_kind": "mock",
+        "status": "succeeded",
+        "review_state": "draft",
+        "version": 2,
+        "history": [
+          {
+            "actor_id": "00000000-0000-4000-8000-000000000001",
+            "at": "2026-10-29T15:21:04.393Z",
+            "action": "edit",
+            "version": 2,
+            "draft": {
+              "status": "draft",
+              "findings": [
+                {
+                  "text": "식사 횟수: 하루 3회 → 하루 2회로 기록됨.",
+                  "change": "worsened",
+                  "evidence": [
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000003",
+                      "record_version_id": "00000000-0000-4000-8000-000000000004",
+                      "quote": "지난주에는 하루 세 끼 식사를 했다고 함."
+                    },
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000005",
+                      "record_version_id": "00000000-0000-4000-8000-000000000006",
+                      "quote": "최근 일주일 동안 식사를 하루 두 번 했다고 함."
+                    }
+                  ]
+                },
+                {
+                  "text": "외출: 주 1회 → 외출하지 못함으로 기록됨.",
+                  "change": "worsened",
+                  "evidence": [
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000003",
+                      "record_version_id": "00000000-0000-4000-8000-000000000004",
+                      "quote": "무릎 통증으로 외출은 주 1회였다고 함."
+                    },
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000005",
+                      "record_version_id": "00000000-0000-4000-8000-000000000006",
+                      "quote": "무릎 통증으로 외출하지 못했다고 함."
+                    }
+                  ]
+                },
+                {
+                  "text": "약 복용: 매일 복용 → 2일 미복용으로 기록됨.",
+                  "change": "worsened",
+                  "evidence": [
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000003",
+                      "record_version_id": "00000000-0000-4000-8000-000000000004",
+                      "quote": "약은 매일 복용했다고 함."
+                    },
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000005",
+                      "record_version_id": "00000000-0000-4000-8000-000000000006",
+                      "quote": "약을 복용하지 않은 날이 2일 있었다고 함."
+                    }
+                  ]
+                }
+              ],
+              "questions": [
+                "합성 담당자 수정: 식사 지원 필요를 확인할까요?",
+                "외출하지 못한 상황과 필요한 도움은 무엇인가요?",
+                "약을 복용하지 못한 이틀의 이유는 무엇인가요?"
+              ]
+            }
+          }
+        ],
+        "original": {
+          "status": "draft",
+          "findings": [
+            {
+              "text": "식사 횟수: 하루 3회 → 하루 2회로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "지난주에는 하루 세 끼 식사를 했다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "최근 일주일 동안 식사를 하루 두 번 했다고 함."
+                }
+              ]
+            },
+            {
+              "text": "외출: 주 1회 → 외출하지 못함으로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "무릎 통증으로 외출은 주 1회였다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "무릎 통증으로 외출하지 못했다고 함."
+                }
+              ]
+            },
+            {
+              "text": "약 복용: 매일 복용 → 2일 미복용으로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "약은 매일 복용했다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "약을 복용하지 않은 날이 2일 있었다고 함."
+                }
+              ]
+            }
+          ],
+          "questions": [
+            "식사가 하루 두 번으로 줄어든 이유는 무엇인가요?",
+            "외출하지 못한 상황과 필요한 도움은 무엇인가요?",
+            "약을 복용하지 못한 이틀의 이유는 무엇인가요?"
+          ]
+        },
+        "edited": {
+          "status": "draft",
+          "findings": [
+            {
+              "text": "식사 횟수: 하루 3회 → 하루 2회로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "지난주에는 하루 세 끼 식사를 했다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "최근 일주일 동안 식사를 하루 두 번 했다고 함."
+                }
+              ]
+            },
+            {
+              "text": "외출: 주 1회 → 외출하지 못함으로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "무릎 통증으로 외출은 주 1회였다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "무릎 통증으로 외출하지 못했다고 함."
+                }
+              ]
+            },
+            {
+              "text": "약 복용: 매일 복용 → 2일 미복용으로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "약은 매일 복용했다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "약을 복용하지 않은 날이 2일 있었다고 함."
+                }
+              ]
+            }
+          ],
+          "questions": [
+            "합성 담당자 수정: 식사 지원 필요를 확인할까요?",
+            "외출하지 못한 상황과 필요한 도움은 무엇인가요?",
+            "약을 복용하지 못한 이틀의 이유는 무엇인가요?"
+          ]
+        }
+      }
+    },
+    "analysis_review": {
+      "demo_mode": true,
+      "data_origin": "synthetic",
+      "providers": {
+        "ocr": "mock",
+        "stt": "mock",
+        "analysis": "mock"
+      },
+      "authentication": "fixed_synthetic_actor_only",
+      "authorization": "synthetic_fixture_check_only",
+      "records": "code_owned_fixture_not_official_be2_storage",
+      "catalog": "synthetic_demo",
+      "data": {
+        "id": "ffb11935-2f90-4e2e-80bf-0c2a3b10d619",
+        "owner": "00000000-0000-4000-8000-000000000001",
+        "input": {
+          "person_id": "00000000-0000-4000-8000-000000000002",
+          "past": [
+            {
+              "consultation_id": "00000000-0000-4000-8000-000000000003",
+              "record_version_id": "00000000-0000-4000-8000-000000000004"
+            }
+          ],
+          "current": {
+            "consultation_id": "00000000-0000-4000-8000-000000000005",
+            "record_version_id": "00000000-0000-4000-8000-000000000006"
+          }
+        },
+        "sources": [
+          {
+            "consultation_id": "00000000-0000-4000-8000-000000000003",
+            "record_version_id": "00000000-0000-4000-8000-000000000004",
+            "person_id": "00000000-0000-4000-8000-000000000002",
+            "text": "지난주에는 하루 세 끼 식사를 했다고 함. 무릎 통증으로 외출은 주 1회였다고 함. 약은 매일 복용했다고 함."
+          },
+          {
+            "consultation_id": "00000000-0000-4000-8000-000000000005",
+            "record_version_id": "00000000-0000-4000-8000-000000000006",
+            "person_id": "00000000-0000-4000-8000-000000000002",
+            "text": "최근 일주일 동안 식사를 하루 두 번 했다고 함. 무릎 통증으로 외출하지 못했다고 함. 약을 복용하지 않은 날이 2일 있었다고 함."
+          }
+        ],
+        "provider_kind": "mock",
+        "status": "succeeded",
+        "review_state": "review",
+        "version": 3,
+        "history": [
+          {
+            "actor_id": "00000000-0000-4000-8000-000000000001",
+            "at": "2026-10-29T15:21:04.393Z",
+            "action": "edit",
+            "version": 2,
+            "draft": {
+              "status": "draft",
+              "findings": [
+                {
+                  "text": "식사 횟수: 하루 3회 → 하루 2회로 기록됨.",
+                  "change": "worsened",
+                  "evidence": [
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000003",
+                      "record_version_id": "00000000-0000-4000-8000-000000000004",
+                      "quote": "지난주에는 하루 세 끼 식사를 했다고 함."
+                    },
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000005",
+                      "record_version_id": "00000000-0000-4000-8000-000000000006",
+                      "quote": "최근 일주일 동안 식사를 하루 두 번 했다고 함."
+                    }
+                  ]
+                },
+                {
+                  "text": "외출: 주 1회 → 외출하지 못함으로 기록됨.",
+                  "change": "worsened",
+                  "evidence": [
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000003",
+                      "record_version_id": "00000000-0000-4000-8000-000000000004",
+                      "quote": "무릎 통증으로 외출은 주 1회였다고 함."
+                    },
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000005",
+                      "record_version_id": "00000000-0000-4000-8000-000000000006",
+                      "quote": "무릎 통증으로 외출하지 못했다고 함."
+                    }
+                  ]
+                },
+                {
+                  "text": "약 복용: 매일 복용 → 2일 미복용으로 기록됨.",
+                  "change": "worsened",
+                  "evidence": [
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000003",
+                      "record_version_id": "00000000-0000-4000-8000-000000000004",
+                      "quote": "약은 매일 복용했다고 함."
+                    },
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000005",
+                      "record_version_id": "00000000-0000-4000-8000-000000000006",
+                      "quote": "약을 복용하지 않은 날이 2일 있었다고 함."
+                    }
+                  ]
+                }
+              ],
+              "questions": [
+                "합성 담당자 수정: 식사 지원 필요를 확인할까요?",
+                "외출하지 못한 상황과 필요한 도움은 무엇인가요?",
+                "약을 복용하지 못한 이틀의 이유는 무엇인가요?"
+              ]
+            }
+          },
+          {
+            "actor_id": "00000000-0000-4000-8000-000000000001",
+            "at": "2026-10-29T15:21:04.401Z",
+            "action": "submit",
+            "version": 3,
+            "draft": {
+              "status": "draft",
+              "findings": [
+                {
+                  "text": "식사 횟수: 하루 3회 → 하루 2회로 기록됨.",
+                  "change": "worsened",
+                  "evidence": [
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000003",
+                      "record_version_id": "00000000-0000-4000-8000-000000000004",
+                      "quote": "지난주에는 하루 세 끼 식사를 했다고 함."
+                    },
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000005",
+                      "record_version_id": "00000000-0000-4000-8000-000000000006",
+                      "quote": "최근 일주일 동안 식사를 하루 두 번 했다고 함."
+                    }
+                  ]
+                },
+                {
+                  "text": "외출: 주 1회 → 외출하지 못함으로 기록됨.",
+                  "change": "worsened",
+                  "evidence": [
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000003",
+                      "record_version_id": "00000000-0000-4000-8000-000000000004",
+                      "quote": "무릎 통증으로 외출은 주 1회였다고 함."
+                    },
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000005",
+                      "record_version_id": "00000000-0000-4000-8000-000000000006",
+                      "quote": "무릎 통증으로 외출하지 못했다고 함."
+                    }
+                  ]
+                },
+                {
+                  "text": "약 복용: 매일 복용 → 2일 미복용으로 기록됨.",
+                  "change": "worsened",
+                  "evidence": [
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000003",
+                      "record_version_id": "00000000-0000-4000-8000-000000000004",
+                      "quote": "약은 매일 복용했다고 함."
+                    },
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000005",
+                      "record_version_id": "00000000-0000-4000-8000-000000000006",
+                      "quote": "약을 복용하지 않은 날이 2일 있었다고 함."
+                    }
+                  ]
+                }
+              ],
+              "questions": [
+                "합성 담당자 수정: 식사 지원 필요를 확인할까요?",
+                "외출하지 못한 상황과 필요한 도움은 무엇인가요?",
+                "약을 복용하지 못한 이틀의 이유는 무엇인가요?"
+              ]
+            }
+          }
+        ],
+        "original": {
+          "status": "draft",
+          "findings": [
+            {
+              "text": "식사 횟수: 하루 3회 → 하루 2회로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "지난주에는 하루 세 끼 식사를 했다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "최근 일주일 동안 식사를 하루 두 번 했다고 함."
+                }
+              ]
+            },
+            {
+              "text": "외출: 주 1회 → 외출하지 못함으로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "무릎 통증으로 외출은 주 1회였다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "무릎 통증으로 외출하지 못했다고 함."
+                }
+              ]
+            },
+            {
+              "text": "약 복용: 매일 복용 → 2일 미복용으로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "약은 매일 복용했다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "약을 복용하지 않은 날이 2일 있었다고 함."
+                }
+              ]
+            }
+          ],
+          "questions": [
+            "식사가 하루 두 번으로 줄어든 이유는 무엇인가요?",
+            "외출하지 못한 상황과 필요한 도움은 무엇인가요?",
+            "약을 복용하지 못한 이틀의 이유는 무엇인가요?"
+          ]
+        },
+        "edited": {
+          "status": "draft",
+          "findings": [
+            {
+              "text": "식사 횟수: 하루 3회 → 하루 2회로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "지난주에는 하루 세 끼 식사를 했다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "최근 일주일 동안 식사를 하루 두 번 했다고 함."
+                }
+              ]
+            },
+            {
+              "text": "외출: 주 1회 → 외출하지 못함으로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "무릎 통증으로 외출은 주 1회였다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "무릎 통증으로 외출하지 못했다고 함."
+                }
+              ]
+            },
+            {
+              "text": "약 복용: 매일 복용 → 2일 미복용으로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "약은 매일 복용했다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "약을 복용하지 않은 날이 2일 있었다고 함."
+                }
+              ]
+            }
+          ],
+          "questions": [
+            "합성 담당자 수정: 식사 지원 필요를 확인할까요?",
+            "외출하지 못한 상황과 필요한 도움은 무엇인가요?",
+            "약을 복용하지 못한 이틀의 이유는 무엇인가요?"
+          ]
+        }
+      }
+    },
+    "analysis_approved": {
+      "demo_mode": true,
+      "data_origin": "synthetic",
+      "providers": {
+        "ocr": "mock",
+        "stt": "mock",
+        "analysis": "mock"
+      },
+      "authentication": "fixed_synthetic_actor_only",
+      "authorization": "synthetic_fixture_check_only",
+      "records": "code_owned_fixture_not_official_be2_storage",
+      "catalog": "synthetic_demo",
+      "data": {
+        "id": "ffb11935-2f90-4e2e-80bf-0c2a3b10d619",
+        "owner": "00000000-0000-4000-8000-000000000001",
+        "input": {
+          "person_id": "00000000-0000-4000-8000-000000000002",
+          "past": [
+            {
+              "consultation_id": "00000000-0000-4000-8000-000000000003",
+              "record_version_id": "00000000-0000-4000-8000-000000000004"
+            }
+          ],
+          "current": {
+            "consultation_id": "00000000-0000-4000-8000-000000000005",
+            "record_version_id": "00000000-0000-4000-8000-000000000006"
+          }
+        },
+        "sources": [
+          {
+            "consultation_id": "00000000-0000-4000-8000-000000000003",
+            "record_version_id": "00000000-0000-4000-8000-000000000004",
+            "person_id": "00000000-0000-4000-8000-000000000002",
+            "text": "지난주에는 하루 세 끼 식사를 했다고 함. 무릎 통증으로 외출은 주 1회였다고 함. 약은 매일 복용했다고 함."
+          },
+          {
+            "consultation_id": "00000000-0000-4000-8000-000000000005",
+            "record_version_id": "00000000-0000-4000-8000-000000000006",
+            "person_id": "00000000-0000-4000-8000-000000000002",
+            "text": "최근 일주일 동안 식사를 하루 두 번 했다고 함. 무릎 통증으로 외출하지 못했다고 함. 약을 복용하지 않은 날이 2일 있었다고 함."
+          }
+        ],
+        "provider_kind": "mock",
+        "status": "succeeded",
+        "review_state": "approved",
+        "version": 4,
+        "history": [
+          {
+            "actor_id": "00000000-0000-4000-8000-000000000001",
+            "at": "2026-10-29T15:21:04.393Z",
+            "action": "edit",
+            "version": 2,
+            "draft": {
+              "status": "draft",
+              "findings": [
+                {
+                  "text": "식사 횟수: 하루 3회 → 하루 2회로 기록됨.",
+                  "change": "worsened",
+                  "evidence": [
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000003",
+                      "record_version_id": "00000000-0000-4000-8000-000000000004",
+                      "quote": "지난주에는 하루 세 끼 식사를 했다고 함."
+                    },
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000005",
+                      "record_version_id": "00000000-0000-4000-8000-000000000006",
+                      "quote": "최근 일주일 동안 식사를 하루 두 번 했다고 함."
+                    }
+                  ]
+                },
+                {
+                  "text": "외출: 주 1회 → 외출하지 못함으로 기록됨.",
+                  "change": "worsened",
+                  "evidence": [
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000003",
+                      "record_version_id": "00000000-0000-4000-8000-000000000004",
+                      "quote": "무릎 통증으로 외출은 주 1회였다고 함."
+                    },
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000005",
+                      "record_version_id": "00000000-0000-4000-8000-000000000006",
+                      "quote": "무릎 통증으로 외출하지 못했다고 함."
+                    }
+                  ]
+                },
+                {
+                  "text": "약 복용: 매일 복용 → 2일 미복용으로 기록됨.",
+                  "change": "worsened",
+                  "evidence": [
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000003",
+                      "record_version_id": "00000000-0000-4000-8000-000000000004",
+                      "quote": "약은 매일 복용했다고 함."
+                    },
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000005",
+                      "record_version_id": "00000000-0000-4000-8000-000000000006",
+                      "quote": "약을 복용하지 않은 날이 2일 있었다고 함."
+                    }
+                  ]
+                }
+              ],
+              "questions": [
+                "합성 담당자 수정: 식사 지원 필요를 확인할까요?",
+                "외출하지 못한 상황과 필요한 도움은 무엇인가요?",
+                "약을 복용하지 못한 이틀의 이유는 무엇인가요?"
+              ]
+            }
+          },
+          {
+            "actor_id": "00000000-0000-4000-8000-000000000001",
+            "at": "2026-10-29T15:21:04.401Z",
+            "action": "submit",
+            "version": 3,
+            "draft": {
+              "status": "draft",
+              "findings": [
+                {
+                  "text": "식사 횟수: 하루 3회 → 하루 2회로 기록됨.",
+                  "change": "worsened",
+                  "evidence": [
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000003",
+                      "record_version_id": "00000000-0000-4000-8000-000000000004",
+                      "quote": "지난주에는 하루 세 끼 식사를 했다고 함."
+                    },
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000005",
+                      "record_version_id": "00000000-0000-4000-8000-000000000006",
+                      "quote": "최근 일주일 동안 식사를 하루 두 번 했다고 함."
+                    }
+                  ]
+                },
+                {
+                  "text": "외출: 주 1회 → 외출하지 못함으로 기록됨.",
+                  "change": "worsened",
+                  "evidence": [
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000003",
+                      "record_version_id": "00000000-0000-4000-8000-000000000004",
+                      "quote": "무릎 통증으로 외출은 주 1회였다고 함."
+                    },
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000005",
+                      "record_version_id": "00000000-0000-4000-8000-000000000006",
+                      "quote": "무릎 통증으로 외출하지 못했다고 함."
+                    }
+                  ]
+                },
+                {
+                  "text": "약 복용: 매일 복용 → 2일 미복용으로 기록됨.",
+                  "change": "worsened",
+                  "evidence": [
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000003",
+                      "record_version_id": "00000000-0000-4000-8000-000000000004",
+                      "quote": "약은 매일 복용했다고 함."
+                    },
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000005",
+                      "record_version_id": "00000000-0000-4000-8000-000000000006",
+                      "quote": "약을 복용하지 않은 날이 2일 있었다고 함."
+                    }
+                  ]
+                }
+              ],
+              "questions": [
+                "합성 담당자 수정: 식사 지원 필요를 확인할까요?",
+                "외출하지 못한 상황과 필요한 도움은 무엇인가요?",
+                "약을 복용하지 못한 이틀의 이유는 무엇인가요?"
+              ]
+            }
+          },
+          {
+            "actor_id": "00000000-0000-4000-8000-000000000001",
+            "at": "2026-10-29T15:21:04.408Z",
+            "action": "approve",
+            "version": 4,
+            "draft": {
+              "status": "draft",
+              "findings": [
+                {
+                  "text": "식사 횟수: 하루 3회 → 하루 2회로 기록됨.",
+                  "change": "worsened",
+                  "evidence": [
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000003",
+                      "record_version_id": "00000000-0000-4000-8000-000000000004",
+                      "quote": "지난주에는 하루 세 끼 식사를 했다고 함."
+                    },
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000005",
+                      "record_version_id": "00000000-0000-4000-8000-000000000006",
+                      "quote": "최근 일주일 동안 식사를 하루 두 번 했다고 함."
+                    }
+                  ]
+                },
+                {
+                  "text": "외출: 주 1회 → 외출하지 못함으로 기록됨.",
+                  "change": "worsened",
+                  "evidence": [
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000003",
+                      "record_version_id": "00000000-0000-4000-8000-000000000004",
+                      "quote": "무릎 통증으로 외출은 주 1회였다고 함."
+                    },
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000005",
+                      "record_version_id": "00000000-0000-4000-8000-000000000006",
+                      "quote": "무릎 통증으로 외출하지 못했다고 함."
+                    }
+                  ]
+                },
+                {
+                  "text": "약 복용: 매일 복용 → 2일 미복용으로 기록됨.",
+                  "change": "worsened",
+                  "evidence": [
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000003",
+                      "record_version_id": "00000000-0000-4000-8000-000000000004",
+                      "quote": "약은 매일 복용했다고 함."
+                    },
+                    {
+                      "consultation_id": "00000000-0000-4000-8000-000000000005",
+                      "record_version_id": "00000000-0000-4000-8000-000000000006",
+                      "quote": "약을 복용하지 않은 날이 2일 있었다고 함."
+                    }
+                  ]
+                }
+              ],
+              "questions": [
+                "합성 담당자 수정: 식사 지원 필요를 확인할까요?",
+                "외출하지 못한 상황과 필요한 도움은 무엇인가요?",
+                "약을 복용하지 못한 이틀의 이유는 무엇인가요?"
+              ]
+            }
+          }
+        ],
+        "original": {
+          "status": "draft",
+          "findings": [
+            {
+              "text": "식사 횟수: 하루 3회 → 하루 2회로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "지난주에는 하루 세 끼 식사를 했다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "최근 일주일 동안 식사를 하루 두 번 했다고 함."
+                }
+              ]
+            },
+            {
+              "text": "외출: 주 1회 → 외출하지 못함으로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "무릎 통증으로 외출은 주 1회였다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "무릎 통증으로 외출하지 못했다고 함."
+                }
+              ]
+            },
+            {
+              "text": "약 복용: 매일 복용 → 2일 미복용으로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "약은 매일 복용했다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "약을 복용하지 않은 날이 2일 있었다고 함."
+                }
+              ]
+            }
+          ],
+          "questions": [
+            "식사가 하루 두 번으로 줄어든 이유는 무엇인가요?",
+            "외출하지 못한 상황과 필요한 도움은 무엇인가요?",
+            "약을 복용하지 못한 이틀의 이유는 무엇인가요?"
+          ]
+        },
+        "edited": {
+          "status": "draft",
+          "findings": [
+            {
+              "text": "식사 횟수: 하루 3회 → 하루 2회로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "지난주에는 하루 세 끼 식사를 했다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "최근 일주일 동안 식사를 하루 두 번 했다고 함."
+                }
+              ]
+            },
+            {
+              "text": "외출: 주 1회 → 외출하지 못함으로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "무릎 통증으로 외출은 주 1회였다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "무릎 통증으로 외출하지 못했다고 함."
+                }
+              ]
+            },
+            {
+              "text": "약 복용: 매일 복용 → 2일 미복용으로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "약은 매일 복용했다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "약을 복용하지 않은 날이 2일 있었다고 함."
+                }
+              ]
+            }
+          ],
+          "questions": [
+            "합성 담당자 수정: 식사 지원 필요를 확인할까요?",
+            "외출하지 못한 상황과 필요한 도움은 무엇인가요?",
+            "약을 복용하지 못한 이틀의 이유는 무엇인가요?"
+          ]
+        }
+      }
+    },
+    "published": {
+      "demo_mode": true,
+      "data_origin": "synthetic",
+      "providers": {
+        "ocr": "mock",
+        "stt": "mock",
+        "analysis": "mock"
+      },
+      "authentication": "fixed_synthetic_actor_only",
+      "authorization": "synthetic_fixture_check_only",
+      "records": "code_owned_fixture_not_official_be2_storage",
+      "catalog": "synthetic_demo",
+      "data": {
+        "id": "ffb11935-2f90-4e2e-80bf-0c2a3b10d619",
+        "input": {
+          "person_id": "00000000-0000-4000-8000-000000000002",
+          "past": [
+            {
+              "consultation_id": "00000000-0000-4000-8000-000000000003",
+              "record_version_id": "00000000-0000-4000-8000-000000000004"
+            }
+          ],
+          "current": {
+            "consultation_id": "00000000-0000-4000-8000-000000000005",
+            "record_version_id": "00000000-0000-4000-8000-000000000006"
+          }
+        },
+        "provider_kind": "mock",
+        "review_state": "approved",
+        "draft": {
+          "status": "draft",
+          "findings": [
+            {
+              "text": "식사 횟수: 하루 3회 → 하루 2회로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "지난주에는 하루 세 끼 식사를 했다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "최근 일주일 동안 식사를 하루 두 번 했다고 함."
+                }
+              ]
+            },
+            {
+              "text": "외출: 주 1회 → 외출하지 못함으로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "무릎 통증으로 외출은 주 1회였다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "무릎 통증으로 외출하지 못했다고 함."
+                }
+              ]
+            },
+            {
+              "text": "약 복용: 매일 복용 → 2일 미복용으로 기록됨.",
+              "change": "worsened",
+              "evidence": [
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000003",
+                  "record_version_id": "00000000-0000-4000-8000-000000000004",
+                  "quote": "약은 매일 복용했다고 함."
+                },
+                {
+                  "consultation_id": "00000000-0000-4000-8000-000000000005",
+                  "record_version_id": "00000000-0000-4000-8000-000000000006",
+                  "quote": "약을 복용하지 않은 날이 2일 있었다고 함."
+                }
+              ]
+            }
+          ],
+          "questions": [
+            "합성 담당자 수정: 식사 지원 필요를 확인할까요?",
+            "외출하지 못한 상황과 필요한 도움은 무엇인가요?",
+            "약을 복용하지 못한 이틀의 이유는 무엇인가요?"
+          ]
+        },
+        "version": 4
+      }
+    },
+    "needs_confirmed": {
+      "demo_mode": true,
+      "data_origin": "synthetic",
+      "providers": {
+        "ocr": "mock",
+        "stt": "mock",
+        "analysis": "mock"
+      },
+      "authentication": "fixed_synthetic_actor_only",
+      "authorization": "synthetic_fixture_check_only",
+      "records": "code_owned_fixture_not_official_be2_storage",
+      "catalog": "synthetic_demo",
+      "data": {
+        "needs": [
+          "meal_support",
+          "mobility_support",
+          "medication_management"
+        ],
+        "confirmed": true,
+        "needs_origin": "explicit_staff_confirmation",
+        "confirmed_by": "00000000-0000-4000-8000-000000000001"
+      }
+    },
+    "welfare_cards": {
+      "demo_mode": true,
+      "data_origin": "synthetic",
+      "providers": {
+        "ocr": "mock",
+        "stt": "mock",
+        "analysis": "mock"
+      },
+      "authentication": "fixed_synthetic_actor_only",
+      "authorization": "synthetic_fixture_check_only",
+      "records": "code_owned_fixture_not_official_be2_storage",
+      "catalog": "synthetic_demo",
+      "data": {
+        "person_id": "00000000-0000-4000-8000-000000000002",
+        "algorithm": "rules-v1",
+        "candidates": [
+          {
+            "program_id": "demo-meal",
+            "program_name": "[합성] 식사 지원 연결 테스트",
+            "reason": "식사 지원 필요와 관련하여 확인해 볼 후보입니다. 자격·지원 제공은 미확인입니다.",
+            "eligibility_status": "unverified",
+            "matched_needs": [
+              "meal_support"
+            ],
+            "basis": [
+              {
+                "need": "meal_support",
+                "program_condition": "합성 식사 지원 필요와 연관",
+                "source_excerpt": null
+              }
+            ],
+            "region_match": "unknown",
+            "missing_information": [
+              "합성 식사 필요 확인",
+              "실제 사업 탐색 및 관할 기관 확인",
+              "거주지역 확인 필요",
+              "연령대 확인 필요",
+              "사업의 연령 조건 확인 필요",
+              "소득·수급 관련 조건 확인 필요",
+              "공식 출처 확인 필요",
+              "실재하지 않는 합성 데이터: 실제 사업 별도 탐색 필요"
+            ],
+            "source_url": null,
+            "checked_at": null,
+            "data_status": "synthetic_demo",
+            "application_method": "신청 불가: 합성 시연 전용",
+            "warning": "합성 시연 전용이며 실제 제도·혜택이 아닙니다."
+          },
+          {
+            "program_id": "demo-medication",
+            "program_name": "[합성] 복약 확인 연결 테스트",
+            "reason": "복약 확인 필요와 관련하여 확인해 볼 후보입니다. 자격·지원 제공은 미확인입니다.",
+            "eligibility_status": "unverified",
+            "matched_needs": [
+              "medication_management"
+            ],
+            "basis": [
+              {
+                "need": "medication_management",
+                "program_condition": "합성 복약 확인 필요와 연관",
+                "source_excerpt": null
+              }
+            ],
+            "region_match": "unknown",
+            "missing_information": [
+              "실제 서비스 존재 여부 및 지역 확인",
+              "복약 관련 상담 필요를 담당자에게 확인",
+              "거주지역 확인 필요",
+              "사업 제공지역 확인 필요",
+              "연령대 확인 필요",
+              "사업의 연령 조건 확인 필요",
+              "공식 출처 확인 필요",
+              "실재하지 않는 합성 데이터: 실제 사업 별도 탐색 필요"
+            ],
+            "source_url": null,
+            "checked_at": null,
+            "data_status": "synthetic_demo",
+            "application_method": "신청 불가: 합성 시연 전용",
+            "warning": "합성 시연 전용이며 실제 제도·혜택이 아닙니다."
+          },
+          {
+            "program_id": "demo-mobility",
+            "program_name": "[합성] 지역 이동 지원 연결 테스트",
+            "reason": "이동 지원 필요와 관련하여 확인해 볼 후보입니다. 자격·지원 제공은 미확인입니다.",
+            "eligibility_status": "unverified",
+            "matched_needs": [
+              "mobility_support"
+            ],
+            "basis": [
+              {
+                "need": "mobility_support",
+                "program_condition": "합성 이동 지원 필요와 연관",
+                "source_excerpt": null
+              }
+            ],
+            "region_match": "unknown",
+            "missing_information": [
+              "합성 지역 범위 확인",
+              "이동 지원 방식 확인",
+              "거주지역 확인 필요",
+              "연령대 확인 필요",
+              "사업의 연령 조건 확인 필요",
+              "공식 출처 확인 필요",
+              "실재하지 않는 합성 데이터: 실제 사업 별도 탐색 필요"
+            ],
+            "source_url": null,
+            "checked_at": null,
+            "data_status": "synthetic_demo",
+            "application_method": "신청 불가: 합성 시연 전용",
+            "warning": "합성 시연 전용이며 실제 제도·혜택이 아닙니다."
+          }
+        ],
+        "unmatched_needs": [],
+        "disclaimer": "확인해 볼 후보 정보이며 실제 수급 자격·지원 제공·금액을 판정하거나 보장하지 않습니다. 관할 기관 확인이 필요합니다."
+      },
+      "connection": {
+        "analysis_id": "ffb11935-2f90-4e2e-80bf-0c2a3b10d619",
+        "analysis_version": 4,
+        "review_state": "approved",
+        "provider_kind": "mock",
+        "confirmed_by": "00000000-0000-4000-8000-000000000001",
+        "confirmed_at": "2026-10-29T15:21:04.448Z",
+        "needs_origin": "explicit_staff_confirmation",
+        "confirmations": [
+          {
+            "need": "meal_support",
+            "finding_index": 0,
+            "evidence_index": 1,
+            "confirmed": true,
+            "evidence": {
+              "consultation_id": "00000000-0000-4000-8000-000000000005",
+              "record_version_id": "00000000-0000-4000-8000-000000000006",
+              "quote": "최근 일주일 동안 식사를 하루 두 번 했다고 함."
+            }
+          },
+          {
+            "need": "mobility_support",
+            "finding_index": 1,
+            "evidence_index": 1,
+            "confirmed": true,
+            "evidence": {
+              "consultation_id": "00000000-0000-4000-8000-000000000005",
+              "record_version_id": "00000000-0000-4000-8000-000000000006",
+              "quote": "무릎 통증으로 외출하지 못했다고 함."
+            }
+          },
+          {
+            "need": "medication_management",
+            "finding_index": 2,
+            "evidence_index": 1,
+            "confirmed": true,
+            "evidence": {
+              "consultation_id": "00000000-0000-4000-8000-000000000005",
+              "record_version_id": "00000000-0000-4000-8000-000000000006",
+              "quote": "약을 복용하지 않은 날이 2일 있었다고 함."
+            }
+          }
+        ],
+        "recommendation_input": {
+          "person_id": "00000000-0000-4000-8000-000000000002",
+          "needs": [
+            "meal_support",
+            "mobility_support",
+            "medication_management"
+          ],
+          "region": null,
+          "age_group": null,
+          "income_status": "unknown"
+        }
+      }
+    }
+  }
+}

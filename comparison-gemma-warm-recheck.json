@@ -1,0 +1,18 @@
+[
+  {
+    "case": "meal-down",
+    "expected": "worsened",
+    "status": "failed",
+    "error": "PROVIDER_ERROR",
+    "pass": false,
+    "ms": 12394
+  },
+  {
+    "case": "insufficient",
+    "expected": "unknown",
+    "status": "failed",
+    "error": "PROVIDER_ERROR",
+    "pass": false,
+    "ms": 11611
+  }
+]
