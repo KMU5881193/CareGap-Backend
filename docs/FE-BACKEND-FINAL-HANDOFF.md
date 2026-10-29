@@ -1,6 +1,6 @@
 # 2026-10-30 최종 통합 상태
 
-재확인 기준 main: Backend `fccb6344fa59168541ccfd171e4637124f291d6f`, Frontend `d72b94700f8fd83ac77dc3276971a88fa4889b4c`.
+최종 검증 코드 main: Backend `35348e12dcfbb47c4d8c082b3425171fd4757b65` (PR #30), Frontend `e2431f3858f16fb4ccc2b36adccb2343fc1543de` (PR #5). 문서 후속 PR은 Backend #31이다.
 
 ## 이번 최종 검증의 우선 적용 사항
 

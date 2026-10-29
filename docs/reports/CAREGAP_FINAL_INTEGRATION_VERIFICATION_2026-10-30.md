@@ -8,13 +8,13 @@
 
 최초 재조회 Backend main: `fccb6344fa59168541ccfd171e4637124f291d6f`. 이번 안전 검증 PR #30 병합 후 main: `35348e12dcfbb47c4d8c082b3425171fd4757b65`.
 
-재조회한 Frontend main: `d72b94700f8fd83ac77dc3276971a88fa4889b4c`.
+최초 재조회 Frontend main: `d72b94700f8fd83ac77dc3276971a88fa4889b4c`. 이번 안전 검증 PR #5 병합 후 main: `e2431f3858f16fb4ccc2b36adccb2343fc1543de`.
 
-이는 작업 시작/추가 요청 직후 GitHub API로 확인한 값이다. 최종 병합 여부와 관측 SHA는 아래 18절의 후속 기록을 우선한다. 운영 중인 4324의 health release는 `final-9e4be3b`이며 최신 main이나 이번 변경 배포를 뜻하지 않는다.
+최초 값과 코드 병합 후 값은 모두 GitHub API로 직접 재조회했다. 위 Backend SHA는 최종 코드 검증 대상이며, 문서 전용 후속 PR #31은 그 뒤에 반영한다. 최종 병합 여부와 관측 SHA는 아래 18절을 따른다. 운영 중인 4324의 health release는 `final-9e4be3b`이며 최신 main이나 이번 변경 배포를 뜻하지 않는다.
 
 ## 3. 전체 PR 상태와 안전성 검토
 
-Backend #1·#2·#3·#4·#6·#8·#9·#10·#11·#12·#13·#15·#16·#17·#18·#19·#20·#23·#25·#27·#28은 이미 MERGED다. 중복 병합하지 않았다. Frontend #1~#4도 이미 MERGED다.
+Backend #1·#2·#3·#4·#6·#8·#9·#10·#11·#12·#13·#15·#16·#17·#18·#19·#20·#23·#25·#27·#28은 이미 MERGED다. 중복 병합하지 않았다. Frontend #1~#4도 이미 MERGED다. 이번 작업에서는 Backend #30과 Frontend #5를 안전 검증 후 새로 병합했다. 최종 문서 반영은 Backend #31이다.
 
 | Backend PR | 최신 검토 상태 | 판단과 차단 원인 |
 |---|---|---|
@@ -42,6 +42,7 @@ Backend #1·#2·#3·#4·#6·#8·#9·#10·#11·#12·#13·#15·#16·#17·#18·#19�
 | 상담 비교·인용 | 완료(합성 2사례) | 실제 Qwen 출력, 원문 ID/버전/부분 문자열 대조 |
 | 검토·승인 | 완료(API 상태 전이) | 담당자 계정으로 자동 검증 실행. 실제 사람의 임상 검토는 아님 |
 | 복지 후보 | 완료(합성 후보) | 각 1개, synthetic_demo / unverified. 실제 자격·신청 기능 아님 |
+| 인앱 알림 | 부분완료 | 담당자별 1개 실제 저장·조회. 예약자 수신 알림 생성/전달은 미구현 |
 | Vision | 부분완료 | PNG/JPEG 실제 HTTP 201, 실제 Ollama 원본 images 전송 확인. 도형 설명 오류가 있어 내용 정확도 미통과 |
 | Flutter 실제 서버 경로 | 완료(로컬) | USE_MOCK=false 빌드, 4계정 실제 HTTP 화면 테스트, 실제 Repository 전체 흐름 |
 | 카메라/WAV UI | 부분완료 | 기존 카메라→OCR, WAV 선택 유지. 실기기 권한·촬영·마이크 미검증 |
@@ -143,6 +144,8 @@ Qwen `qwen2.5vl:7b`: 박영희 식사·복약·산책 improved 3항목, 최정�
 
 최초 시드 분석 2건은 승인 상태이며 합성 복지 후보 각 1건을 반환했다. 자동 담당자 계정 검토 기록을 실제 사람의 승인으로 표현하지 않는다. OCR/STT 초기 작업 각 2건과 Flutter 추가 작업 각 1건에 교정 version 1 및 confirmed 이력이 있다. 합성 한국어 WAV 2개, OCR PNG 2개, 별도 Vision PNG/JPEG 각 1개를 `.runtime/`에 생성했다.
 
+Flutter가 OCR 현재 기록을 선택한 추가 비교 1건을 포함해 실제 승인 분석 ID는 총 3개다(반복 요청은 기존 분석을 재사용). 알림 2건의 수신자는 각 담당자 계정이다. 예약자 수신 알림 1건씩을 충족했다고 주장하지 않으며, staff가 승인된 subject의 patient recipient로 전송하는 API는 후속 구현 사항이다.
+
 `prepare-four-accounts.ts`는 기존 로컬 파일을 재사용하며 `seed-four-demo.ts`는 예약 시간·원문·작업 request_key·import·업무/알림 제목을 조회/재사용한다. 동일 시드를 반복 실행해도 사용자·예약·기록 수가 늘지 않는 것을 실제 재조회로 확인했다. 분석은 실제 성공 결과만 저장한다. 중단 후 재개 시 완료된 단계는 재사용한다. 시드를 동시에 두 번 실행하는 병렬 경쟁까지 보장하는 분산 멱등 저장소는 아니다.
 
 ## 12. 자동 테스트
@@ -205,6 +208,10 @@ Frontend 신규 PR https://github.com/KMU5881193/CareGap-Frontend/pull/5 — 구
 최신 외부 수정 CI: https://github.com/KMU5881193/CareGap-Frontend/actions/runs/40971302052 및 https://github.com/KMU5881193/CareGap-Frontend/actions/runs/40971309773.
 
 간편 로그인 최종 구현 `c4635015fb9e42598cf325f29bbe21bf64ee3dbd`의 CI: https://github.com/KMU5881193/CareGap-Frontend/actions/runs/40972076048 및 https://github.com/KMU5881193/CareGap-Frontend/actions/runs/40972068762. 기존 프론트 PR #5에 추가했으며 최종 병합 상태는 아래 후속 기록에 남긴다.
+
+최종 확정: Frontend #5는 위 두 Flutter CI와 두 verify CI 모두 success 후 MERGED. 실제 merge SHA는 `e2431f3858f16fb4ccc2b36adccb2343fc1543de`다. 분석·42개 Flutter 테스트·Node 별칭 테스트·APK 빌드가 통과했다. APK CI는 mock 빌드이며 실서버 검증은 별도 실제 웹/Repository/HTTP 증거로 충족했다.
+
+최종 보고서 후속 PR: https://github.com/KMU5881193/CareGap-Backend/pull/31. 코드 PR #30 이후의 보고서·handoff·합성 화면 증거만 반영한다. 문서 커밋 자체를 그 문서의 검증 코드 SHA로 표시하지 않는다. 보고서의 Backend 코드 검증 기준은 `35348e12dcfbb47c4d8c082b3425171fd4757b65`, Frontend 기준은 `e2431f3858f16fb4ccc2b36adccb2343fc1543de`다.
 
 ## 19. 남은 위험과 우선순위
 
