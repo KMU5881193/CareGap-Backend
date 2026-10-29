@@ -29,6 +29,8 @@ def load_cases(manifest):
             raise ValueError("Image must be inside the manifest directory")
         if case["kind"] not in ("font_print", "human_handwriting") or case["id"] in ids:
             raise ValueError("Invalid provenance or duplicate case ID")
+        if case["kind"] == "human_handwriting" and case.get("ground_truth_verified") is not True:
+            raise ValueError("Human handwriting requires explicitly verified ground truth before scoring")
         if not isinstance(case["text"], str) or not 1 <= len(case["text"]) <= 10_000:
             raise ValueError("Ground truth must be 1..10000 codepoints")
         size = image.stat().st_size
@@ -101,7 +103,8 @@ def report(rows, summaries, output):
     cards = []
     for row in rows:
         picture = html.escape(row["image_data_url"], quote=True)
-        cards.append(f'<article><h2>{html.escape(row["engine"])} / {html.escape(row["case_id"])}</h2><img src="{picture}" alt="합성 시험 이미지"><pre>정답: {html.escape(row["reference"])}\n결과: {html.escape(row.get("text", ""))}</pre><pre>{html.escape(json.dumps(row.get("metrics", {"error": row.get("error")}), ensure_ascii=False, indent=2))}</pre></article>')
+        label = "실제 손글씨 시험 이미지" if row["kind"] == "human_handwriting" else "합성 인쇄체 시험 이미지"
+        cards.append(f'<article><h2>{html.escape(row["engine"])} / {html.escape(row["case_id"])}</h2><img src="{picture}" alt="{label}"><pre>정답: {html.escape(row["reference"])}\n결과: {html.escape(row.get("text", ""))}</pre><pre>{html.escape(json.dumps(row.get("metrics", {"error": row.get("error")}), ensure_ascii=False, indent=2))}</pre></article>')
     title = "실제 손글씨 평가 포함" if document["handwriting_measured"] else "합성 인쇄체 실행 검증 — 실제 손글씨 정확도 미측정"
     page = '<!doctype html><html lang="ko"><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src \'none\'; img-src data:; style-src \'unsafe-inline\'"><title>CareGap OCR 비교</title><style>body{font:16px sans-serif;max-width:1200px;margin:32px auto;background:#f5f5f5}article{padding:20px;background:white;margin:16px 0}img{max-width:100%}pre{white-space:pre-wrap;overflow-wrap:anywhere}</style>'
     (output / "report.html").write_text(page + f'<h1>{title}</h1><p>모든 오류율은 낮을수록 좋음. 실패는 별도 집계. 메모리는 추론 후 RSS이며 최대 사용량이 아님.</p>' + "".join(cards) + "</html>", encoding="utf-8")

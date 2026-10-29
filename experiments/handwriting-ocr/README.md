@@ -1,6 +1,6 @@
 # BE3 한국어 OCR 로컬 비교 실험 (2단계)
 
-**실제 손글씨 정확도는 미측정이다.** 현재 저장소에는 적법한 실필기 시험 이미지가 없어, 아래 실행 검증은 Windows 맑은 고딕으로 렌더링한 가상 상담 문장만 사용했다. 기울인 폰트 이미지도 손글씨가 아니다. 실제 엔진 추론과 기존 OCR 서비스의 교정·확정 흐름을 검증했으며 Mock 반환값을 정확도 측정에 사용하지 않는다.
+**초기 공개 평가 결과는 합성 인쇄체 실험이다.** 해당 실행 검증은 Windows 맑은 고딕으로 렌더링한 가상 상담 문장만 사용했다. 기울인 폰트 이미지도 손글씨가 아니다. 후속 실제 손글씨 사진은 아래 `photo_eval.py`로 별도 평가하며 사진·정답·개별 결과·보고서는 로컬에 유지한다. 두 데이터 종류의 점수를 섞지 않는다. 실제 엔진 추론과 기존 OCR 서비스의 교정·확정 흐름을 검증했으며 Mock 반환값을 정확도 측정에 사용하지 않는다.
 
 PR #4가 열린 상태에서 `origin/feature/ai-ocr-foundation`을 기준으로 만든 후속 작업이다. PR #4를 병합하지 않으며 종속 PR은 해당 브랜치를 대상으로 한다. Foundation 병합 후 main과 변경 차이를 재확인해 PR 대상을 조정한다.
 
@@ -62,7 +62,7 @@ Paddle의 공식 Windows 문서는 Python 3.9~3.13을 안내하지만 이 실험
 사용자가 직접 쓴 가상 상담 문장의 사진만 별도 로컬 폴더에 둔다. 개인정보·기존 개인 PoC 이미지를 자동 탐색하거나 복사하지 않는다. 폴더 안에 다음 구조의 `manifest.json`을 만들고 실제 SHA-256을 기록한다. 인쇄체를 `human_handwriting`으로 표기하면 안 된다.
 
 ```json
-{"schema_version":1,"cases":[{"id":"human-1","image":"synthetic-handwriting.png","text":"어제는 통증이 없었다고 이야기함.","kind":"human_handwriting","condition":"neat_handwriting","sha256":"실제 이미지 SHA-256"}]}
+{"schema_version":1,"cases":[{"id":"human-1","image":"synthetic-handwriting.png","text":"어제는 통증이 없었다고 이야기함.","kind":"human_handwriting","condition":"neat_handwriting","ground_truth_verified":true,"sha256":"실제 이미지 SHA-256"}]}
 ```
 
 ```powershell
@@ -70,6 +70,31 @@ Paddle의 공식 Windows 문서는 Python 3.9~3.13을 안내하지만 이 실험
 ```
 
 이미지는 manifest 폴더 내부 JPEG/PNG, 각 5MiB 이하·한 배치 합계 32MiB 이하만 허용한다. base64 전송의 추가 메모리를 제한하기 위한 로컬 실험 한도다. 입력 해시·출처 구분·중복 ID를 검증한다. 한 줄 특화 모델을 비교하려면 동일한 줄 crop을 모든 엔진에 넣고 별도 실험임을 기록한다. 생성 보고서에는 이미지와 원문이 포함되므로 사용자 제공 폴더·보고서를 공개 저장소에 추가하지 않는다.
+
+### 실제 사진 시연 도구
+
+`photo_eval.py`는 기존 benchmark를 재사용해 전체 사진(Tesseract/Paddle), 번호를 제외한 동일 줄 crop(세 엔진), 높이 96px·대비 조정 96px/160px 전처리를 분리한다. 모든 엔진에 같은 픽셀·같은 정답을 적용하며 원문을 교정해 점수를 개선하지 않는다. 사람 손글씨는 직접 확인한 정답과 `ground_truth_verified: true`가 있어야 점수를 계산한다. 띄어쓰기·숫자·문장부호가 애매하면 작성자에게 먼저 확인한다.
+
+개인 사진 옆의 로컬 `photo-config.json` 형식:
+
+```json
+{"source_image":"photo.png","ground_truth_verified":true,"lines":[{"id":"line-1","box":[10,20,900,180],"text":"사진에서 직접 확인한 가상 문장","checks":[{"field":"가상 핵심 표현","expected":["확인할 표현"]}]}]}
+```
+
+box는 EXIF 방향 보정 후 이미지의 정수 좌표 `[left,top,right,bottom]`이다. 번호를 제외하되 글자를 자르지 않도록 직접 확인한다. 출력은 Git에서 제외한 experiment `results*` 폴더만 허용한다. 실제 사용자 사진·crop·설정·정답·원문·보고서는 로컬에 두며 저장소에는 일반 도구·합성 단위 테스트만 추가한다.
+
+```powershell
+& $python -X utf8 experiments/handwriting-ocr/photo_eval.py --config experiments/handwriting-ocr/samples/my-photo/photo-config.json --output experiments/handwriting-ocr/results-photo
+```
+
+기본 실행은 준비→실제 추론→보고서 생성이다. `--phase prepare`, `--phase run`, `--phase report`로 단계별 실행할 수도 있다. 보고서는 원본 사진·정답·원문·CER/WER·숫자/부정표지·모델 로드/추론 시간·문자 차이를 보여준다. `<details>`를 열어 엔진·줄·조건별 결과를 확인한다. 사진 1장에서 고른 전처리가 다른 필자나 촬영에도 통한다고 일반화하지 않는다. 전체 사진의 목록 번호 포함 정답과 줄 crop의 번호 제외 정답은 별도 조건이다.
+
+기존 `demo.ts`는 선택적 다섯 번째 인수로 `results*` 안의 workflow JSON 경로를 받을 수 있다. 이 파일을 사진 보고서 출력 폴더의 `workflows/`에 두고 `--phase report`를 다시 실행하면 실제 OcrService 교정 version 1·확정 결과가 합쳐진다. 정답을 제출한 자동 시연과 사람이 편집한 실측 소요 시간을 구분하며 후자는 미측정이면 null이다. 서비스의 입력 검증이 이미지를 재인코딩하므로 직접 benchmark 원문과 서비스 실행 원문은 각각 보존해 구분한다.
+
+```powershell
+pnpm exec tsx experiments/handwriting-ocr/demo.ts handwriting-line <줄-crop.png> '<확인한 교정문>' experiments/handwriting-ocr/results-photo/workflows/review.json
+& $python -X utf8 experiments/handwriting-ocr/photo_eval.py --config experiments/handwriting-ocr/samples/my-photo/photo-config.json --output experiments/handwriting-ocr/results-photo --phase report
+```
 
 ## 기존 서비스에 연결한 로컬 데모
 
