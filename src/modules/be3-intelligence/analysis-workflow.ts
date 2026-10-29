@@ -14,6 +14,7 @@ interface History { actor_id: string; at: string; action: string; version: numbe
 interface Entry {
   id: string; owner: string; input: Input; sources: RecordVersion[]; provider_kind: 'mock' | 'llm';
   provider_metadata?: AnalysisProviderMetadata;
+  inference?: Record<string,string|number>;
   status: 'running' | 'succeeded' | 'failed'; error_code?: string;
   original?: Draft; edited?: Draft; review_state: ReviewState; version: number; history: History[];
 }
@@ -32,7 +33,7 @@ export class AnalysisWorkflow {
   constructor(private deps: { authorization: AuthorizationPort; records: RecordReader; provider: WorkflowAnalysisProvider; provider_kind: 'mock' | 'llm'; provider_metadata?: AnalysisProviderMetadata }) {
     if (deps.provider_metadata) {
       if (deps.provider_kind !== 'llm') fail('INVALID_REQUEST', 400);
-      this.providerMetadata = z.object({ provider: z.literal('openai'), model: z.string().min(1).max(100), prompt_version: z.string().min(1).max(100) }).strict().parse(deps.provider_metadata);
+      this.providerMetadata = z.object({ provider: z.enum(['openai','ollama']), model: z.string().min(1).max(100), prompt_version: z.string().min(1).max(100) }).strict().parse(deps.provider_metadata);
     }
   }
 
@@ -95,6 +96,7 @@ export class AnalysisWorkflow {
       await this.authorize(actor, input.person_id, 'analyze');
       if (options.signal?.aborted) throw new AnalysisProviderError('LLM_CANCELLED');
       const generated = await this.deps.provider.generate(sources.map(({ consultation_id, record_version_id, text }) => ({ consultation_id, record_version_id, text })), options);
+      entry.inference = this.deps.provider.inferenceFor?.(generated);
       if (options.signal?.aborted) throw new AnalysisProviderError('LLM_CANCELLED');
       let draft: Draft;
       try { draft = validateDraft(generated, sources); } catch { return fail('INVALID_ANALYSIS', 422); }

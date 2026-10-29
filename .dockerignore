@@ -5,3 +5,6 @@ dist
 *.log
 experiments
 sources
+
+.runtime
+docs

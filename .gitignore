@@ -10,3 +10,6 @@ integrated-server*.log
 real-server*.log
 scripts/new-synthetic.wav
 scripts/new-synthetic.png
+
+*.log
+.runtime/

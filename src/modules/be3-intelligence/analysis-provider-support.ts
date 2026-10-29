@@ -12,5 +12,6 @@ export class AnalysisProviderError extends Error {
 export interface AnalysisRunOptions { signal?: AbortSignal }
 export interface WorkflowAnalysisProvider extends AnalysisProvider {
   generate(sources: readonly SourceVersion[], options?: AnalysisRunOptions): Promise<unknown>;
+  inferenceFor?(draft: unknown): Record<string,string|number> | undefined;
 }
-export interface AnalysisProviderMetadata { provider: 'openai'; model: string; prompt_version: string }
+export interface AnalysisProviderMetadata { provider: 'openai' | 'ollama'; model: string; prompt_version: string }
