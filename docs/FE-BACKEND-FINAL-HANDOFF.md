@@ -5,6 +5,8 @@
 ## 이번 최종 검증의 우선 적용 사항
 
 - **기존 4324는 재시작·변경하지 않았다.** 이번 4계정과 역할 연결은 별도 4334 API에 생성했다. Flutter 웹은 Windows Node 프로세스의 `http://127.0.0.1:4335`이며 Docker 목록에 나타나지 않는다.
+- 사용자 명시 허용 후 새 외부 웹 `https://grams-viewing-given-categories.trycloudflare.com/`를 생성했다. 4337 같은 출처 프록시→4334이며 실제 화면·4계정·OCR/STT/Qwen/Vision 연동을 검증했다. 기존 4324 터널과 다르다.
+- **최신 간편 로그인 주소는 `https://wash-mighty-dust-director.trycloudflare.com/`**. staff1/김민준, staff2/이서연, user1/박영희, user2/최정호다. 사용자 요청의 공통 비밀번호는 Frontend `.runtime/demo-login-aliases.json`에만 보관한다. 4339 게이트웨이가 기존 계정으로 연결하며 4334 자격증명이나 메모리를 교체하지 않는다. 이 간편 ID는 최신 링크에서만 사용한다.
 - 실제 로그인 가능한 합성 담당자 2명(staff), 예약자 2명(patient). staff는 배정된 대상자만, patient는 자기 자료만 읽고 자기 예약을 생성한다. patient는 기록 쓰기·OCR/STT/Vision·분석·승인·담당자 업무 생성이 403이다.
 - 비밀번호/로그인 정보는 검증용 Backend 복제본 `.runtime/demo-credentials.json`에만 보관한다. 계정 생성 스크립트는 이 파일을 재사용하며 password는 Git에 없다.
 - Flutter 실제 서버 모드에서 4계정 화면과 OCR/STT→교정→확정→기록→Qwen→근거→승인→합성 복지 후보를 검사했다. Android 실기기는 연결되지 않아 미검증이다.

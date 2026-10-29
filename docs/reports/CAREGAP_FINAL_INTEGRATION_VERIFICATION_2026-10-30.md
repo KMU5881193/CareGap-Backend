@@ -6,7 +6,7 @@
 
 ## 2. 최신 main과 검증 코드
 
-재조회한 Backend main: `fccb6344fa59168541ccfd171e4637124f291d6f`.
+최초 재조회 Backend main: `fccb6344fa59168541ccfd171e4637124f291d6f`. 이번 안전 검증 PR #30 병합 후 main: `35348e12dcfbb47c4d8c082b3425171fd4757b65`.
 
 재조회한 Frontend main: `d72b94700f8fd83ac77dc3276971a88fa4889b4c`.
 
@@ -26,6 +26,8 @@ Backend #1·#2·#3·#4·#6·#8·#9·#10·#11·#12·#13·#15·#16·#17·#18·#19�
 | #29 | OPEN, 최신 clean | 작업 중 `34fee7c4` → `aad64a6b5777fa0edd0b57fd20d249d1d4e94615`로 갱신. 최신 추가분은 구형 인증 차단·오류 비노출·Vision 반영이며 Vision 파일은 main과 동일. 재검토한 최신 HEAD의 타입·646개 테스트·빌드 통과. 실제 LiveKit은 `CONFIG_MISSING`. #26의 DB/알림 변경을 포함하며 실제 통화·DB 검증 없이 안전한 전체 운영 통합으로 판정하지 않음 |
 
 #29 최신 diff에서는 이전 충돌이 해소됐고 `git merge-tree`도 성공했다. 따라서 #29를 현재도 충돌이라고 기록하지 않는다. CI 성공과 실제 통화 성공은 별개다. 다른 개발자의 PR을 닫거나 수정하지 않았다.
+
+추가 #29 웹 프로토타입도 npm ci·typecheck·Vite build를 별도로 통과했다. 다만 설치 시 `machina@7.0.1`은 Node >=22.22를 요구하여 현재 22.15.0에서 EBADENGINE 경고가 발생했다. 빌드 성공으로 런타임 호환성·양방향 통화 성공을 보장하지 않는다.
 
 ## 4. 기능별 검증표
 
@@ -63,9 +65,11 @@ Frontend: patient 역할을 beneficiary로 매핑하고 자기 예약·기록 �
 | `http://127.0.0.1:4324` | 기존 서버 보호. 프로세스 종료·재시작·교체·메모리 삭제 없음. 이번 변경과 4계정 시드는 적용하지 않음 |
 | 기존 `https://favourite-bizrate-passed-calibration.trycloudflare.com` | 기존 터널 변경 없음 |
 | `http://127.0.0.1:4334` | 이번 격리 합성 API. 4계정·데모 데이터 실제 생성 위치 |
-| `http://127.0.0.1:4335` | 이번 Flutter 웹 실행. 같은 출처 프록시로 4334 연결. 루프백에만 바인딩 |
+| `http://127.0.0.1:4335` | 이번 Flutter 웹 실행. 같은 출처 프록시로 4334 연결. Windows Node 프로세스이므로 Docker 목록에는 표시되지 않음 |
+| `https://grams-viewing-given-categories.trycloudflare.com/` | 사용자가 공개 합성 로그인/API 연결을 명시 허용한 새 외부 웹. 4337 전용 프록시→4334. 실제 화면·health·4계정 로그인·전체 Repository 흐름 검증 |
+| **최신 간편 로그인: `https://wash-mighty-dust-director.trycloudflare.com/`** | 후속 사용자 요청의 간단 ID·시연 비밀번호 전용. 새 4339 프록시→기존 4334 계정. 실제 4계정 및 브라우저 staff1 로그인 성공. 기존 프로세스·데이터는 유지 |
 
-추가로 생성한 격리 Quick Tunnel은 공개 경로 검증에 사용하지 않았다. 자동 승인 검토가 공개 터널로 자격증명 전송을 거절하여, 모든 실제 로그인 검증은 로컬 루프백에서 수행했다. 외부 배포 완료로 주장하지 않는다. 기존 Docker·Ollama·Cloudflare·.env를 중단하거나 수정하지 않았다.
+최초 공개 자격증명 전송 시도는 자동 승인 검토가 거절하여 루프백으로 대체했다. 이후 사용자가 4335 화면 확인과 새 링크를 요청하고, 합성 로그인 정보·데모 API의 Cloudflare 연결을 명시적으로 허용했다. 그 후에만 위 정확한 새 외부 도메인에서 4계정과 실제 API 흐름을 다시 확인했다. QUIC 연결 실패 후 별도 HTTP/2 터널로 성공했다. `USE_SAME_ORIGIN=true` 빌드가 외부 기기의 localhost를 호출하지 않도록 한다. 기존 Docker·Ollama·Cloudflare·.env는 중단·수정하지 않았다. 임시 Quick Tunnel이며 운영 배포로 취급하지 않는다.
 
 ## 7. API 요청·응답·HTTP 상태
 
@@ -127,6 +131,12 @@ Qwen `qwen2.5vl:7b`: 박영희 식사·복약·산책 improved 3항목, 최정�
 
 자격증명 파일: `C:\Users\Owner\.codex\.chatgpt-projects\g-p-6acee141f5688191bba69532c656eca2\final-verification-CareGap-Backend\.runtime\demo-credentials.json`. Git ignore이며 NTFS ACL을 현재 사용자만 접근하도록 제한했다. 문서·소스·커밋에 실제 password/token을 넣지 않았다.
 
+후속 사용자 요청으로 새 간편 로그인 경로를 추가했다. `staff1`=김민준, `staff2`=이서연, `user1`=박영희, `user2`=최정호다. 요청한 공통 시연 비밀번호는 Frontend 복제본 `.runtime/demo-login-aliases.json`에만 보관하며 Git/브라우저 번들에 넣지 않았다. 새 4339 로그인 게이트웨이가 이 4개 별칭을 기존 4334의 정확한 계정에 연결하므로 user_id·배정·예약·기록과 계정 수 4개가 그대로 유지된다. **기존 4334의 비밀번호를 직접 변경한 것은 아니며 간편 로그인은 최신 링크에만 적용된다.** 일반 회원가입의 길이 제한과 직접 4334 인증 계약은 유지했다.
+
+별칭 파일 ACL은 현재 사용자만 허용한다. 실제 검증: 간편 4로그인 성공, 잘못된 비밀번호 401, role 주입 401, 외부 Origin 403, 비밀 파일 URL 404. 전용 로그인 빌드만 짧은 입력을 허용하고 로그인 시도는 분당 30회로 제한한다. `frontend-simple-live.json`, `simple-login-security.json` 및 아래 실제 화면이 증거다.
+
+![간편 staff1 실제 로그인 후 담당자 화면](evidence-2026-10-30/simple-staff-login-verified.png)
+
 ## 11. 실제 데모 데이터와 멱등성
 
 대상자 2명, 배정 2쌍, 예약 4건(완료 2·예정 2), 상담 기록 8건(박영희 5·최정호 3: 과거 각 1, OCR/STT 확정 현재 기록 및 Flutter 추가 검증 기록 포함), 후속 업무 2건, 인앱 알림 2건이다. 초기 시드의 기록은 6건이며 Flutter 실제 OCR/STT 가져오기 검증으로 2건 추가됐다.
@@ -143,6 +153,7 @@ Qwen `qwen2.5vl:7b`: 박영희 식사·복약·산책 improved 3항목, 최정�
 | 추가 PR #29 최신 HEAD 전체(별도) | 646 | 0 | 0 |
 | Flutter 전체 최종 | 42 | 0 | 0 |
 | Flutter 실제 4334 서버 4계정 위젯 | 1 | 0 | 0 |
+| 간편 로그인 매핑·오류·권한 주입 Node 테스트 | 1 | 0 | 0 |
 | 실제 LiveKit smoke | 0 | 0 | CONFIG_MISSING, 미검증 1 |
 
 Backend typecheck/build 통과, Frontend analyze 문제 없음, USE_MOCK=false web build 통과. 646개를 최종 main의 테스트 수에 합산하지 않는다.
@@ -185,7 +196,15 @@ GitHub Flutter CI의 APK는 USE_MOCK=true 빌드다. 실제 모델 검증은 위
 
 ## 18. 실제 병합과 신규 PR
 
-이번 신규 Frontend PR: https://github.com/KMU5881193/CareGap-Frontend/pull/5 (검증 구현 commit `4854439`). Backend PR·최종 CI·병합 SHA는 PR 생성 후 아래에 추가 기록한다. 기존 PR은 이 문서 작성 시점에 신규 병합하지 않았다.
+Backend 신규 PR https://github.com/KMU5881193/CareGap-Backend/pull/30 — 구현 `6c90167aaa3b8e781822f79849b020608f6a444b`, 두 verify CI success 및 보안·실제 API 검증 후 병합. 실제 merge SHA `35348e12dcfbb47c4d8c082b3425171fd4757b65`.
+
+CI: https://github.com/KMU5881193/CareGap-Backend/actions/runs/40970818211 및 https://github.com/KMU5881193/CareGap-Backend/actions/runs/40970827003 — success.
+
+Frontend 신규 PR https://github.com/KMU5881193/CareGap-Frontend/pull/5 — 구현 `4854439`, 외부 같은 출처 수정 `d5b3651374beed6136cc4c07241489313bdf5efa`. 최초 구현 CI는 전체 success, 외부 수정 뒤 최신 CI는 최종 후속 기록을 따른다. 변경 후 로컬 analyze·42 tests·외부 HTTPS 전체 API 검증은 통과했다.
+
+최신 외부 수정 CI: https://github.com/KMU5881193/CareGap-Frontend/actions/runs/40971302052 및 https://github.com/KMU5881193/CareGap-Frontend/actions/runs/40971309773.
+
+간편 로그인 최종 구현 `c4635015fb9e42598cf325f29bbe21bf64ee3dbd`의 CI: https://github.com/KMU5881193/CareGap-Frontend/actions/runs/40972076048 및 https://github.com/KMU5881193/CareGap-Frontend/actions/runs/40972068762. 기존 프론트 PR #5에 추가했으며 최종 병합 상태는 아래 후속 기록에 남긴다.
 
 ## 19. 남은 위험과 우선순위
 

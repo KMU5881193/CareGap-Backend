@@ -1,0 +1,86 @@
+{
+  "base": "https://wash-mighty-dust-director.trycloudflare.com",
+  "use_mock": false,
+  "results": [
+    {
+      "user_id": "9adbcd38-0ba7-4b94-83e1-df081a59562a",
+      "role": "staff",
+      "people": 1,
+      "appointments": 2,
+      "record_versions": 5,
+      "real_http": true,
+      "ocr_job_id": "0a02c50a-35b5-4fdd-972b-eeb5e0bb1ce2",
+      "ocr_original": "오늘식사는세번했고약을빠뜨리지않았습니다.",
+      "stt_job_id": "3dd4f6f6-3dc2-4d33-a8f9-14707e871310",
+      "stt_original": {
+        "text": " 합성 상담입니다. 오늘 식사는 세 번 했습니다. 약을 빡들이지 않았습니다. 산책은 일주일에 두 번 했습니다.",
+        "segments": [
+          {
+            "start_ms": 0,
+            "end_ms": 2200,
+            "speaker_id": "unknown",
+            "text": " 합성 상담입니다."
+          },
+          {
+            "start_ms": 2200,
+            "end_ms": 5200,
+            "speaker_id": "unknown",
+            "text": " 오늘 식사는 세 번 했습니다."
+          },
+          {
+            "start_ms": 5200,
+            "end_ms": 7760,
+            "speaker_id": "unknown",
+            "text": " 약을 빡들이지 않았습니다."
+          },
+          {
+            "start_ms": 7760,
+            "end_ms": 10950,
+            "speaker_id": "unknown",
+            "text": " 산책은 일주일에 두 번 했습니다."
+          }
+        ],
+        "timing": "asr_timestamps",
+        "diarization": "none"
+      },
+      "analysis_id": "bafdaca1-74d4-42c8-8f09-9bca4541b5b5",
+      "inference": {
+        "provider": "ollama",
+        "model": "qwen2.5vl:7b",
+        "created_at": "2026-10-29T22:51:39.5687447Z",
+        "elapsed_ms": 4375,
+        "prompt_eval_duration": 270955000,
+        "eval_duration": 3970932000,
+        "load_duration": 27136800,
+        "eval_count": 181,
+        "evidence_validation": "passed"
+      },
+      "candidates": 1,
+      "vision_status": "succeeded"
+    },
+    {
+      "user_id": "ccf1b7d8-8c2d-4164-90ec-de1dce83edb4",
+      "role": "staff",
+      "people": 1,
+      "appointments": 2,
+      "record_versions": 3,
+      "real_http": true
+    },
+    {
+      "user_id": "3bc0a3f5-c612-40ee-8406-a2ade8678053",
+      "role": "patient",
+      "people": 1,
+      "appointments": 2,
+      "record_versions": 5,
+      "real_http": true
+    },
+    {
+      "user_id": "a3484420-d4c5-4185-b625-0040590c6f19",
+      "role": "patient",
+      "people": 1,
+      "appointments": 2,
+      "record_versions": 3,
+      "real_http": true
+    }
+  ]
+}
