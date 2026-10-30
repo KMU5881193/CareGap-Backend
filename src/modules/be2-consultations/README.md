@@ -12,7 +12,7 @@ BE2 담당 영역. 역할 문서와 docs/contracts.md를 기준으로 구현합�
 
 `appointment-conflict.ts`는 `relateUtcIntervals`로 같은 상담사 `user_id`와 같은 `person_id`를 각각 비교합니다. 점유 상태와 차단 관계는 호출자가 넘깁니다. 목록이 비어 있으면 충돌 없음이 아니라 정책 미설정입니다. `meets`는 호출자가 목록에 넣은 경우에만 차단됩니다.
 
-`api-schema.ts`와 `api-contract.md`는 예약·가능 시간의 JSON 입출력 초안입니다. 인증된 `user_id`는 요청 본문에 넣지 않습니다. 라우트, DB, 상태 이름 목록은 아직 없습니다.
+`api-schema.ts`와 `api-contract.md`는 예약·가능 시간의 JSON 입출력 초안입니다. 인증된 `user_id`는 요청 본문에 넣지 않습니다. 상태 이름 목록은 아직 없습니다.
 
 `consultation-record.ts`는 공통 `RecordVersion`을 수정하지 않고 새 버전으로만 추가합니다. 조회는 `consultation_id`와 `record_version_id`로 하며, 배열 순서를 최신 버전으로 보지 않습니다. 역할이나 검증되지 않은 접근 결정은 원문 조회를 허용하지 않습니다. 상세한 미확정 항목은 `consultation-record.md`에 있습니다.
 
@@ -20,3 +20,7 @@ BE2 담당 영역. 역할 문서와 docs/contracts.md를 기준으로 구현합�
 `follow-up.ts`는 상담사가 등록하는 후속 업무만 다룹니다. 출처 버전은 `readRecordVersion`으로 확인하고, 상태 이름은 호출자가 넣은 규칙으로만 바꿉니다. 분석 이벤트에서 업무를 만들거나 알림을 보내지 않습니다. 미확정 항목은 `follow-up.md`에 있습니다.
 
 `notification.ts`는 알림 접수와 읽음 시각만 다룹니다. 중복은 `notification_id`로 판단하고, `event_id`로 이벤트를 다시 받을지는 호출자가 정책을 넣기 전에는 정하지 않습니다. 읽음은 푸시 발송이 아닙니다. 분석 이벤트 모듈을 부르지 않고 후속 업무를 만들지 않습니다. 미확정 항목은 `notification.md`에 있습니다.
+
+데이터베이스 초안은 `docs/be2-schema.md`와 `migrations/drafts/`에 있습니다. `pnpm migrate`는 그 초안을 적용하지 않습니다. `person_id`의 대상자 테이블은 아직 없고, 가능 시간 테이블과 예약 겹침 배제 제약도 아직 없습니다.
+
+`repository.ts`는 그 초안의 컬럼에 맞춘 저장소입니다. `http.ts`의 라우터는 `src/app.ts`에 등록하지 않습니다. BE1 인증 미들웨어는 이 브랜치에 없으므로, 라우터는 호출자가 넣은 인증과 `AuthorizationPort`가 있어야 동작합니다. 요청 본문은 사용자 ID나 접근 허용의 증거가 아닙니다. 예약 생성은 점유 정책과 배제 제약이 없으므로 행을 저장하지 않습니다.
