@@ -45,10 +45,8 @@
 - 원본·교정본·AI 생성문·검토본·공개본의 구분
 - 기록 수정 후 재분석 여부
 
-## BE1을 확인하기 전에는 정하지 않음
+## BE1에서 확인한 것
 
-- 사용자 테이블 이름, PK 컬럼, 자료형
-- 그 테이블 마이그레이션 파일명과 번호
-- 인증·승인 미들웨어의 경로와 호출 방법
+`main`의 사용자 테이블은 `users(user_id uuid)`다. 파일명은 `0001_be1_create_users_table.sql`이다. 이 브랜치의 `migrations/`에는 그 파일이 없다. 인증 미들웨어는 `main`의 `src/shared/middleware/auth.middleware.ts`에 있다. 이 모듈은 그 미들웨어를 호출하지 않는다.
 
-BE2 FK와 라우트 공개는 그 확인 이후다. 마이그레이션 파일명 규칙 `NNNN_beN_description.sql`은 유지한다.
+대상자 테이블은 아직 없다. 테이블 초안과 적용 보류는 `docs/be2-schema.md`에 있다. 마이그레이션 파일명 규칙 `NNNN_beN_description.sql`은 유지한다.
